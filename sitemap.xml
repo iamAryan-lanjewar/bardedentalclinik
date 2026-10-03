@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://bardepreciousdental.com/</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://bardepreciousdental.com/assets/hero_right_perfect.webp</image:loc>
+      <image:title>Dr. Vivek Barde Dental Clinic - Smile Transformations and Veneers</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bardepreciousdental.com/assets/doctor_photo_target.webp</image:loc>
+      <image:title>Dr. Vivek Barde - Senior Orthodontist and Dental Surgeon</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://bardepreciousdental.com/services.html</loc>
+    <lastmod>2026-10-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://bardepreciousdental.com/assets/service_root_canal.webp</image:loc>
+      <image:title>Painless Microscopic Root Canal Therapy</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bardepreciousdental.com/assets/service_implant_surgery.webp</image:loc>
+      <image:title>3D Guided Surgical Dental Implants</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://bardepreciousdental.com/assets/service_veneers.webp</image:loc>
+      <image:title>Custom Ultra-thin Porcelain Veneers</image:title>
+    </image:image>
+  </url>
+</urlset>
