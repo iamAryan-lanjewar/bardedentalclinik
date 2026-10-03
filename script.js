@@ -101,6 +101,10 @@ document.addEventListener('DOMContentLoaded', () => {
   updateStageScale();
   setTimeout(updateConnectingWire, 100);
 
+  // Mode Switch Buttons (Guarded)
+  const btnScrollMode = document.getElementById('btnScrollMode');
+  const btnSlideMode = document.getElementById('btnSlideMode');
+
   // =================================================================
   // 3. VIEW MODE CONTROLLER (SCROLL vs 16:9 SLIDE MODE)
   // =================================================================
@@ -109,15 +113,15 @@ document.addEventListener('DOMContentLoaded', () => {
       isSlideMode = true;
       body.classList.remove('mode-continuous');
       body.classList.add('mode-slide');
-      btnScrollMode.classList.remove('active');
-      btnSlideMode.classList.add('active');
+      if (btnScrollMode) btnScrollMode.classList.remove('active');
+      if (btnSlideMode) btnSlideMode.classList.add('active');
       goToSlide(currentSlide);
     } else {
       isSlideMode = false;
       body.classList.remove('mode-slide');
       body.classList.add('mode-continuous');
-      btnSlideMode.classList.remove('active');
-      btnScrollMode.classList.add('active');
+      if (btnSlideMode) btnSlideMode.classList.remove('active');
+      if (btnScrollMode) btnScrollMode.classList.add('active');
       sections.forEach(s => s.classList.remove('active'));
       const targetSec = document.getElementById(`slide-${currentSlide}`);
       if (targetSec) {
@@ -396,30 +400,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Open booking modal
-  document.querySelectorAll('.open-booking-modal').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const service = btn.getAttribute('data-service');
-      const doctor = btn.getAttribute('data-doctor');
-      
-      if (bookingModal) {
-        closeAllModals();
-        bookingModal.classList.add('active');
-        
-        if (service) {
-          const select = document.getElementById('serviceCategory');
-          if (select) {
-            for (let i = 0; i < select.options.length; i++) {
-              if (select.options[i].text.toLowerCase().includes(service.toLowerCase())) {
-                select.selectedIndex = i;
-                break;
-              }
+  // Open booking modal helper
+  function triggerBookingModal(service, doctor) {
+    closeAllModals();
+    if (bookingModal) {
+      bookingModal.classList.add('active');
+      if (service) {
+        const select = document.getElementById('serviceCategory');
+        if (select) {
+          for (let i = 0; i < select.options.length; i++) {
+            if (select.options[i].text.toLowerCase().includes(service.toLowerCase())) {
+              select.selectedIndex = i;
+              break;
             }
           }
         }
       }
-    });
+    }
+  }
+
+  // Universal click handler for all appointment and booking CTA buttons across PC and Mobile
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.open-booking-modal, [data-open-modal="booking"], #topbarGetStartedBtn, #mobileHeroCtaBtn, .card-book-action');
+    if (btn) {
+      e.preventDefault();
+      e.stopPropagation();
+      const service = btn.getAttribute('data-service');
+      const doctor = btn.getAttribute('data-doctor');
+      triggerBookingModal(service, doctor);
+    }
   });
 
   if (closeBookingModal) closeBookingModal.addEventListener('click', closeAllModals);

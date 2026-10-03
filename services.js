@@ -198,13 +198,14 @@ document.addEventListener('DOMContentLoaded', () => {
     openModal(bookingModal);
   }
 
-  // Open booking modal triggers
-  document.querySelectorAll('.open-booking-modal').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+  // Universal click handler for open-booking-modal and bottomBookBtn
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.open-booking-modal, #bottomBookBtn, [data-open-modal="booking"]');
+    if (btn) {
       e.preventDefault();
       const service = btn.getAttribute('data-service') || '';
       openBookingModalWithService(service);
-    });
+    }
   });
 
   if (closeBookingModal) {
