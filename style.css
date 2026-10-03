@@ -479,9 +479,67 @@ body.mode-slide .slide-section.active {
   z-index: 50;
   cursor: pointer;
   border-radius: 40px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 12px;
+  box-sizing: border-box;
 }
 .veneer-badge-hitbox:hover {
   background: radial-gradient(circle at center, rgba(255, 255, 255, 0.22) 0%, transparent 70%);
+}
+.badge-hint-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #074e5e;
+  background: rgba(255, 255, 255, 0.94);
+  padding: 4px 12px;
+  border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: all 0.22s ease;
+  pointer-events: none;
+}
+.veneer-badge-hitbox:hover .badge-hint-tag,
+.veneer-badge-hitbox:focus .badge-hint-tag {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-tooth-pin-hitbox {
+  position: absolute;
+  left: 56.5vw;
+  top: 43.5vh;
+  width: 50px;
+  height: 50px;
+  margin-left: -25px;
+  margin-top: -25px;
+  z-index: 50;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-tooth-pin-hitbox .tooth-radar-ring {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.6);
+  animation: radarPulse 2.2s infinite ease-out;
+  pointer-events: none;
+}
+.hero-tooth-pin-hitbox .tooth-radar-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+  pointer-events: none;
 }
 
 .blueprint-grid {

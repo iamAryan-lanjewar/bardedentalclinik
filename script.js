@@ -444,7 +444,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Universal click handler for all appointment and booking CTA buttons across PC and Mobile
   document.addEventListener('click', (e) => {
     // 1. Veneer Installation System key / badge clicks
-    const veneerBtn = e.target.closest('.veneer-badge-hitbox, #veneerBadgeBtn, #mobileVeneerBadge, #mobileToothPin, .mobile-tooth-pin-wrap, [data-open-modal="veneer"]');
+    const veneerBtn = e.target.closest('.veneer-badge-hitbox, #veneerBadgeBtn, #heroToothPin, .hero-tooth-pin-hitbox, #mobileVeneerBadge, #mobileToothPin, .mobile-tooth-pin-wrap, [data-open-modal="veneer"]');
     if (veneerBtn) {
       e.preventDefault();
       e.stopPropagation();
@@ -464,8 +464,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Direct element attachments to ensure 100% responsiveness
-  document.querySelectorAll('.open-booking-modal, #topbarGetStartedBtn, #mobileHeroCtaBtn, .card-book-action, .doctor-exact-cta-btn, .value-cta-btn, .reviews-cta-btn').forEach(b => {
+  // Direct element attachments to ensure 100% responsiveness on every device
+  const heroToothPin = document.getElementById('heroToothPin');
+  if (heroToothPin) {
+    heroToothPin.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      openVeneerSpecs();
+    });
+  }
+
+  document.querySelectorAll('.open-booking-modal, #topbarGetStartedBtn, #mobileHeroCtaBtn, .card-book-action, .doctor-exact-cta-btn, .value-cta-btn, .reviews-cta-btn, .m916-btn-primary, .m916-value-btn').forEach(b => {
     b.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();

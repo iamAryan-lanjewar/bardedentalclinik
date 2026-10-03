@@ -200,12 +200,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Universal click handler for open-booking-modal and bottomBookBtn
   document.addEventListener('click', (e) => {
-    const btn = e.target.closest('.open-booking-modal, #bottomBookBtn, [data-open-modal="booking"]');
+    const btn = e.target.closest('.open-booking-modal, #bottomBookBtn, [data-open-modal="booking"], .btn-book-appointment-main');
     if (btn) {
       e.preventDefault();
       const service = btn.getAttribute('data-service') || '';
       openBookingModalWithService(service);
     }
+  });
+
+  const bottomBookBtn = document.getElementById('bottomBookBtn');
+  if (bottomBookBtn) {
+    bottomBookBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openBookingModalWithService('');
+    });
+  }
+
+  document.querySelectorAll('.open-booking-modal, .btn-book-appointment-main').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const service = btn.getAttribute('data-service') || '';
+      openBookingModalWithService(service);
+    });
   });
 
   if (closeBookingModal) {
