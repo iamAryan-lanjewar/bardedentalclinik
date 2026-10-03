@@ -442,7 +442,7 @@ body {
   inset: 0;
   background: rgba(8, 30, 40, 0.75);
   backdrop-filter: blur(10px);
-  z-index: 10000;
+  z-index: 999999 !important;
   display: flex;
   align-items: center;
   justify-content: center;

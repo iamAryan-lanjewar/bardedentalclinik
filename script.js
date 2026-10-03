@@ -230,15 +230,23 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // TAP / CLICK ON SCREEN (Outside Topbar and Outside Modals) hides the topbar
+    // TAP / CLICK ON BACKGROUND SCREEN hides the topbar (without blocking any button/card/modal interaction)
     function handleScreenTap(e) {
-      // NEVER hide if interacting with the topbar buttons/links or active modal dialogs
+      // NEVER hide if interacting with interactive UI elements, buttons, links, inputs, or active modals
       if (
         e.target.closest('#appTopbar') ||
-        e.target.closest('.modal-card') ||
+        e.target.closest('.app-modal-dialog') ||
+        e.target.closest('.app-modal-backdrop') ||
+        e.target.closest('button') ||
+        e.target.closest('a') ||
         e.target.closest('input') ||
         e.target.closest('select') ||
-        e.target.closest('textarea')
+        e.target.closest('textarea') ||
+        e.target.closest('.veneer-badge-hitbox') ||
+        e.target.closest('.mobile-tooth-pin-wrap') ||
+        e.target.closest('.mobile-veneer-badge-hitbox') ||
+        e.target.closest('.stage-nav-controls') ||
+        e.target.closest('.mobile-bottom-dock')
       ) {
         return;
       }
@@ -250,22 +258,30 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Hide the top navigation bar immediately when tapping the screen
+      // Hide the top navigation bar when tapping empty screen background
       hideTopbar();
       lastClickX = e.clientX || 0;
       lastClickY = e.clientY || 0;
       lastClickTime = Date.now();
     }
 
-    window.addEventListener('click', handleScreenTap, true);
+    window.addEventListener('click', handleScreenTap);
     window.addEventListener('pointerdown', (e) => {
-      // NEVER hide if clicking on the topbar or inside a modal
+      // NEVER hide if clicking on interactive elements or inside a modal
       if (
         e.target.closest('#appTopbar') ||
-        e.target.closest('.modal-card') ||
+        e.target.closest('.app-modal-dialog') ||
+        e.target.closest('.app-modal-backdrop') ||
+        e.target.closest('button') ||
+        e.target.closest('a') ||
         e.target.closest('input') ||
         e.target.closest('select') ||
-        e.target.closest('textarea')
+        e.target.closest('textarea') ||
+        e.target.closest('.veneer-badge-hitbox') ||
+        e.target.closest('.mobile-tooth-pin-wrap') ||
+        e.target.closest('.mobile-veneer-badge-hitbox') ||
+        e.target.closest('.stage-nav-controls') ||
+        e.target.closest('.mobile-bottom-dock')
       ) {
         return;
       }
@@ -275,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lastClickY = e.clientY || 0;
         lastClickTime = Date.now();
       }
-    }, true);
+    });
 
     // MOVING CURSOR smoothly reveals the navigation bar
     window.addEventListener('mousemove', (e) => {
@@ -405,30 +421,58 @@ document.addEventListener('DOMContentLoaded', () => {
     closeAllModals();
     if (bookingModal) {
       bookingModal.classList.add('active');
-      if (service) {
-        const select = document.getElementById('serviceCategory');
-        if (select) {
-          for (let i = 0; i < select.options.length; i++) {
-            if (select.options[i].text.toLowerCase().includes(service.toLowerCase())) {
-              select.selectedIndex = i;
-              break;
-            }
+      const select = document.getElementById('serviceCategory');
+      if (select && service) {
+        for (let i = 0; i < select.options.length; i++) {
+          if (select.options[i].text.toLowerCase().includes(service.toLowerCase()) || select.options[i].value.toLowerCase().includes(service.toLowerCase())) {
+            select.selectedIndex = i;
+            break;
           }
         }
       }
     }
   }
 
+  // Veneer Specs Drawer
+  function openVeneerSpecs() {
+    closeAllModals();
+    if (veneerModal) {
+      veneerModal.classList.add('active');
+    }
+  }
+
   // Universal click handler for all appointment and booking CTA buttons across PC and Mobile
   document.addEventListener('click', (e) => {
-    const btn = e.target.closest('.open-booking-modal, [data-open-modal="booking"], #topbarGetStartedBtn, #mobileHeroCtaBtn, .card-book-action');
+    // 1. Veneer Installation System key / badge clicks
+    const veneerBtn = e.target.closest('.veneer-badge-hitbox, #veneerBadgeBtn, #mobileVeneerBadge, #mobileToothPin, .mobile-tooth-pin-wrap, [data-open-modal="veneer"]');
+    if (veneerBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      openVeneerSpecs();
+      return;
+    }
+
+    // 2. Booking CTA buttons
+    const btn = e.target.closest('.open-booking-modal, [data-open-modal="booking"], #topbarGetStartedBtn, #mobileHeroCtaBtn, .card-book-action, .doctor-exact-cta-btn, .value-cta-btn, .reviews-cta-btn, .m916-btn-primary, .m916-value-btn, #bottomBookBtn');
     if (btn) {
       e.preventDefault();
       e.stopPropagation();
-      const service = btn.getAttribute('data-service');
-      const doctor = btn.getAttribute('data-doctor');
+      const service = btn.getAttribute('data-service') || '';
+      const doctor = btn.getAttribute('data-doctor') || '';
       triggerBookingModal(service, doctor);
+      return;
     }
+  });
+
+  // Direct element attachments to ensure 100% responsiveness
+  document.querySelectorAll('.open-booking-modal, #topbarGetStartedBtn, #mobileHeroCtaBtn, .card-book-action, .doctor-exact-cta-btn, .value-cta-btn, .reviews-cta-btn').forEach(b => {
+    b.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const service = b.getAttribute('data-service') || '';
+      const doctor = b.getAttribute('data-doctor') || '';
+      triggerBookingModal(service, doctor);
+    });
   });
 
   if (closeBookingModal) closeBookingModal.addEventListener('click', closeAllModals);
