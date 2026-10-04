@@ -10,6 +10,26 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#4cb7d1" />
   
+  <!-- Security Shield: Instant Purge of any foreign localhost ServiceWorkers or Caches (prevents stale interior website hijacking) -->
+  <script>
+    if (typeof window !== 'undefined') {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(regs) {
+          for (var i = 0; i < regs.length; i++) {
+            regs[i].unregister();
+          }
+        }).catch(function(){});
+      }
+      if ('caches' in window) {
+        caches.keys().then(function(keys) {
+          for (var j = 0; j < keys.length; j++) {
+            caches.delete(keys[j]);
+          }
+        }).catch(function(){});
+      }
+    }
+  </script>
+  
   <!-- Primary SEO Meta Tags -->
   <title>Dental Services &amp; Treatments — Dr. Vivek Barde Clinic Tumsar</title>
   <meta name="title" content="Dental Services &amp; Treatments — Dr. Vivek Barde Clinic Tumsar" />
@@ -74,10 +94,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-  <link rel="preload" as="image" href="assets/service_root_canal.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/service_root_canal.webp?v=11.0" type="image/webp" fetchpriority="high">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="services.css?v=7.0" />
+  <link rel="stylesheet" href="services.css?v=11.0" />
 </head>
 <body>
 
@@ -111,8 +131,8 @@
         <span class="mobile-nav-label">Root Canal</span>
       </a>
       <a href="#cavities" class="anchor-pill-link" id="pill-cavities">
-        <span class="pc-nav-label">all about cavities</span>
-        <span class="mobile-nav-label">Cavities</span>
+        <span class="pc-nav-label">cement filling</span>
+        <span class="mobile-nav-label">Cement Filling</span>
       </a>
       <a href="#cleaning" class="anchor-pill-link" id="pill-cleaning">
         <span class="pc-nav-label">teeth cleaning</span>
@@ -121,14 +141,13 @@
       <a href="#veneers" class="anchor-pill-link" id="pill-veneers">
         <span class="pc-nav-label">dental veener / laminates</span>
         <span class="mobile-nav-label">Veneers</span>
-      </a>
-      <a href="#implant-surgery" class="anchor-pill-link" id="pill-implant-surgery">
-        <span class="pc-nav-label">dental implant surgury</span>
+         <a href="#implant-surgery" class="anchor-pill-link" id="pill-implant-surgery">
+        <span class="pc-nav-label">dental implant surgery</span>
         <span class="mobile-nav-label">Implants</span>
       </a>
       <a href="#new-implant" class="anchor-pill-link" id="pill-new-implant">
-        <span class="pc-nav-label">new teeth implantation</span>
-        <span class="mobile-nav-label">New Teeth</span>
+        <span class="pc-nav-label">tooth extraction</span>
+        <span class="mobile-nav-label">Extraction</span>
       </a>
     </nav>
 
@@ -140,7 +159,7 @@
       <!-- CARD 1: ROOT CANAL -->
       <article class="service-card-item" id="root-canal" data-service-key="root-canal">
         <figure class="service-card-figure">
-          <img src="assets/service_root_canal.webp" alt="Dentist performing precision root canal treatment on anatomical model" class="service-card-img" fetchpriority="high" decoding="async" />
+          <img src="assets/service_root_canal.webp?v=12.0" alt="Dentist performing precision root canal treatment on anatomical model" class="service-card-img" fetchpriority="high" decoding="async" />
         </figure>
         <a href="#root-canal" class="service-card-title-anchor" data-service="root-canal">
           <h2 class="service-title">root canal</h2>
@@ -150,13 +169,13 @@
         </p>
       </article>
 
-      <!-- CARD 2: ALL ABOUT CAVITIES -->
+      <!-- CARD 2: CEMENT FILLING -->
       <article class="service-card-item" id="cavities" data-service-key="cavities">
         <figure class="service-card-figure">
-          <img src="assets/service_cavities.webp" alt="Dental examination of teeth cavity with dental mirror and probe" class="service-card-img" loading="lazy" decoding="async" />
+          <img src="assets/service_new_teeth_implant.webp?v=12.0" alt="Dental examination of teeth cavity with dental mirror and probe" class="service-card-img" loading="lazy" decoding="async" />
         </figure>
         <a href="#cavities" class="service-card-title-anchor" data-service="cavities">
-          <h2 class="service-title">all about cavities</h2>
+          <h2 class="service-title">cement filling</h2>
         </a>
         <p class="service-card-desc">
           A cavity starts silently when food and bacteria team up to slowly eat away at your enamel <button type="button" class="read-more-anchor-btn" data-service="cavities" aria-label="Read more about cavity prevention and fillings">read more..</button>
@@ -166,20 +185,20 @@
       <!-- CARD 3: TEETH CLEANING -->
       <article class="service-card-item" id="cleaning" data-service-key="cleaning">
         <figure class="service-card-figure">
-          <img src="assets/service_cleaning.webp" alt="Gentle ultrasonic teeth cleaning and plaque polishing procedure" class="service-card-img" loading="lazy" decoding="async" />
+          <img src="assets/service_cleaning.webp?v=12.0" alt="Gentle ultrasonic teeth cleaning and plaque polishing procedure" class="service-card-img" loading="lazy" decoding="async" />
         </figure>
         <a href="#cleaning" class="service-card-title-anchor" data-service="cleaning">
           <h2 class="service-title">teeth cleaning</h2>
         </a>
         <p class="service-card-desc">
-          prevent unexpected cavities, and keep teeth visibly stain-free <button type="button" class="read-more-anchor-btn" data-service="cleaning" aria-label="Read more about teeth cleaning and deep scaling">read more..</button>
+          Healthy habits start with smiles. Prevent unexpected cavities and keep teeth visibly stain-free <button type="button" class="read-more-anchor-btn" data-service="cleaning" aria-label="Read more about teeth cleaning and deep scaling">read more..</button>
         </p>
       </article>
 
       <!-- CARD 4: DENTAL VENEER / LAMINATES -->
       <article class="service-card-item" id="veneers" data-service-key="veneers">
         <figure class="service-card-figure">
-          <img src="assets/service_veneers.webp" alt="Patient holding ultra-thin porcelain dental veneers to smile" class="service-card-img" loading="lazy" decoding="async" />
+          <img src="assets/service_veneers.webp?v=12.0" alt="Ultra-thin porcelain dental veneer and laminate precision placement" class="service-card-img" loading="lazy" decoding="async" />
         </figure>
         <a href="#veneers" class="service-card-title-anchor" data-service="veneers">
           <h2 class="service-title">dental veneers / laminates</h2>
@@ -192,26 +211,26 @@
       <!-- CARD 5: DENTAL IMPLANT SURGERY -->
       <article class="service-card-item" id="implant-surgery" data-service-key="implant-surgery">
         <figure class="service-card-figure">
-          <img src="assets/service_implant_surgery.webp" alt="Radiant smile after successful dental implant surgery restoration" class="service-card-img" loading="lazy" decoding="async" />
+          <img src="assets/service_implant_surgery.webp?v=12.0" alt="Dental implant model showcasing titanium root screw, abutment, and ceramic crown" class="service-card-img" loading="lazy" decoding="async" />
         </figure>
         <a href="#implant-surgery" class="service-card-title-anchor" data-service="implant-surgery">
           <h2 class="service-title">dental implant surgery</h2>
         </a>
         <p class="service-card-desc">
-          Dental implant surgery is an advanced procedure that replaces missing tooth root <button type="button" class="read-more-anchor-btn" data-service="implant-surgery" aria-label="Read more about dental implant surgery">read more..</button>
+          Dental implant surgery replaces missing tooth root with titanium anchor <button type="button" class="read-more-anchor-btn" data-service="implant-surgery" aria-label="Read more about dental implant surgery">read more..</button>
         </p>
       </article>
 
-      <!-- CARD 6: NEW TEETH IMPLANTATION -->
+      <!-- CARD 6: TOOTH EXTRACTION -->
       <article class="service-card-item" id="new-implant" data-service-key="new-implant">
         <figure class="service-card-figure">
-          <img src="assets/service_new_teeth_implant.webp" alt="Dental implant models showcasing titanium root screw, abutment, and ceramic crown" class="service-card-img" loading="lazy" decoding="async" />
+          <img src="assets/service_tooth_extraction.webp?v=12.0" alt="Gentle and painless tooth extraction procedure" class="service-card-img" loading="lazy" decoding="async" />
         </figure>
         <a href="#new-implant" class="service-card-title-anchor" data-service="new-implant">
-          <h2 class="service-title">new teeth implantation</h2>
+          <h2 class="service-title">tooth extraction</h2>
         </a>
         <p class="service-card-desc">
-          New teeth implantation—often referring to modern techniques like same-day implants <button type="button" class="read-more-anchor-btn" data-service="new-implant" aria-label="Read more about new teeth implantation">read more..</button>
+          Gentle and painless removal for badly decayed, fractured, or painful teeth <button type="button" class="read-more-anchor-btn" data-service="new-implant" aria-label="Read more about painless tooth extraction">read more..</button>
         </p>
       </article>
 
@@ -281,11 +300,11 @@
             </svg>
             <select id="serviceCategory">
               <option value="Root Canal Therapy">Root Canal Therapy</option>
-              <option value="All About Cavities & Restorations">All About Cavities &amp; Fillings</option>
+              <option value="Cement Filling & Restorations">Cement Filling &amp; Restorations</option>
               <option value="Teeth Cleaning & Deep Polishing">Teeth Cleaning &amp; Deep Polishing</option>
               <option value="Dental Veneers & Laminates" selected>Dental Veneers &amp; Laminates (Swiss System)</option>
               <option value="Dental Implant Surgery">Dental Implant Surgery (3D Guided)</option>
-              <option value="New Teeth Implantation">New Teeth Implantation (Same-Day Teeth)</option>
+              <option value="Tooth Extraction">Tooth Extraction (Painless Removal)</option>
             </select>
             <svg class="select-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="6 9 12 15 18 9"></polyline>
@@ -476,6 +495,6 @@
     </div>
   </div>
 
-  <script src="services.js?v=7.0" defer></script>
+  <script src="services.js?v=11.0" defer></script>
 </body>
 </html>

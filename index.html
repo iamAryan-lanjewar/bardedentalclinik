@@ -10,6 +10,26 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#4cb7d1" />
   
+  <!-- Security Shield: Instant Purge of any foreign localhost ServiceWorkers or Caches (prevents stale interior website hijacking) -->
+  <script>
+    if (typeof window !== 'undefined') {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(regs) {
+          for (var i = 0; i < regs.length; i++) {
+            regs[i].unregister();
+          }
+        }).catch(function(){});
+      }
+      if ('caches' in window) {
+        caches.keys().then(function(keys) {
+          for (var j = 0; j < keys.length; j++) {
+            caches.delete(keys[j]);
+          }
+        }).catch(function(){});
+      }
+    }
+  </script>
+  
   <!-- Primary SEO Meta Tags -->
   <title>Dr. Vivek Barde Clinic — Sporting Your Best Smile | Dental Clinic in Tumsar</title>
   <meta name="title" content="Dr. Vivek Barde Clinic — Sporting Your Best Smile | Dental Clinic in Tumsar" />
@@ -116,11 +136,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
   <link rel="preload" as="image" href="assets/hero_right_perfect.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/doctor_gold_emblem.webp?v=8.2" type="image/webp">
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=7.0" />
+  <link rel="stylesheet" href="style.css?v=8.6" />
 </head>
 <body class="mode-continuous">
 
@@ -193,14 +213,8 @@
         </div>
 
         <!-- Interactive Veneer Badge Hitbox -->
-        <div class="veneer-badge-hitbox" id="veneerBadgeBtn" role="button" tabindex="0" title="Click to view Veneer Installation System Specs" aria-label="Veneer Installation System">
-          <span class="badge-hint-tag">✦ Click to View Specs</span>
-        </div>
-
-        <!-- Interactive Hero Tooth Pin on Model's Smile -->
-        <div class="hero-tooth-pin-hitbox" id="heroToothPin" role="button" tabindex="0" title="Porcelain Veneer Target Zone" aria-label="Inspect Porcelain Veneer System">
-          <div class="tooth-radar-ring"></div>
-          <div class="tooth-radar-dot"></div>
+        <div class="veneer-badge-hitbox" id="veneerBadgeBtn" role="button" tabindex="0" title="Click to view what veneers actually do" aria-label="What Veneers Actually Do">
+          <span class="badge-hint-tag">✦ What Veneers Actually Do</span>
         </div>
 
         <!-- Explore Cue Button (Scroll to Doctor) -->
@@ -222,22 +236,17 @@
         <!-- Top Left Title -->
         <h2 class="doctor-page-title">Dr. Vivek Barde</h2>
 
-        <!-- Upper Section: 2 Columns (Photo Left, Credentials/Bio Right) -->
+        <!-- Upper Section: 2 Columns (Logo/Emblem Left, Credentials/Bio Right) -->
         <div class="doctor-upper-row">
           
-          <!-- Doctor Photo -->
-          <div class="doctor-exact-photo-wrap">
-            <img src="assets/doctor_photo_target.webp" alt="Dr. Vivek Barde" class="doctor-exact-img" loading="lazy" decoding="async" />
+          <!-- Doctor Unbounded Emblem / Logo -->
+          <div class="doctor-exact-photo-wrap doctor-unbounded-emblem-wrap">
+            <img src="assets/doctor_gold_emblem.webp?v=8.2" alt="Dr. Vivek Barde Dental Logo" class="doctor-exact-img doctor-emblem-unbounded" loading="eager" decoding="async" />
           </div>
 
           <!-- Right Column -->
           <div class="doctor-exact-details">
             
-            <!-- Badge -->
-            <div class="doctor-exact-badge">
-              Senior Orthodontist &amp; Dental Surgeon
-            </div>
-
             <!-- Credentials -->
             <div class="doctor-credential-item">
               <svg class="cred-icon" viewBox="0 0 24 24" fill="none" stroke="#132f47" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -245,8 +254,8 @@
                 <path d="M6 12v5c3 3 9 3 12 0v-5"/>
               </svg>
               <div class="cred-text">
-                <span>BDS, MDS Orthodontics &amp; Dentofacial Orthopedics</span>
-                <span>Certified Senior Implantologist &amp; Dental Surgeon</span>
+                <span>BDS &bull; Senior Experienced Dental &amp; Cosmetic Surgeon</span>
+                <span>Certified Senior Doctor &amp; Smile Specialist</span>
               </div>
             </div>
 
@@ -256,14 +265,14 @@
                 <polyline points="12 6 12 12 16 14"/>
               </svg>
               <div class="cred-text">
-                <span>14+ Years in Clinical Orthodontics &amp; Dento-facial</span>
-                <span>Orthopedics</span>
+                <span>14+ Years in Clinical Dentistry &amp; Smile</span>
+                <span>Transformations</span>
               </div>
             </div>
 
             <!-- Bio Paragraph -->
             <p class="doctor-exact-bio">
-              Dr. Vivek Barde specializes in low-friction archwire alignment and invisible orthodontic technologies. With thousands of completed smile cases, his patient-first approach ensures pain-free movements and accelerated retention.
+              Dr. Vivek Barde specializes in advanced aesthetic dentistry, precision veneers, and comprehensive cosmetic smile transformations. With thousands of completed smile cases, his patient-first approach ensures pain-free treatments and naturally confident smiles.
             </p>
 
           </div>
@@ -374,9 +383,9 @@
               </a>
             </li>
             <li>
-              <a href="services.html#cavities" class="offer-item-anchor" title="View Cavity Restoration Details">
+              <a href="services.html#cavities" class="offer-item-anchor" title="View Cement Filling Details">
                 <span class="bullet-dot">•</span>
-                <span class="item-text">all about cavities</span>
+                <span class="item-text">cement filling</span>
               </a>
             </li>
             <li>
@@ -394,13 +403,13 @@
             <li>
               <a href="services.html#implant-surgery" class="offer-item-anchor" title="View Dental Implant Surgery Details">
                 <span class="bullet-dot">•</span>
-                <span class="item-text">dental implant surgur</span>
+                <span class="item-text">dental implant surgery</span>
               </a>
             </li>
             <li>
-              <a href="services.html#new-implant" class="offer-item-anchor" title="View New Teeth Implantation Details">
+              <a href="services.html#new-implant" class="offer-item-anchor" title="View Tooth Extraction Details">
                 <span class="bullet-dot">•</span>
-                <span class="item-text">new teeth implantation</span>
+                <span class="item-text">tooth extraction</span>
               </a>
             </li>
           </ul>
@@ -439,7 +448,7 @@
                       <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
                     </svg>
                   </span>
-                  <h3 class="card-title">3D Digital X-Ray</h3>
+                  <h3 class="card-title">3D Digital Dental X-Ray</h3>
                 </div>
                 <div class="card-mode-tabs" data-parent="cardPlanmecaEq">
                   <button class="tab-chip active" data-tab="overview">Overview</button>
@@ -543,7 +552,7 @@
               <div class="val-bullet">•</div>
               <div class="val-text-wrap">
                 <h4 class="val-title">Personalized Treatment Roadmaps</h4>
-                <p class="val-desc">Digital 3D simulation showing to the pertiant your final smile transformation before treatment begins.</p>
+                <p class="val-desc">Digital 3D simulation showing to the patient your final smile transformation before treatment begins.</p>
               </div>
             </div>
 
@@ -551,15 +560,15 @@
               <div class="val-bullet">•</div>
               <div class="val-text-wrap">
                 <h4 class="val-title">State-of-the-Art Technology</h4>
-                <p class="val-desc">Microscopic endodontics, and surgical-grade CAD/CAM milling.</p>
+                <p class="val-desc">Endodontics (RCT) &amp; Comprehensive treatment and all types of Dental Fracture Surgeries.</p>
               </div>
             </div>
 
             <div class="value-item-row">
               <div class="val-bullet">•</div>
               <div class="val-text-wrap">
-                <h4 class="val-title">Accessible &amp; Transparent Financing</h4>
-                <p class="val-desc">Zero-interest payment plans, direct insurance claims processing, and clear itemized billing.</p>
+                <h4 class="val-title">Affordable &amp; Transparent Pricing</h4>
+                <p class="val-desc">Honest upfront pricing with zero hidden charges and affordable dental care options.</p>
               </div>
             </div>
 
@@ -586,10 +595,10 @@
             <img src="assets/aesthetic_white_tooth.svg" alt="Aesthetic White Tooth Logo" class="gentle-tooth-logo" />
           </div>
 
-          <h2 class="gentle-main-title">EVERY TREATMENT WITH GENTAL AND CARE</h2>
+          <h2 class="gentle-main-title">EVERY TREATMENT WITH GENTLE AND CARE</h2>
 
           <p class="gentle-body-copy">
-            your healthy smail starts from here . fear free treatment with trusted hands , affordable care to keep your family smiling
+            Your healthy smile starts here. Fear-free treatment with trusted hands, and affordable care to keep your family smiling.
           </p>
 
           <p class="gentle-sub-copy">
@@ -660,9 +669,9 @@
             </p>
             <div class="card-badges-row">
               <span class="care-pill">Routine Cleaning</span>
-              <span class="care-pill">Oral Cancer Screening</span>
+              <span class="care-pill">GIC Filling</span>
               <span class="care-pill">Dental Sealants</span>
-              <span class="care-pill">No-Stab Fluoride Care</span>
+              <span class="care-pill">Fluoride Application</span>
             </div>
             <button class="card-book-action open-booking-modal" data-service="Preventative Care">
               BOOK THIS CARE &rarr;
@@ -677,9 +686,9 @@
             </p>
             <div class="card-badges-row">
               <span class="care-pill">Porcelain Veneers</span>
-              <span class="care-pill">Laser Teeth Whitening</span>
+              <span class="care-pill">Ultrasonic Scaling</span>
               <span class="care-pill">Invisalign Aligners</span>
-              <span class="care-pill">Gum Contouring</span>
+              <span class="care-pill">Gum Surgery</span>
             </div>
             <button class="card-book-action open-booking-modal" data-service="Cosmetic Care">
               BOOK THIS CARE &rarr;
@@ -739,7 +748,7 @@
             </div>
             <div class="metric-line">
               <span class="metric-check">✓</span>
-              <span class="metric-text">Custom CAD/CAM Milled Zirconia Crowns</span>
+              <span class="metric-text">Endodontics (RCT) &amp; all types of Dental Fracture Surgeries</span>
             </div>
             <div class="metric-line">
               <span class="metric-check">✓</span>
@@ -970,7 +979,7 @@
         </div>
 
         <!-- D. "Dental Veneers" Floating Badge Interactive Hitbox -->
-        <div class="mobile-veneer-badge-hitbox" id="mobileVeneerBadge" role="button" tabindex="0" title="Open Porcelain Veneer Specifications" aria-label="Open Porcelain Veneer Specifications">
+        <div class="mobile-veneer-badge-hitbox" id="mobileVeneerBadge" role="button" tabindex="0" title="What Veneers Actually Do" aria-label="What Veneers Actually Do">
           <div class="badge-tap-indicator">
             <span class="badge-pulse-glow"></span>
           </div>
@@ -978,9 +987,10 @@
 
         <!-- E. 4 Feature Icons Row (Kept Simple & Static Artwork, No Buttons) -->
 
-        <!-- F. "Book Your Consultation →" Primary CTA Hotspot Button -->
+        <!-- F. "Book Your Consultation →" Primary Action Button (CSS Glowing Overlay) -->
         <button type="button" class="mobile-cta-hotspot-btn open-booking-modal" id="mobileHeroCtaBtn" aria-label="Book Your Consultation">
-          <span class="cta-shimmer"></span>
+          <span class="cta-glow-ring"></span>
+          <span class="cta-shimmer-sweep"></span>
         </button>
 
       </div>
@@ -999,22 +1009,18 @@
     <section class="mobile-916-screen" id="mobileDoctor">
       <div class="mobile-916-canvas">
         
-        <!-- Doctor Portrait Frame with 14+ Yrs Exp Tag -->
+        <!-- Clean Full Doctor Emblem / Logo -->
         <div class="m916-doctor-hero-wrap">
-          <div class="m916-doc-photo-frame">
-            <img src="assets/doctor_photo_target.webp" alt="Dr. Vivek Barde" class="m916-doc-img" loading="lazy" decoding="async" />
-            <span class="m916-exp-badge">14+ Yrs Exp</span>
-          </div>
+          <img src="assets/doctor_gold_emblem.webp?v=8.2" alt="Dr. Vivek Barde Clinic Logo" class="m916-doc-full-logo" loading="eager" decoding="async" />
         </div>
 
         <!-- Doctor Details & Care Specialties (Open, Free & Average-Person Friendly) -->
         <div class="m916-doc-open-info">
           
-          <!-- Top Header: Role & Name -->
+          <!-- Top Header: Doctor Name & Qualifications -->
           <div class="m916-open-header">
-            <span class="m916-open-kicker">Chief Orthodontist &amp; Smile Specialist</span>
             <h2 class="m916-open-name">Dr. Vivek Barde</h2>
-            <p class="m916-open-degrees">BDS, MDS &bull; Senior Dental Surgeon</p>
+            <p class="m916-open-degrees">BDS &bull; Dental &amp; Cosmetic Surgeon</p>
           </div>
 
           <!-- Plain-Language Bio Intro -->
@@ -1081,13 +1087,6 @@
 
         </div>
 
-        <!-- Bottom Consultation Action -->
-        <div class="m916-action-row">
-          <button type="button" class="m916-btn-primary open-booking-modal" data-doctor="Dr. Vivek Barde">
-            Book Consultation with Dr. Barde &rarr;
-          </button>
-        </div>
-
       </div>
     </section>
 
@@ -1116,9 +1115,9 @@
               </a>
             </li>
             <li class="m916-offer-li">
-              <a href="services.html#cavities" class="m916-offer-link" data-service="Cavities & Composite Fillings">
+              <a href="services.html#cavities" class="m916-offer-link" data-service="Cement & Composite Fillings">
                 <span class="m-dot">&bull;</span>
-                <span class="m-text">all about cavities</span>
+                <span class="m-text">cement filling</span>
               </a>
             </li>
             <li class="m916-offer-li">
@@ -1136,13 +1135,13 @@
             <li class="m916-offer-li">
               <a href="services.html#implant-surgery" class="m916-offer-link" data-service="3D Guided Dental Implants">
                 <span class="m-dot">&bull;</span>
-                <span class="m-text">dental implant surgur</span>
+                <span class="m-text">dental implant surgery</span>
               </a>
             </li>
             <li class="m916-offer-li">
-              <a href="services.html#new-implant" class="m916-offer-link" data-service="Full Smile Transformation">
+              <a href="services.html#new-implant" class="m916-offer-link" data-service="Painless Tooth Extraction">
                 <span class="m-dot">&bull;</span>
-                <span class="m-text">new teeth implantation</span>
+                <span class="m-text">tooth extraction</span>
               </a>
             </li>
           </ul>
@@ -1180,7 +1179,7 @@
               <span class="m-val-bullet">&bull;</span>
               <div class="m-val-text-wrap">
                 <h3 class="m-val-title">Personalized Treatment Roadmaps</h3>
-                <p class="m-val-desc">Digital 3D simulation showing to the pertiant your final smile transformation before treatment begins.</p>
+                <p class="m-val-desc">Digital 3D simulation showing to the patient your final smile transformation before treatment begins.</p>
               </div>
             </div>
 
@@ -1188,15 +1187,15 @@
               <span class="m-val-bullet">&bull;</span>
               <div class="m-val-text-wrap">
                 <h3 class="m-val-title">State-of-the-Art Technology</h3>
-                <p class="m-val-desc">Microscopic endodontics, and surgical-grade CAD/CAM milling.</p>
+                <p class="m-val-desc">Endodontics (RCT) &amp; Comprehensive treatment and all types of Dental Fracture Surgeries.</p>
               </div>
             </div>
 
             <div class="m916-val-row">
               <span class="m-val-bullet">&bull;</span>
               <div class="m-val-text-wrap">
-                <h3 class="m-val-title">Accessible &amp; Transparent Financing</h3>
-                <p class="m-val-desc">Zero-interest payment plans, direct insurance claims processing, and clear itemized billing.</p>
+                <h3 class="m-val-title">Affordable &amp; Transparent Pricing</h3>
+                <p class="m-val-desc">Honest upfront pricing with zero hidden charges and affordable dental care options.</p>
               </div>
             </div>
 
@@ -1251,7 +1250,7 @@
 
         <!-- Clean 3D Digital X-Ray Content -->
         <div class="m916-overview-body">
-          <h2 class="m916-overview-title">3D Digital X-Ray</h2>
+          <h2 class="m916-overview-title">3D Digital Dental X-Ray</h2>
           
           <p class="m916-overview-copy">
             We believe getting an x-ray should feel effortless, fast, and completely safe. Our Planmeca 3D CBCT captures an ultra-clear, 360° view of your teeth, jawbone, and nerve anatomy in just <strong>10 seconds</strong> — using up to <strong>77% less radiation</strong> than standard medical CTs. Designed with an open-air walk-through space, there are no painful biting plates or closed tunnels. You simply stand or sit relaxed while robotic precision ensures your care is planned with gentle, pin-point accuracy.
@@ -1300,9 +1299,9 @@
               <div class="m916-pills-title">Key Treatments:</div>
               <div class="m916-story-pills-grid">
                 <span class="m916-pink-pill">Routine Cleaning</span>
-                <span class="m916-pink-pill">Oral Cancer Screening</span>
+                <span class="m916-pink-pill">GIC Filling</span>
                 <span class="m916-pink-pill">Dental Sealants</span>
-                <span class="m916-pink-pill">No-Stab Fluoride Care</span>
+                <span class="m916-pink-pill">Fluoride Application</span>
               </div>
             </div>
           </div>
@@ -1319,10 +1318,10 @@
             <div class="m916-pills-wrap">
               <div class="m916-pills-title">Key Treatments:</div>
               <div class="m916-story-pills-grid">
-                <span class="m916-pink-pill">Teeth Polishing &amp; Stain Removal</span>
+                <span class="m916-pink-pill">Ultrasonic Scaling</span>
                 <span class="m916-pink-pill">Porcelain Veneers</span>
                 <span class="m916-pink-pill">Invisalign Aligners</span>
-                <span class="m916-pink-pill">Gum Contouring</span>
+                <span class="m916-pink-pill">Gum Surgery</span>
               </div>
             </div>
           </div>
@@ -1354,7 +1353,54 @@
 
 
     <!-- ===============================================================
-         SCREEN 8 (9:16): OUR CLIENT REVIEWS (MATCHING SLIDE 9)
+         SCREEN 8 (9:16): SURGICAL EXCELLENCE (MATCHING PC SLIDE 8)
+         =============================================================== -->
+    <section class="mobile-916-screen" id="mobileSurgicalExcellence">
+      <div class="mobile-916-canvas m916-surgical-canvas">
+        
+        <!-- Surgical Hero Visual -->
+        <div class="m916-surgical-hero-wrap">
+          <img src="assets/surgical_implant_3d.webp" alt="3D Guided Surgical Dental Implant cross-section in bone" class="m916-surgical-hero-img" loading="lazy" decoding="async" />
+        </div>
+
+        <!-- Surgical Excellence Details -->
+        <div class="m916-surgical-body">
+          <div class="m916-surgical-kicker">✦ SURGICAL EXCELLENCE</div>
+          
+          <h2 class="m916-surgical-title">
+            Permanent Restorations<br />With Lifetime Reliability
+          </h2>
+
+          <p class="m916-surgical-desc">
+            Our 3D guided surgical implants integrate directly with your natural jawbone structure, preventing bone loss, preserving facial contours, and restoring 100% natural chewing power.
+          </p>
+
+          <div class="surgical-metrics-list m916-surgical-metrics">
+            <div class="metric-line">
+              <span class="metric-check">✓</span>
+              <span class="metric-text">14+ yrs in Healthcare</span>
+            </div>
+            <div class="metric-line">
+              <span class="metric-check">✓</span>
+              <span class="metric-text">Endodontics (RCT) &amp; all types of Dental Fracture Surgeries</span>
+            </div>
+            <div class="metric-line">
+              <span class="metric-check">✓</span>
+              <span class="metric-text">Comprehensive Lifetime Implant Warranty</span>
+            </div>
+          </div>
+
+          <button type="button" class="m916-surgical-cta-btn open-booking-modal" data-service="3D Guided Dental Implants">
+            BOOK THIS CARE &rarr;
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ===============================================================
+         SCREEN 9 (9:16): OUR CLIENT REVIEWS (MATCHING SLIDE 9)
          =============================================================== -->
     <section class="mobile-916-screen" id="mobileReviews">
       <div class="mobile-916-canvas m916-reviews-canvas">
@@ -1640,8 +1686,8 @@
               <option value="3D Guided Dental Implants">3D Guided Dental Implants &amp; Zirconia Crowns</option>
               <option value="Root Canal Therapy">Root Canal Therapy</option>
               <option value="Teeth Cleaning and Polishing">Teeth Cleaning &amp; Polishing</option>
-              <option value="Cavities & Composite Fillings">Cavities &amp; Composite Fillings</option>
-              <option value="Full Smile Transformation">Full Smile Transformation Roadmap</option>
+              <option value="Cement & Composite Fillings">Cement &amp; Composite Fillings</option>
+              <option value="Tooth Extraction (Painless Removal)">Tooth Extraction (Painless Removal)</option>
             </select>
             <svg class="select-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="6 9 12 15 18 9"></polyline>
@@ -1753,24 +1799,24 @@
       <button class="modal-close-btn" id="closeVeneerModal" aria-label="Close specifications">&times;</button>
       
       <div class="modal-header-block">
-        <span class="live-pill-tag">✦ SWISS PRECISION VENEER SYSTEM</span>
-        <h3 class="modal-title">Porcelain Veneer Specifications</h3>
+        <span class="live-pill-tag">✦ WHAT VENEERS ACTUALLY DO</span>
+        <h3 class="modal-title">What Veneers Actually Do</h3>
         <p class="modal-subtitle">Micron-Precision Cosmetic Smile Reconstruction</p>
       </div>
 
       <div class="veneer-specs-content">
         <div class="specs-hero-img-wrap">
-          <img src="assets/veneers.webp" alt="Porcelain Veneers" class="specs-preview-img" loading="lazy" decoding="async" />
+          <img src="assets/veneers.webp?v=10.0" alt="Porcelain Veneers" class="specs-preview-img" loading="lazy" decoding="async" />
         </div>
         <div class="specs-list">
           <div class="spec-row">
-            <strong>Material:</strong> <span>IPS e.max&reg; Press High-Translucency Lithium Disilicate</span>
+            <strong>Cover Stains:</strong> <span>Cover the stains and deep discoloration on your teeth.</span>
           </div>
           <div class="spec-row">
-            <strong>Thickness:</strong> <span>Ultra-thin 0.2mm - 0.3mm (No excessive enamel shave)</span>
+            <strong>Close Gaps:</strong> <span>Cover gaps and uneven spaces between teeth.</span>
           </div>
           <div class="spec-row">
-            <strong>Shade Options:</strong> <span>Natural Bleach BL1 - BL4, Vita Classical A1 - D4</span>
+            <strong>Natural Smile:</strong> <span>Look aesthetic and feel like a natural, confident smile.</span>
           </div>
           <div class="spec-row">
             <strong>Expected Lifespan:</strong> <span>15+ Years with 10-Year Clinical Warranty</span>
@@ -1801,12 +1847,12 @@
           <p>Microscopic endodontic therapy utilizing nickel-titanium rotary files to save infected teeth painlessly in a single visit.</p>
         </div>
         <div class="service-detail-item">
-          <h4>✨ All About Cavities</h4>
+          <h4>✨ Cement Filling &amp; Restorations</h4>
           <p>Biocompatible, nano-hybrid composite resins matched to the exact refractive index of your natural enamel.</p>
         </div>
         <div class="service-detail-item">
           <h4>💎 Teeth Cleaning and Polishing</h4>
-          <p>Air-flow ultrasonic scaling removes calculus and surface stains without scratching delicate tooth structures.</p>
+          <p>Healthy habits start with smiles. Air-flow ultrasonic scaling removes calculus and surface stains to keep teeth fresh and gums healthy.</p>
         </div>
         <div class="service-detail-item">
           <h4>🌟 Dental Veneers &amp; Laminates</h4>
@@ -1817,8 +1863,8 @@
           <p>3D CBCT guided titanium fixture placement with immediate load protocols and osseointegration assurance.</p>
         </div>
         <div class="service-detail-item">
-          <h4>👑 New Teeth Implantation</h4>
-          <p>Full arch and single-tooth fixed prosthetics restoring 100% natural mastication and facial vertical dimension.</p>
+          <h4>🦷 Painless Tooth Extraction</h4>
+          <p>Gentle, comfortable tooth removal using modern numbing techniques and atraumatic care to relieve pain quickly.</p>
         </div>
       </div>
 

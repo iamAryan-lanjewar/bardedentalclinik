@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'root-canal': {
       title: 'Root Canal Therapy',
       subtitle: 'Painless microscopic endodontic tooth-saving care',
-      image: 'assets/service_root_canal.webp',
+      image: 'assets/service_root_canal.webp?v=11.0',
       specs: [
         { label: 'Technology:', value: 'Nickel-Titanium rotary files & apex locators' },
         { label: 'Pain Level:', value: 'Virtually pain-free with computer-controlled anesthesia' },
@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
       description: 'A root canal sounds scary, but it actually ends the pain. Deep inside each tooth is the dental pulp. When severe decay or trauma causes infection, modern microscopic endodontics removes infected tissue, cleans and sterilizes canals, and seals the tooth safely so you keep your natural smile without extraction.'
     },
     'cavities': {
-      title: 'All About Cavities & Restorations',
-      subtitle: 'Biocompatible nano-hybrid tooth-colored restorations',
-      image: 'assets/service_cavities.webp',
+      title: 'Cement Filling & Restorations',
+      subtitle: 'Biocompatible nano-hybrid tooth-colored restorations & cement fillings',
+      image: 'assets/service_new_teeth_implant.webp?v=10.0',
       specs: [
         { label: 'Material:', value: 'Nano-hybrid composite resins matching enamel translucency' },
         { label: 'Detection:', value: 'High-definition digital intraoral camera & CBCT' },
@@ -32,8 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     'cleaning': {
       title: 'Teeth Cleaning & Deep Polishing',
-      subtitle: 'Ultrasonic air-flow scaling for stain-free, healthy gums',
-      image: 'assets/service_cleaning.webp',
+      subtitle: 'Healthy habits start with smiles',
+      image: 'assets/service_cleaning.webp?v=12.0',
       specs: [
         { label: 'Method:', value: 'Air-Flow ultrasonic micro-vibrations & gentle water jet' },
         { label: 'Benefits:', value: 'Eliminates stubborn plaque, calculus, tea/coffee stains' },
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'veneers': {
       title: 'Dental Veneers & Laminates',
       subtitle: 'Ultra-thin Swiss porcelain cosmetic smile transformation',
-      image: 'assets/service_veneers.webp',
+      image: 'assets/service_veneers.webp?v=10.0',
       specs: [
         { label: 'Material:', value: 'IPS e.max® press high-translucency lithium disilicate' },
         { label: 'Thickness:', value: 'Ultra-thin 0.2mm – 0.3mm (minimal tooth prep)' },
@@ -56,27 +56,27 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     'implant-surgery': {
       title: 'Dental Implant Surgery',
-      subtitle: 'Permanent biocompatible root replacement with lifetime warranty',
-      image: 'assets/service_implant_surgery.webp',
+      subtitle: 'Permanent replacement for missing teeth with artificial roots',
+      image: 'assets/service_implant_surgery.webp?v=12.0',
       specs: [
-        { label: 'Material:', value: 'Grade-4 Medical Titanium / Biocompatible Zirconia' },
-        { label: 'Guidance:', value: '3D CBCT digital computer-guided surgical stent' },
-        { label: 'Bone Preservation:', value: 'Prevents facial bone recession and sunken cheeks' },
-        { label: 'Chewing Power:', value: 'Restores 100% natural mastication capacity' }
+        { label: 'Material:', value: 'Medical titanium screw with custom ceramic crown' },
+        { label: 'Accuracy:', value: '3D guided digital scan for safe and exact placement' },
+        { label: 'Benefit:', value: 'Restores 100% natural chewing and keeps jawbone strong' },
+        { label: 'Lifespan:', value: 'Permanent, long-lasting solution with proper oral care' }
       ],
-      description: 'Dental implant surgery is an advanced procedure that replaces missing tooth roots with precision-engineered titanium fixtures. Once integrated with the jawbone, implants serve as a permanent rock-solid anchor for custom-milled zirconia crowns that look, feel, and function just like natural teeth.'
+      description: 'Dental implant surgery is the most reliable way to replace missing teeth. A small titanium post acts like a natural tooth root in your jaw, holding a custom-made crown securely in place so you can eat, smile, and speak with complete confidence.'
     },
     'new-implant': {
-      title: 'New Teeth Implantation',
-      subtitle: 'Same-day teeth and full-arch immediate load restorations',
-      image: 'assets/service_new_teeth_implant.webp',
+      title: 'Painless Tooth Extraction',
+      subtitle: 'Gentle, comfortable removal for damaged or painful teeth',
+      image: 'assets/service_tooth_extraction.webp?v=12.0',
       specs: [
-        { label: 'Technique:', value: 'Same-day immediate loading & All-on-4 / All-on-6 protocols' },
-        { label: 'Aesthetics:', value: 'Individually contoured monolithic zirconia bridge' },
-        { label: 'Timeline:', value: 'Walk in with missing teeth, walk out with complete smile' },
-        { label: 'Maintenance:', value: 'Easy cleaning and long-term checkup guarantee' }
+        { label: 'Comfort:', value: '100% pain-free with modern local numbing care' },
+        { label: 'Technique:', value: 'Gentle removal protecting surrounding bone and gums' },
+        { label: 'Recovery:', value: 'Quick healing in 2–3 days with clear aftercare tips' },
+        { label: 'When Needed:', value: 'Deep decay, broken teeth, or crowded wisdom teeth' }
       ],
-      description: 'New teeth implantation—often referring to modern techniques like same-day implants and full arch reconstructions. Utilizing robotic 3D diagnostics, we place implants and attach custom prosthetic teeth in a single session, restoring your confidence, speech, and enjoyment of all foods immediately.'
+      description: 'Tooth extraction is a routine, gentle procedure to remove teeth that cannot be repaired due to severe cavities, cracks, or impaction. Dr. Barde uses advanced numbing techniques so you feel relaxed and pain-free, ensuring quick and comfortable healing.'
     }
   };
 

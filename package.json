@@ -1,4 +1,10 @@
 {
+  "name": "bardedentalclinic",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
   "devDependencies": {
     "sharp": "^0.35.5"
   }

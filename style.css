@@ -510,18 +510,8 @@ body.mode-slide .slide-section.active {
 }
 
 .hero-tooth-pin-hitbox {
-  position: absolute;
-  left: 56.5vw;
-  top: 43.5vh;
-  width: 50px;
-  height: 50px;
-  margin-left: -25px;
-  margin-top: -25px;
-  z-index: 50;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: none !important;
+  pointer-events: none !important;
 }
 .hero-tooth-pin-hitbox .tooth-radar-ring {
   position: absolute;
@@ -838,11 +828,16 @@ body.mode-slide .slide-section.active {
 }
 
 /* ===================================================================
-   SLIDE 2: DOCTOR VIVEK BARDE PROFILE (100% EXACT MATCH)
+   SLIDE 2: DOCTOR VIVEK BARDE PROFILE (CLEAN WHITE PRIMARY PALETTE)
    =================================================================== */
+.slide-doctor {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+}
 .slide-doctor .canvas-stage {
-  background-color: #ffffff;
-  padding: 18px 24px 14px 24px;
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+  padding: 22px 28px 18px 28px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -861,44 +856,45 @@ body.mode-slide .slide-section.active {
 
 .doctor-upper-row {
   display: flex;
-  gap: 24px;
-  align-items: flex-start;
+  gap: 28px;
+  align-items: center;
 }
 
 .doctor-exact-photo-wrap {
-  width: 388px;
-  height: 334px;
+  width: 420px;
+  height: 310px;
   flex-shrink: 0;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  background: #ffffff;
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .doctor-exact-img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 400px;
+  height: auto;
+  max-height: 290px;
+  object-fit: contain;
   display: block;
+  opacity: 1;
+  filter: drop-shadow(0 8px 20px rgba(212, 160, 23, 0.32));
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease;
+}
+.doctor-exact-img:hover {
+  transform: scale(1.04) translateY(-3px);
+  filter: drop-shadow(0 12px 28px rgba(212, 160, 23, 0.48));
 }
 
 .doctor-exact-details {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-}
-
-.doctor-exact-badge {
-  align-self: flex-start;
-  background-color: #dbf1f7;
-  color: #132f47;
-  font-family: 'Poppins', sans-serif;
-  font-size: 13.5px;
-  font-weight: 700;
-  padding: 5px 14px;
-  border-radius: 6px;
-  letter-spacing: 0.01em;
+  gap: 12px;
 }
 
 .doctor-credential-item {
@@ -919,16 +915,23 @@ body.mode-slide .slide-section.active {
   display: flex;
   flex-direction: column;
   font-family: 'Poppins', sans-serif;
-  font-size: 15px;
+  line-height: 1.35;
+}
+.cred-text span:first-child {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #132f47;
+}
+.cred-text span:last-child {
+  font-size: 13.5px;
   font-weight: 500;
   color: #2d4756;
-  line-height: 1.35;
 }
 
 .doctor-exact-bio {
   font-family: 'Poppins', sans-serif;
-  font-size: 14.5px;
-  line-height: 1.55;
+  font-size: 14px;
+  line-height: 1.6;
   color: #385262;
   margin-top: 2px;
 }
@@ -937,42 +940,52 @@ body.mode-slide .slide-section.active {
   width: 100%;
   height: 1px;
   background-color: #e5eff5;
-  margin: 14px 0 10px 0;
+  margin: 14px 0 12px 0;
 }
 
 .doctor-specialties-wrap {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .specialties-title-bar {
   font-family: 'Poppins', sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 800;
   color: #132f47;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   margin: 0;
 }
 
 .specialties-exact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  row-gap: 8px;
-  column-gap: 36px;
+  row-gap: 10px;
+  column-gap: 18px;
 }
 
 .spec-exact-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 8px 14px;
+  transition: all 0.22s ease;
+}
+.spec-exact-item:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
 }
 
 .spec-exact-icon {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
-  margin-top: 1px;
   color: #132f47;
 }
 
@@ -980,17 +993,17 @@ body.mode-slide .slide-section.active {
   display: flex;
   flex-direction: column;
   font-family: 'Poppins', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 13.5px;
+  font-weight: 600;
   color: #2d4756;
-  line-height: 1.3;
+  line-height: 1.25;
 }
 
 .doctor-btn-center-row {
   display: flex;
   justify-content: center;
   margin-top: auto;
-  padding-top: 6px;
+  padding-top: 10px;
 }
 
 .doctor-exact-cta-btn {
@@ -1004,11 +1017,18 @@ body.mode-slide .slide-section.active {
   font-family: 'Poppins', sans-serif;
   font-size: 14px;
   font-weight: 700;
-  height: 42px;
-  padding: 0 28px;
+  height: 44px;
+  padding: 0 32px;
   border-radius: var(--radius-pill);
   cursor: pointer;
   box-shadow: 0 4px 14px rgba(45, 164, 188, 0.4);
+  transition: all 0.22s ease;
+}
+.doctor-exact-cta-btn:hover {
+  background-color: #238ea4;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(45, 164, 188, 0.55);
+}
   transition: var(--transition-smooth);
 }
 
@@ -1715,14 +1735,17 @@ body.mode-slide .slide-section.active {
 
 .metric-line {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   font-size: 12.5px;
   font-weight: 600;
+  line-height: 1.4;
 }
 .metric-check {
   color: var(--color-coral);
   font-weight: 900;
+  line-height: 1.4;
+  flex-shrink: 0;
 }
 
 .surgical-consult-btn {
@@ -2611,11 +2634,33 @@ body.mode-slide .slide-section.active {
   gap: 18px;
   align-items: center;
   background: #f8fafc;
-  padding: 16px;
-  border-radius: 10px;
+  padding: 18px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
 }
-.specs-preview-img { width: 100%; height: auto; object-fit: contain; }
-.specs-list { display: flex; flex-direction: column; gap: 8px; font-size: 12px; }
+.specs-preview-img { width: 100%; height: auto; object-fit: contain; border-radius: 8px; }
+.specs-list { display: flex; flex-direction: column; gap: 10px; font-size: 13px; }
+.spec-row {
+  line-height: 1.45;
+  color: #334155;
+}
+.spec-row strong {
+  color: var(--color-cyan-deep, #0f4c64);
+  font-weight: 700;
+  display: inline-block;
+  margin-right: 4px;
+}
+@media (max-width: 520px) {
+  .veneer-specs-content {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 14px;
+  }
+  .specs-hero-img-wrap {
+    max-width: 130px;
+    margin: 0 auto;
+  }
+}
 
 /* Service Explorer Modal */
 .modal-services-explorer { max-width: 560px; }
@@ -2788,7 +2833,7 @@ body.mode-slide .slide-section.active {
 
   /* Full-bleed section background colors */
   body.mode-continuous .slide-hero { background-color: var(--color-cyan); }
-  body.mode-continuous .slide-doctor { background-color: #ffffff; }
+  body.mode-continuous .slide-doctor { background-color: #ffffff !important; background: #ffffff !important; }
   body.mode-continuous .slide-offer { background-color: var(--color-cyan); }
   body.mode-continuous .slide-machines { background-color: var(--color-cyan); }
   body.mode-continuous .slide-value { background-color: var(--color-cyan); }
@@ -2915,6 +2960,8 @@ body.mode-slide .slide-section.active {
     flex-direction: column;
     justify-content: center;
     box-sizing: border-box;
+    background-color: #ffffff !important;
+    background: #ffffff !important;
   }
   body.mode-continuous .doctor-page-title {
     font-size: 38px;
@@ -2926,57 +2973,79 @@ body.mode-slide .slide-section.active {
     align-items: center;
   }
   body.mode-continuous .doctor-exact-photo-wrap {
-    width: 420px;
-    height: 360px;
+    width: 460px;
+    height: 340px;
     flex-shrink: 0;
-    border-radius: 14px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
   }
   body.mode-continuous .doctor-exact-details {
     gap: 16px;
     flex: 1;
   }
-  body.mode-continuous .doctor-exact-badge {
-    font-size: 15px;
-    padding: 7px 18px;
-    border-radius: 8px;
-  }
   body.mode-continuous .cred-icon {
     width: 24px;
     height: 24px;
+    color: #132f47;
   }
   body.mode-continuous .cred-text {
     font-size: 17px;
     line-height: 1.4;
   }
+  body.mode-continuous .cred-text span:first-child {
+    color: #132f47;
+    font-size: 17px;
+    font-weight: 700;
+  }
+  body.mode-continuous .cred-text span:last-child {
+    color: #2d4756;
+    font-size: 15px;
+  }
   body.mode-continuous .doctor-exact-bio {
-    font-size: 16px;
+    font-size: 15.5px;
     line-height: 1.7;
+    color: #385262;
     margin-top: 6px;
   }
   body.mode-continuous .doctor-exact-divider {
     margin: 28px 0 20px 0;
+    background-color: #e5eff5;
   }
   body.mode-continuous .specialties-title-bar {
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 14px;
+    color: #132f47;
   }
   body.mode-continuous .specialties-exact-grid {
-    column-gap: 60px;
-    row-gap: 16px;
+    column-gap: 24px;
+    row-gap: 14px;
   }
   body.mode-continuous .spec-exact-item {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 14px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 10px 16px;
+  }
+  body.mode-continuous .spec-exact-item:hover {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
   }
   body.mode-continuous .spec-exact-icon {
-    width: 24px;
-    height: 24px;
-    margin-top: 2px;
+    width: 22px;
+    height: 22px;
+    color: #132f47;
   }
   body.mode-continuous .spec-exact-text {
-    font-size: 16px;
+    font-size: 15px;
+    color: #2d4756;
   }
   body.mode-continuous .doctor-btn-center-row {
     margin-top: 28px;
@@ -2985,6 +3054,8 @@ body.mode-slide .slide-section.active {
     height: 48px;
     padding: 0 36px;
     font-size: 15px;
+    background: #2da4bc;
+    color: #ffffff;
   }
 
   /* 03. Slide 3 What We Offer on PC */
@@ -3726,22 +3797,88 @@ body.mode-slide .slide-section.active {
     pointer-events: none !important;
   }
 
-  /* Hero CTA Hotspot Button */
+  /* Hero Primary CTA Action Button (Seamless Glowing Overlay) */
   .mobile-cta-hotspot-btn {
     position: absolute;
-    left: 23%;
-    top: 89.2%;
-    width: 54%;
-    height: 5.6%;
+    left: 23.83%;
+    top: 89.65%;
+    width: 52.35%;
+    height: 5.18%;
     z-index: 15;
     background: transparent;
     border: none;
+    border-radius: 9999px;
     cursor: pointer;
-    border-radius: 30px;
     -webkit-tap-highlight-color: transparent;
+    transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-origin: center center;
+    overflow: visible;
+  }
+  .mobile-cta-hotspot-btn:hover {
+    transform: scale(1.02);
   }
   .mobile-cta-hotspot-btn:active {
-    background: rgba(76, 183, 209, 0.2);
+    transform: scale(0.97);
+  }
+
+  /* Glowing Interactive Aura exactly flush with the Artwork Button */
+  .cta-glow-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    pointer-events: none;
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    box-shadow: 0 0 10px rgba(76, 183, 209, 0.65), 0 0 20px rgba(76, 183, 209, 0.35);
+    animation: ctaRingGlow 2.4s infinite ease-in-out;
+    transition: all 0.2s ease;
+  }
+  .mobile-cta-hotspot-btn:hover .cta-glow-ring {
+    border-color: #ffffff;
+    box-shadow: 0 0 16px rgba(76, 183, 209, 0.85), 0 0 28px rgba(255, 255, 255, 0.5);
+  }
+  .mobile-cta-hotspot-btn:active .cta-glow-ring {
+    border-color: #ffffff;
+    box-shadow: 0 0 20px rgba(76, 183, 209, 0.95), inset 0 0 8px rgba(255, 255, 255, 0.4);
+  }
+
+  /* Subtle High-Gloss Light Shimmer across Button */
+  .cta-shimmer-sweep {
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .cta-shimmer-sweep::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    transform: skewX(-20deg);
+    animation: ctaSheenSweep 3.2s infinite ease-in-out;
+  }
+
+  @keyframes ctaRingGlow {
+    0%, 100% {
+      opacity: 0.6;
+      box-shadow: 0 0 10px rgba(76, 183, 209, 0.5), 0 0 18px rgba(76, 183, 209, 0.25);
+    }
+    50% {
+      opacity: 1;
+      box-shadow: 0 0 18px rgba(76, 183, 209, 0.85), 0 0 28px rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  @keyframes ctaSheenSweep {
+    0% {
+      left: -120%;
+    }
+    40%, 100% {
+      left: 180%;
+    }
   }
 
   /* Subtle Scroll Cue */
@@ -3920,38 +4057,22 @@ body.mode-slide .slide-section.active {
   .m916-doctor-hero-wrap {
     display: flex;
     justify-content: center;
-    margin: 0 0 2px;
+    align-items: center;
+    margin: 6px 0 8px;
+    width: 100%;
     flex-shrink: 0;
   }
-  .m916-doc-photo-frame {
-    position: relative;
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    padding: 4px;
-    background: linear-gradient(135deg, #4cb7d1, #fab1b2);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-  }
-  .m916-doc-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
+  .m916-doc-full-logo {
+    width: 220px;
+    max-width: 80%;
+    height: auto;
+    max-height: 155px;
+    object-fit: contain;
     display: block;
-    background: #0f3945;
-  }
-  .m916-exp-badge {
-    position: absolute;
-    bottom: 2px;
-    right: 2px;
-    background: #132f47;
-    color: #fab1b2;
-    border: 1px solid rgba(250, 177, 178, 0.5);
-    font-size: 9.5px;
-    font-weight: 800;
-    padding: 3px 8px;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 16px rgba(218, 165, 32, 0.4));
   }
   /* SCREEN 2: DOCTOR INFO (OPEN, FREE & AVERAGE-PERSON UNDERSTANDABLE) */
   .m916-doc-open-info {
@@ -4608,7 +4729,115 @@ body.mode-slide .slide-section.active {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   }
 
-  /* SCREEN 8: OUR CLIENT REVIEWS (UNBOXED AESTHETIC FLOW WITH INTERNAL SCROLL) */
+  /* SCREEN 8: SURGICAL EXCELLENCE ON MOBILE (MATCHING PC SLIDE 8) */
+  #mobileSurgicalExcellence {
+    background-color: #2b1219 !important;
+  }
+  .m916-surgical-canvas {
+    background: linear-gradient(180deg, #38151f 0%, #2b1219 45%, #1d0b11 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 16px 18px 24px;
+    box-sizing: border-box;
+    min-height: 100svh;
+  }
+  .m916-surgical-hero-wrap {
+    width: 100%;
+    height: clamp(210px, 30vh, 255px);
+    border-radius: 18px;
+    overflow: hidden;
+    margin-bottom: 0;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    flex-shrink: 0;
+  }
+  .m916-surgical-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transform-origin: center center;
+    will-change: transform;
+    transition: transform 0.15s ease-out;
+  }
+  .m916-surgical-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 2px 6px;
+    min-height: 0;
+  }
+  .m916-surgical-kicker {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-coral);
+    margin-bottom: 2px;
+  }
+  .m916-surgical-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+  .m916-surgical-desc {
+    font-size: 12.8px;
+    line-height: 1.55;
+    color: #e2e8f0;
+    margin: 0;
+    font-weight: 400;
+  }
+  .m916-surgical-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 4px 0 8px;
+  }
+  .m916-surgical-metrics .metric-line {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.4;
+  }
+  .m916-surgical-metrics .metric-check {
+    color: var(--color-coral);
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 1.4;
+    flex-shrink: 0;
+  }
+  .m916-surgical-cta-btn {
+    align-self: flex-start;
+    background: var(--color-coral);
+    color: #ffffff;
+    border: none;
+    border-radius: 9999px;
+    padding: 11px 24px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(242, 114, 137, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .m916-surgical-cta-btn:active {
+    transform: scale(0.97);
+  }
+
+  /* SCREEN 9: OUR CLIENT REVIEWS (UNBOXED AESTHETIC FLOW WITH INTERNAL SCROLL) */
   #mobileReviews {
     max-height: 100svh;
     overflow: hidden;

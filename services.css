@@ -318,7 +318,7 @@ body {
 
 /* Tailored focal positions for each procedure image */
 #root-canal .service-card-img {
-  object-position: center 32%;
+  object-position: center center;
 }
 #cavities .service-card-img {
   object-position: center center;

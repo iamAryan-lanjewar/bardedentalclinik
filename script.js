@@ -678,6 +678,11 @@ Hello Dr. Vivek Barde, I submitted this appointment request via your official we
       img: document.querySelectorAll('#mobileWhichCare .m916-story-photo')
     },
     {
+      sec: document.getElementById('mobileSurgicalExcellence'),
+      canvas: document.querySelector('#mobileSurgicalExcellence .mobile-916-canvas'),
+      img: document.querySelector('#mobileSurgicalExcellence .m916-surgical-hero-img')
+    },
+    {
       sec: document.getElementById('mobileReviews'),
       canvas: document.querySelector('#mobileReviews .mobile-916-canvas'),
       img: document.querySelector('.m916-reviews-stack')
