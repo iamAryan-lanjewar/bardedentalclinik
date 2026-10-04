@@ -2,6 +2,19 @@
 // BARDE DENTAL CLINIC — SERVICES PAGE LOGIC
 // Anchor Scroll, Card Highlighting, Rich Detail Modals, & Booking Form
 // ===================================================================
+// Auto-purge any stale service workers or legacy caches from past deployments
+try {
+  if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then(registrations => {
+      for (const reg of registrations) reg.unregister();
+    }).catch(() => {});
+  }
+  if (typeof window !== 'undefined' && 'caches' in window) {
+    caches.keys().then(names => {
+      for (const name of names) caches.delete(name);
+    }).catch(() => {});
+  }
+} catch (_) {}
 
 document.addEventListener('DOMContentLoaded', () => {
   // Service Data for "read more.." rich dialogs
@@ -73,10 +86,22 @@ document.addEventListener('DOMContentLoaded', () => {
       specs: [
         { label: 'Comfort:', value: '100% pain-free with modern local numbing care' },
         { label: 'Technique:', value: 'Gentle removal protecting surrounding bone and gums' },
-        { label: 'Recovery:', value: 'Quick healing in 2–3 days with clear aftercare tips' },
+        { label: 'Recovery:', value: 'healing in 7-8 days with clear aftercare tips' },
         { label: 'When Needed:', value: 'Deep decay, broken teeth, or crowded wisdom teeth' }
       ],
       description: 'Tooth extraction is a routine, gentle procedure to remove teeth that cannot be repaired due to severe cavities, cracks, or impaction. Dr. Barde uses advanced numbing techniques so you feel relaxed and pain-free, ensuring quick and comfortable healing.'
+    },
+    'orthodontic': {
+      title: 'Orthodontic Dental Care',
+      subtitle: 'Precision metal & aesthetic braces, clear aligners & smile alignment',
+      image: 'assets/service_orthodontic.webp?v=1.0',
+      specs: [
+        { label: 'Braces Options:', value: 'Low-friction metal brackets, aesthetic ceramic & aligners' },
+        { label: 'Alignment Goals:', value: 'Fixes crowded, crooked teeth, spacing gaps & overbites' },
+        { label: 'Comfort Care:', value: 'Gentle archwire force for smooth, painless repositioning' },
+        { label: 'Age Suitability:', value: 'Custom smile design suitable for children, teens & adults' }
+      ],
+      description: 'Orthodontic dental care focuses on diagnosing, preventing, and correcting improperly positioned teeth and jaw alignment. Using advanced brackets and gentle shape-memory archwires, Dr. Vivek Barde gently aligns your teeth into their ideal dental arch—restoring optimal chewing function, improving long-term oral hygiene, and creating a balanced, confident smile that lasts a lifetime.'
     }
   };
 

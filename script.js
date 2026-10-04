@@ -2,6 +2,19 @@
 // BARDE DENTAL CLINIC — CLIENT APPLICATION SCRIPT
 // 16:9 Canvas Stage Engine + Slide Presentation & Modern UX Controls
 // ===================================================================
+// Auto-purge any stale service workers or legacy caches from past deployments
+try {
+  if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then(registrations => {
+      for (const reg of registrations) reg.unregister();
+    }).catch(() => {});
+  }
+  if (typeof window !== 'undefined' && 'caches' in window) {
+    caches.keys().then(names => {
+      for (const name of names) caches.delete(name);
+    }).catch(() => {});
+  }
+} catch (_) {}
 
 document.addEventListener('DOMContentLoaded', () => {
   const TOTAL_SLIDES = 11;

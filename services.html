@@ -6,29 +6,12 @@
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#4cb7d1" />
-  
-  <!-- Security Shield: Instant Purge of any foreign localhost ServiceWorkers or Caches (prevents stale interior website hijacking) -->
-  <script>
-    if (typeof window !== 'undefined') {
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations().then(function(regs) {
-          for (var i = 0; i < regs.length; i++) {
-            regs[i].unregister();
-          }
-        }).catch(function(){});
-      }
-      if ('caches' in window) {
-        caches.keys().then(function(keys) {
-          for (var j = 0; j < keys.length; j++) {
-            caches.delete(keys[j]);
-          }
-        }).catch(function(){});
-      }
-    }
-  </script>
   
   <!-- Primary SEO Meta Tags -->
   <title>Dental Services &amp; Treatments — Dr. Vivek Barde Clinic Tumsar</title>
@@ -97,7 +80,7 @@
   <link rel="preload" as="image" href="assets/service_root_canal.webp?v=11.0" type="image/webp" fetchpriority="high">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="services.css?v=11.0" />
+  <link rel="stylesheet" href="services.css?v=15.0" />
 </head>
 <body>
 
@@ -148,6 +131,10 @@
       <a href="#new-implant" class="anchor-pill-link" id="pill-new-implant">
         <span class="pc-nav-label">tooth extraction</span>
         <span class="mobile-nav-label">Extraction</span>
+      </a>
+      <a href="#orthodontic" class="anchor-pill-link" id="pill-orthodontic">
+        <span class="pc-nav-label">orthodontic dental care</span>
+        <span class="mobile-nav-label">Orthodontics</span>
       </a>
     </nav>
 
@@ -234,6 +221,19 @@
         </p>
       </article>
 
+      <!-- CARD 7: ORTHODONTIC DENTAL CARE -->
+      <article class="service-card-item" id="orthodontic" data-service-key="orthodontic">
+        <figure class="service-card-figure">
+          <img src="assets/service_orthodontic.webp?v=1.0" alt="Orthodontic dental care, precision braces and smile alignment" class="service-card-img" loading="lazy" decoding="async" />
+        </figure>
+        <a href="#orthodontic" class="service-card-title-anchor" data-service="orthodontic">
+          <h2 class="service-title">orthodontic dental care</h2>
+        </a>
+        <p class="service-card-desc">
+          Transform your bite and straighten misaligned teeth with precision braces and smile alignment <button type="button" class="read-more-anchor-btn" data-service="orthodontic" aria-label="Read more about orthodontic dental care">read more..</button>
+        </p>
+      </article>
+
     </section>
 
     <!-- Bottom Action Button: BOOK APPOINTMENT -->
@@ -305,6 +305,7 @@
               <option value="Dental Veneers & Laminates" selected>Dental Veneers &amp; Laminates (Swiss System)</option>
               <option value="Dental Implant Surgery">Dental Implant Surgery (3D Guided)</option>
               <option value="Tooth Extraction">Tooth Extraction (Painless Removal)</option>
+              <option value="Orthodontic Dental Care">Orthodontic Dental Care (Braces &amp; Aligners)</option>
             </select>
             <svg class="select-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="6 9 12 15 18 9"></polyline>
@@ -495,6 +496,6 @@
     </div>
   </div>
 
-  <script src="services.js?v=11.0" defer></script>
+  <script src="services.js?v=15.0" defer></script>
 </body>
 </html>

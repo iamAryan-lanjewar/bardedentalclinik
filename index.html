@@ -6,29 +6,12 @@
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#4cb7d1" />
-  
-  <!-- Security Shield: Instant Purge of any foreign localhost ServiceWorkers or Caches (prevents stale interior website hijacking) -->
-  <script>
-    if (typeof window !== 'undefined') {
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations().then(function(regs) {
-          for (var i = 0; i < regs.length; i++) {
-            regs[i].unregister();
-          }
-        }).catch(function(){});
-      }
-      if ('caches' in window) {
-        caches.keys().then(function(keys) {
-          for (var j = 0; j < keys.length; j++) {
-            caches.delete(keys[j]);
-          }
-        }).catch(function(){});
-      }
-    }
-  </script>
   
   <!-- Primary SEO Meta Tags -->
   <title>Dr. Vivek Barde Clinic — Sporting Your Best Smile | Dental Clinic in Tumsar</title>
@@ -125,7 +108,10 @@
       "reviewCount": "128",
       "bestRating": "5",
       "worstRating": "1"
-    }
+    },
+    "sameAs": [
+      "https://www.instagram.com/_bdc_clinic_?utm_source=qr&stkn=MXhra295ZjFwM3I4ZA%3D%3D"
+    ]
   }
   </script>
   
@@ -140,7 +126,7 @@
   <link rel="preload" as="image" href="assets/doctor_gold_emblem.webp?v=8.2" type="image/webp">
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=8.6" />
+  <link rel="stylesheet" href="style.css?v=9.0" />
 </head>
 <body class="mode-continuous">
 
@@ -410,6 +396,12 @@
               <a href="services.html#new-implant" class="offer-item-anchor" title="View Tooth Extraction Details">
                 <span class="bullet-dot">•</span>
                 <span class="item-text">tooth extraction</span>
+              </a>
+            </li>
+            <li>
+              <a href="services.html#orthodontic" class="offer-item-anchor" title="View Orthodontic Dental Care Details">
+                <span class="bullet-dot">•</span>
+                <span class="item-text">orthodontic dental care</span>
               </a>
             </li>
           </ul>
@@ -867,7 +859,7 @@
                 </svg>
               </span>
               <div class="contact-text-wrap">
-                <span class="contact-val">Email: <a href="mailto:vivekbarde@gamil.com">vivekbarde@gamil.com</a></span>
+                <span class="contact-val">Email: <a href="mailto:vivekbarde@gmail.com">vivekbarde@gmail.com</a></span>
               </div>
             </div>
 
@@ -875,7 +867,7 @@
 
           <div class="social-channels-block">
             <div class="social-icons-row">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Follow Barde Dental on Instagram" title="Instagram">
+              <a href="https://www.instagram.com/_bdc_clinic_?utm_source=qr&amp;stkn=MXhra295ZjFwM3I4ZA%3D%3D" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Follow Barde Dental on Instagram" title="Instagram">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
               </a>
               <a href="https://api.whatsapp.com/send?phone=919823577149&amp;text=Hello%20Dr.%20Vivek%20Barde%20Clinic%2C%20I%20would%20like%20to%20inquire%20about%20an%20appointment%20and%20dental%20treatments." target="_blank" rel="noopener noreferrer" class="social-btn" id="pcWhatsAppBtn" aria-label="Chat with Dr. Vivek Barde Clinic on WhatsApp" title="WhatsApp">
@@ -1144,6 +1136,12 @@
                 <span class="m-text">tooth extraction</span>
               </a>
             </li>
+            <li class="m916-offer-li">
+              <a href="services.html#orthodontic" class="m916-offer-link" data-service="Orthodontic Dental Care">
+                <span class="m-dot">&bull;</span>
+                <span class="m-text">orthodontic dental care</span>
+              </a>
+            </li>
           </ul>
 
           <!-- Clean Pill CLICK HERE Button (Matching PC Slide 3) -->
@@ -1221,7 +1219,7 @@
         
         <!-- Big Prominent Operatory Suite Visual -->
         <div class="m916-overview-hero-wrap">
-          <img src="assets/clinic_operatory_user.webp" alt="Barde Dental modern clinical suite" class="m916-overview-hero-img" loading="lazy" decoding="async" />
+          <img src="assets/clinic_operatory.webp" alt="Barde Dental modern clinical suite" class="m916-overview-hero-img" loading="lazy" decoding="async" />
         </div>
 
         <!-- Clean Comfort Dental Care Content -->
@@ -1245,7 +1243,7 @@
         
         <!-- Big Prominent Planmeca 3D CBCT Visual -->
         <div class="m916-overview-hero-wrap">
-          <img src="assets/planmeca_xray_user.webp" alt="Planmeca 3D Panoramic and CBCT Digital X-Ray Machine" class="m916-overview-hero-img" loading="lazy" decoding="async" />
+          <img src="assets/planmeca_xray.webp" alt="Planmeca 3D Panoramic and CBCT Digital X-Ray Machine" class="m916-overview-hero-img" loading="lazy" decoding="async" />
         </div>
 
         <!-- Clean 3D Digital X-Ray Content -->
@@ -1526,7 +1524,7 @@
             </div>
             <div class="m916-free-content">
               <span class="m916-free-label">Gmail :</span>
-              <p class="m916-free-text"><a href="mailto:vivekbarde@gamil.com">vivekbarde@gamil.com</a></p>
+              <p class="m916-free-text"><a href="mailto:vivekbarde@gmail.com">vivekbarde@gmail.com</a></p>
             </div>
           </div>
 
@@ -1536,7 +1534,7 @@
         <div class="m916-free-social-section">
           <div class="m916-pure-logos-row">
             <!-- Instagram -->
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="m916-pure-social-link" aria-label="Follow on Instagram" title="Instagram">
+            <a href="https://www.instagram.com/_bdc_clinic_?utm_source=qr&amp;stkn=MXhra295ZjFwM3I4ZA%3D%3D" target="_blank" rel="noopener noreferrer" class="m916-pure-social-link" aria-label="Follow on Instagram" title="Instagram">
               <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#074e5e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
@@ -1806,7 +1804,7 @@
 
       <div class="veneer-specs-content">
         <div class="specs-hero-img-wrap">
-          <img src="assets/veneers.webp?v=10.0" alt="Porcelain Veneers" class="specs-preview-img" loading="lazy" decoding="async" />
+          <img src="assets/service_veneers.webp?v=12.0" alt="Porcelain Veneers" class="specs-preview-img" loading="lazy" decoding="async" />
         </div>
         <div class="specs-list">
           <div class="spec-row">
@@ -1866,6 +1864,10 @@
           <h4>🦷 Painless Tooth Extraction</h4>
           <p>Gentle, comfortable tooth removal using modern numbing techniques and atraumatic care to relieve pain quickly.</p>
         </div>
+        <div class="service-detail-item">
+          <h4>✨ Orthodontic Dental Care</h4>
+          <p>Modern braces and clear aligners to correct bite alignment, close gaps, and create a straight, harmonious smile for teens and adults.</p>
+        </div>
       </div>
 
       <button class="modal-submit-btn open-booking-modal" style="margin-top: 20px;">
@@ -1873,13 +1875,6 @@
       </button>
     </div>
   </div>
-
-
-
-
-
-
-
 
   <!-- 6. TOAST NOTIFICATION -->
   <div class="app-toast" id="appToast" role="alert" aria-live="polite">
@@ -1890,6 +1885,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=7.0" defer></script>
+  <script src="script.js?v=9.0" defer></script>
 </body>
 </html>

@@ -190,7 +190,7 @@ body {
 .anchor-pills-bar {
   width: 100%;
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 12px;
@@ -239,6 +239,14 @@ body {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
 }
 
+/* PC Only: Align 'orthodontic dental care' navigation button in the same vertical lane directly below 'dental veener / laminates' */
+@media (min-width: 769px) {
+  #pill-orthodontic {
+    position: relative;
+    left: 20px;
+  }
+}
+
 /* ===================================================================
    2-COLUMN SERVICES GRID (STRETCHED & HARMONIOUS)
    =================================================================== */
@@ -271,6 +279,14 @@ body {
   background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.35);
   box-shadow: 0 22px 50px rgba(0, 0, 0, 0.18);
+}
+
+/* Card 7 (Orthodontic Care) Centered Harmony in 2-Column Grid on Desktop */
+#orthodontic.service-card-item {
+  grid-column: 1 / -1;
+  max-width: 580px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .service-card-item.highlight-pulse {
@@ -333,6 +349,9 @@ body {
   object-position: center center;
 }
 #new-implant .service-card-img {
+  object-position: center center;
+}
+#orthodontic .service-card-img {
   object-position: center center;
 }
 
@@ -1011,6 +1030,9 @@ body {
     max-width: 660px;
     row-gap: 40px;
   }
+  #orthodontic.service-card-item {
+    max-width: 100%;
+  }
   .service-card-figure {
     height: 300px;
   }
@@ -1041,7 +1063,7 @@ body {
     padding: 0 4px;
   }
 
-  /* 2-line layout: 3 equal columns per line, perfectly symmetric, centered, and tactile */
+  /* Original 3-column tactile grid: Row 1 (3 items), Row 2 (3 items), Row 3 (1 centered item) */
   .anchor-pills-bar {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1081,6 +1103,13 @@ body {
     color: #ffffff;
     border-color: rgba(255, 255, 255, 0.4);
     box-shadow: 0 4px 14px rgba(19, 47, 71, 0.35);
+  }
+
+  /* 7th item (Orthodontics): placed in column 2 of the third row */
+  #pill-orthodontic {
+    grid-column: 2;
+    position: static;
+    left: auto;
   }
 }
 
