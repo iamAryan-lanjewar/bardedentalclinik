@@ -580,7 +580,7 @@ document.addEventListener('DOMContentLoaded', () => {
 --------------------------------
 Hello Dr. Vivek Barde, I submitted this appointment request via your official website. Please confirm my consultation schedule.`;
 
-      const waUrl = `https://api.whatsapp.com/send?phone=919823577149&text=${encodeURIComponent(waText)}`;
+      const waUrl = `https://api.whatsapp.com/send?phone=918999103775&text=${encodeURIComponent(waText)}`;
 
       // Populate enhanced success popup ticket
       if (successPatientName) successPatientName.textContent = name;
@@ -966,7 +966,7 @@ Hello Dr. Vivek Barde, I submitted this appointment request via your official we
     pcWhatsAppBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       const message = encodeURIComponent('Hello Dr. Vivek Barde Clinic, I would like to inquire about an appointment and dental treatments.');
-      const waUrl = `https://api.whatsapp.com/send?phone=919823577149&text=${message}`;
+      const waUrl = `https://api.whatsapp.com/send?phone=918999103775&text=${message}`;
       const win = window.open(waUrl, '_blank', 'noopener,noreferrer');
       if (win) {
         win.focus();
