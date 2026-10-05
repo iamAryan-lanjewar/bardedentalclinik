@@ -699,11 +699,6 @@ Hello Dr. Vivek Barde, I submitted this appointment request via your official we
       sec: document.getElementById('mobileReviews'),
       canvas: document.querySelector('#mobileReviews .mobile-916-canvas'),
       img: document.querySelector('.m916-reviews-stack')
-    },
-    {
-      sec: document.getElementById('mobileContact'),
-      canvas: document.querySelector('#mobileContact .mobile-916-canvas'),
-      img: document.querySelector('.m916-map-img')
     }
   ];
 
@@ -968,6 +963,20 @@ Hello Dr. Vivek Barde, I submitted this appointment request via your official we
       const message = encodeURIComponent('Hello Dr. Vivek Barde Clinic, I would like to inquire about an appointment and dental treatments.');
       const waUrl = `https://api.whatsapp.com/send?phone=918999103775&text=${message}`;
       const win = window.open(waUrl, '_blank', 'noopener,noreferrer');
+      if (win) {
+        win.focus();
+        e.preventDefault();
+      }
+    });
+  }
+
+  // Mobile Screen 9: 100% Working & Instant "Open in Maps" Launcher
+  const m916OpenMapsBtn = document.getElementById('m916OpenMapsBtn');
+  if (m916OpenMapsBtn) {
+    const mapsListingUrl = 'https://www.google.com/maps/place/Dr+Vivek+Barde+Dental+Clinic/@21.3784356,79.7325001,17z/data=!4m6!3m5!1s0x3a2b19a3e2e18fa1:0x418fbf15f54da5af!8m2!3d21.3784356!4d79.7325001!16s%2Fg%2F11y143d2k2';
+    m916OpenMapsBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const win = window.open(mapsListingUrl, '_blank', 'noopener,noreferrer');
       if (win) {
         win.focus();
         e.preventDefault();
