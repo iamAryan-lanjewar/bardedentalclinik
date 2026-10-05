@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /assets/private/
 
-Sitemap: https://bardepreciousdental.com/sitemap.xml
+Sitemap: https://builddear.com/sitemap.xml
