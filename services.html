@@ -9,6 +9,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#4cb7d1" />
@@ -103,10 +104,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-  <link rel="preload" as="image" href="assets/service_root_canal.webp?v=11.0" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/service_root_canal.webp?v=12.0" type="image/webp" fetchpriority="high">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="services.css?v=15.0" />
+  <link rel="stylesheet" href="services.css?v=15.1" />
 </head>
 <body>
 
@@ -274,7 +275,7 @@
   <!-- ===================================================================
        MODAL 1: CONSULTATION BOOKING MODAL
        =================================================================== -->
-  <div class="app-modal-backdrop" id="bookingModalBackdrop" aria-hidden="true" role="dialog" aria-labelledby="bookingModalTitle">
+  <div class="app-modal-backdrop" id="bookingModalBackdrop" aria-hidden="true" inert role="dialog" aria-modal="true" aria-labelledby="bookingModalTitle">
     <div class="app-modal-dialog">
       <button class="modal-close-btn" id="closeBookingModal" aria-label="Close booking modal">&times;</button>
       
@@ -373,7 +374,7 @@
   </div>
 
   <!-- 1B. CONSULTATION SUCCESS CONFIRMATION MODAL (ENHANCED POPUP) -->
-  <div class="app-modal-backdrop" id="consultationSuccessModal" aria-hidden="true" role="dialog" aria-labelledby="successTitle">
+  <div class="app-modal-backdrop" id="consultationSuccessModal" aria-hidden="true" inert role="dialog" aria-modal="true" aria-labelledby="successTitle">
     <div class="app-modal-dialog success-modal-dialog">
       <button class="modal-close-btn" id="closeSuccessModal" aria-label="Close confirmation">&times;</button>
       
@@ -439,7 +440,7 @@
   <!-- ===================================================================
        MODAL 2: RICH SERVICE DETAIL DIALOG ("Read More..")
        =================================================================== -->
-  <div class="app-modal-backdrop" id="detailModalBackdrop" aria-hidden="true" role="dialog" aria-labelledby="detailModalTitle">
+  <div class="app-modal-backdrop" id="detailModalBackdrop" aria-hidden="true" inert role="dialog" aria-modal="true" aria-labelledby="detailModalTitle">
     <div class="app-modal-dialog">
       <button class="modal-close-btn" id="closeDetailModal" aria-label="Close procedure details">&times;</button>
       
@@ -522,6 +523,6 @@
     </div>
   </div>
 
-  <script src="services.js?v=15.0" defer></script>
+  <script src="services.js?v=15.1" defer></script>
 </body>
 </html>

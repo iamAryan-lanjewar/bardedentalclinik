@@ -414,10 +414,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 4500);
   }
 
+  function openModal(modal) {
+    if (!modal) return;
+    modal.removeAttribute('inert');
+    modal.setAttribute('aria-hidden', 'false');
+    modal.classList.add('active');
+  }
+
+  function closeModal(modal) {
+    if (!modal) return;
+    if (modal.contains(document.activeElement)) {
+      document.activeElement.blur();
+    }
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    modal.setAttribute('inert', '');
+  }
+
   function closeAllModals() {
-    [bookingModal, veneerModal, serviceDrawer, consultationSuccessModal].forEach(m => {
-      if (m) m.classList.remove('active');
-    });
+    [bookingModal, veneerModal, serviceDrawer, consultationSuccessModal].forEach(closeModal);
   }
 
   // Close handlers for Success Confirmation Modal
@@ -433,7 +448,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function triggerBookingModal(service, doctor) {
     closeAllModals();
     if (bookingModal) {
-      bookingModal.classList.add('active');
+      openModal(bookingModal);
       const select = document.getElementById('serviceCategory');
       if (select && service) {
         for (let i = 0; i < select.options.length; i++) {
@@ -449,9 +464,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Veneer Specs Drawer
   function openVeneerSpecs() {
     closeAllModals();
-    if (veneerModal) {
-      veneerModal.classList.add('active');
-    }
+    openModal(veneerModal);
   }
 
   // Universal click handler for all appointment and booking CTA buttons across PC and Mobile
@@ -591,8 +604,8 @@ Hello Dr. Vivek Barde, I submitted this appointment request via your official we
       if (successWhatsAppActionBtn) successWhatsAppActionBtn.href = waUrl;
 
       // Close consultation form modal & reveal enhanced confirmation popup
-      if (bookingModal) bookingModal.classList.remove('active');
-      if (consultationSuccessModal) consultationSuccessModal.classList.add('active');
+      closeModal(bookingModal);
+      openModal(consultationSuccessModal);
 
       // Enhanced Toast Notification
       showToast(
@@ -628,7 +641,7 @@ Hello Dr. Vivek Barde, I submitted this appointment request via your official we
   // Services Explorer Drawer
   function openServiceExplorer() {
     closeAllModals();
-    if (serviceDrawer) serviceDrawer.classList.add('active');
+    openModal(serviceDrawer);
   }
 
   // Only bind drawer to elements explicitly asking for open-service-drawer that are not external links

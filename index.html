@@ -9,6 +9,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#4cb7d1" />
@@ -1714,7 +1715,7 @@
        =================================================================== -->
 
   <!-- 1. CONSULTATION BOOKING MODAL -->
-  <div class="app-modal-backdrop" id="bookingModalBackdrop" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+  <div class="app-modal-backdrop" id="bookingModalBackdrop" aria-hidden="true" inert role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="app-modal-dialog">
       <button class="modal-close-btn" id="closeBookingModal" aria-label="Close booking modal">&times;</button>
       
@@ -1813,7 +1814,7 @@
   </div>
 
   <!-- 1B. CONSULTATION SUCCESS CONFIRMATION MODAL (ENHANCED POPUP) -->
-  <div class="app-modal-backdrop" id="consultationSuccessModal" aria-hidden="true" role="dialog" aria-labelledby="successTitle">
+  <div class="app-modal-backdrop" id="consultationSuccessModal" aria-hidden="true" inert role="dialog" aria-modal="true" aria-labelledby="successTitle">
     <div class="app-modal-dialog success-modal-dialog">
       <button class="modal-close-btn" id="closeSuccessModal" aria-label="Close confirmation">&times;</button>
       
@@ -1878,7 +1879,7 @@
 
 
   <!-- 2. VENEER SYSTEM SPECIFICATION DRAWER -->
-  <div class="app-modal-backdrop" id="veneerModalBackdrop" aria-hidden="true" role="dialog">
+  <div class="app-modal-backdrop" id="veneerModalBackdrop" aria-hidden="true" inert role="dialog" aria-modal="true">
     <div class="app-modal-dialog modal-veneer-specs">
       <button class="modal-close-btn" id="closeVeneerModal" aria-label="Close specifications">&times;</button>
       
@@ -1916,7 +1917,7 @@
 
 
   <!-- 3. SERVICES DETAIL DRAWER -->
-  <div class="app-modal-backdrop" id="serviceDrawerBackdrop" aria-hidden="true" role="dialog">
+  <div class="app-modal-backdrop" id="serviceDrawerBackdrop" aria-hidden="true" inert role="dialog" aria-modal="true">
     <div class="app-modal-dialog modal-services-explorer">
       <button class="modal-close-btn" id="closeServiceDrawer" aria-label="Close service details">&times;</button>
       

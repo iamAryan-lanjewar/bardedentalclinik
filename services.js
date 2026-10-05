@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'root-canal': {
       title: 'Root Canal Therapy',
       subtitle: 'Painless microscopic endodontic tooth-saving care',
-      image: 'assets/service_root_canal.webp?v=11.0',
+      image: 'assets/service_root_canal.webp?v=12.0',
       specs: [
         { label: 'Technology:', value: 'Nickel-Titanium rotary files & apex locators' },
         { label: 'Pain Level:', value: 'Virtually pain-free with computer-controlled anesthesia' },
@@ -135,11 +135,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Open & Close Modal Helpers
   function openModal(modal) {
-    if (modal) modal.classList.add('active');
+    if (!modal) return;
+    modal.removeAttribute('inert');
+    modal.setAttribute('aria-hidden', 'false');
+    modal.classList.add('active');
   }
 
   function closeModal(modal) {
-    if (modal) modal.classList.remove('active');
+    if (!modal) return;
+    if (modal.contains(document.activeElement)) {
+      document.activeElement.blur();
+    }
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    modal.setAttribute('inert', '');
   }
 
   function closeAllModals() {
