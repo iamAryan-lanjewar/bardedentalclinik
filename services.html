@@ -18,7 +18,7 @@
   <title>Dental Services &amp; Treatments — Dr. Vivek Barde Clinic Tumsar</title>
   <meta name="title" content="Dental Services &amp; Treatments — Dr. Vivek Barde Clinic Tumsar" />
   <meta name="description" content="Find the trusted dental care in Tumsar, Bhandara our modern dental clinic. Get cosmetic dentistry, veneers, dental crowns, implants and comfortable treatments." />
-  <meta name="keywords" content="root canal therapy tumsar, orthodontic care tumsar, braces bhandara, teeth cleaning, porcelain veneers tumsar, dental implants bhandara, painless tooth extraction, cosmetic dental clinic tumsar, dr vivek barde procedures" />
+  <meta name="keywords" content="root canal therapy tumsar, orthodontic care tumsar, braces bhandara, ultra sonic scaling, cosmatic filling, teeth cleaning, porcelain veneers tumsar, dental implants bhandara, painless tooth extraction, cosmetic dental clinic tumsar, dr vivek barde procedures" />
   <meta name="author" content="Dr. Vivek Barde" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="canonical" href="https://builddear.com/services.html" />
@@ -51,12 +51,12 @@
     "@context": "https://schema.org",
     "@type": "MedicalWebPage",
     "name": "Dental Procedures and Services",
-    "description": "Comprehensive dental treatments at Dr. Vivek Barde Clinic including microscopic root canal, porcelain veneers, teeth cleaning, and 3D guided implants.",
+    "description": "Comprehensive dental treatments at Dr. Vivek Barde Clinic including microscopic root canal, porcelain veneers, ultra sonic scaling, cosmatic filling, and 3D guided implants.",
     "url": "https://builddear.com/services.html",
     "mainEntity": {
       "@type": "Dentist",
       "name": "Dr. Vivek Barde Dental Clinic",
-      "telephone": "+918999103775",
+      "telephone": ["+917083444404", "+917038444404"],
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "1st Floor, Shriram Nagar, Above Sumeet Medical Store, Bhandara Road",
@@ -107,7 +107,7 @@
   <link rel="preload" as="image" href="assets/service_root_canal.webp?v=12.0" type="image/webp" fetchpriority="high">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="services.css?v=15.1" />
+  <link rel="stylesheet" href="services.css?v=23.0" />
 </head>
 <body>
 
@@ -116,16 +116,17 @@
        =================================================================== -->
   <main class="services-page-wrap">
     
-    <!-- Top Header: Brand Title & Back Button (Jumps to Fourth Page Directly) -->
+    <!-- Top Header: Brand Title & Back to Home Button -->
     <header class="services-header-top">
-      <a href="index.html#slide-4" class="brand-heading-link" title="Return to Barde Dental Clinic Home">
+      <a href="index.html" class="brand-heading-link" title="Return to Barde Dental Clinic Home">
         <img src="assets/tooth_icon.webp" alt="Barde Dental Clinic Logo" class="brand-logo-small" width="28" height="28" decoding="async" />
         <h1 class="brand-main-title">BARDE DENTAL CLINIC</h1>
       </a>
 
-      <!-- Back Button: Connects straight forward to fourth page -->
-      <a href="index.html#slide-4" class="btn-header-back" id="backToHomeBtn" title="Back to Fourth Page">
-        back
+      <!-- Back to 4th Page Button -->
+      <a href="index.html#slide-4" class="btn-header-back" id="backToHomeBtn" title="Go back to 4th Page">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        <span>Back</span>
       </a>
     </header>
 
@@ -137,31 +138,48 @@
     <!-- Quick Navigation Keys (Original Names on PC, Short Names in 2 Lines on Mobile) -->
     <nav class="anchor-pills-bar" aria-label="Dental Procedures Quick Navigation">
       <a href="#root-canal" class="anchor-pill-link" id="pill-root-canal">
-        <span class="pc-nav-label">root canal</span>
+        <span class="pc-nav-label">Root Canal</span>
         <span class="mobile-nav-label">Root Canal</span>
       </a>
+      <a href="#denture" class="anchor-pill-link" id="pill-denture">
+        <span class="pc-nav-label">Denture</span>
+        <span class="mobile-nav-label">Denture</span>
+      </a>
       <a href="#cavities" class="anchor-pill-link" id="pill-cavities">
-        <span class="pc-nav-label">cement filling</span>
-        <span class="mobile-nav-label">Cement Filling</span>
+        <span class="pc-nav-label">Cosmatic Filling</span>
+        <span class="mobile-nav-label">Cosmatic Filling</span>
+      </a>
+      <a href="#surgical-extraction" class="anchor-pill-link" id="pill-surgical-extraction">
+        <span class="pc-nav-label">Surgical Extraction</span>
+        <span class="mobile-nav-label">Surgical Extraction</span>
       </a>
       <a href="#cleaning" class="anchor-pill-link" id="pill-cleaning">
-        <span class="pc-nav-label">teeth cleaning</span>
-        <span class="mobile-nav-label">Cleaning</span>
+        <span class="pc-nav-label">Ultra Sonic Scaling</span>
+        <span class="mobile-nav-label">Ultra Sonic Scaling</span>
+      </a>
+      <a href="#crown-bridge" class="anchor-pill-link" id="pill-crown-bridge">
+        <span class="pc-nav-label">Crown &amp; Bridges</span>
+        <span class="mobile-nav-label">Crown &amp; Bridges</span>
       </a>
       <a href="#veneers" class="anchor-pill-link" id="pill-veneers">
-        <span class="pc-nav-label">dental veener / laminates</span>
-        <span class="mobile-nav-label">Veneers</span>
-         <a href="#implant-surgery" class="anchor-pill-link" id="pill-implant-surgery">
-        <span class="pc-nav-label">dental implant surgery</span>
+        <span class="pc-nav-label">Dental Veeners</span>
+        <span class="mobile-nav-label">Dental Veeners</span>
+      </a>
+      <a href="#implant-surgery" class="anchor-pill-link" id="pill-implant-surgery">
+        <span class="pc-nav-label">Implants</span>
         <span class="mobile-nav-label">Implants</span>
       </a>
       <a href="#new-implant" class="anchor-pill-link" id="pill-new-implant">
-        <span class="pc-nav-label">tooth extraction</span>
+        <span class="pc-nav-label">Tooth Extraction</span>
         <span class="mobile-nav-label">Extraction</span>
       </a>
       <a href="#orthodontic" class="anchor-pill-link" id="pill-orthodontic">
-        <span class="pc-nav-label">orthodontic dental care</span>
+        <span class="pc-nav-label">Orthodontic Dental Care</span>
         <span class="mobile-nav-label">Orthodontics</span>
+      </a>
+      <a href="#intraoral-camera" class="anchor-pill-link" id="pill-intraoral-camera">
+        <span class="pc-nav-label">Dental Intraoral Camera</span>
+        <span class="mobile-nav-label">Intraoral Camera</span>
       </a>
     </nav>
 
@@ -176,88 +194,140 @@
           <img src="assets/service_root_canal.webp?v=12.0" alt="Dentist performing precision root canal treatment on anatomical model" class="service-card-img" fetchpriority="high" decoding="async" />
         </figure>
         <a href="#root-canal" class="service-card-title-anchor" data-service="root-canal">
-          <h2 class="service-title">root canal</h2>
+          <h2 class="service-title">Root Canal</h2>
         </a>
         <p class="service-card-desc">
           A root canal sounds scary, but it actually ends the pain <button type="button" class="read-more-anchor-btn" data-service="root-canal" aria-label="Read more about root canal therapy">read more..</button>
         </p>
       </article>
 
-      <!-- CARD 2: CEMENT FILLING -->
+      <!-- CARD 2: DENTURE -->
+      <article class="service-card-item" id="denture" data-service-key="denture">
+        <figure class="service-card-figure">
+          <img src="assets/service_denture.webp?v=1.0" alt="High precision custom aesthetic complete and partial dentures" class="service-card-img" loading="lazy" decoding="async" />
+        </figure>
+        <a href="#denture" class="service-card-title-anchor" data-service="denture">
+          <h2 class="service-title">Denture</h2>
+        </a>
+        <p class="service-card-desc">
+          Comfortable removable teeth that restore natural chewing and a confident smile <button type="button" class="read-more-anchor-btn" data-service="denture" aria-label="Read more about dentures">read more..</button>
+        </p>
+      </article>
+
+      <!-- CARD 3: COSMATIC FILLING -->
       <article class="service-card-item" id="cavities" data-service-key="cavities">
         <figure class="service-card-figure">
           <img src="assets/service_new_teeth_implant.webp?v=12.0" alt="Dental examination of teeth cavity with dental mirror and probe" class="service-card-img" loading="lazy" decoding="async" />
         </figure>
         <a href="#cavities" class="service-card-title-anchor" data-service="cavities">
-          <h2 class="service-title">cement filling</h2>
+          <h2 class="service-title">Cosmatic Filling</h2>
         </a>
         <p class="service-card-desc">
-          A cavity starts silently when food and bacteria team up to slowly eat away at your enamel <button type="button" class="read-more-anchor-btn" data-service="cavities" aria-label="Read more about cavity prevention and fillings">read more..</button>
+          A cavity starts silently when food and bacteria team up to slowly eat away at your enamel <button type="button" class="read-more-anchor-btn" data-service="cavities" aria-label="Read more about cosmatic filling and cavity restorations">read more..</button>
         </p>
       </article>
 
-      <!-- CARD 3: TEETH CLEANING -->
+      <!-- CARD 4: SURGICAL EXTRACTION -->
+      <article class="service-card-item" id="surgical-extraction" data-service-key="surgical-extraction">
+        <figure class="service-card-figure">
+          <img src="assets/service_surgical_extraction.webp?v=1.0" alt="Gentle and painless surgical extraction for impacted teeth and deep roots" class="service-card-img" loading="lazy" decoding="async" />
+        </figure>
+        <a href="#surgical-extraction" class="service-card-title-anchor" data-service="surgical-extraction">
+          <h2 class="service-title">Surgical Extraction</h2>
+        </a>
+        <p class="service-card-desc">
+          Gentle, pain-free removal of impacted wisdom teeth or broken roots with smooth recovery <button type="button" class="read-more-anchor-btn" data-service="surgical-extraction" aria-label="Read more about surgical extraction">read more..</button>
+        </p>
+      </article>
+
+      <!-- CARD 5: ULTRA SONIC SCALING -->
       <article class="service-card-item" id="cleaning" data-service-key="cleaning">
         <figure class="service-card-figure">
-          <img src="assets/service_cleaning.webp?v=12.0" alt="Gentle ultrasonic teeth cleaning and plaque polishing procedure" class="service-card-img" loading="lazy" decoding="async" />
+          <img src="assets/service_cleaning.webp?v=13.0" alt="Gentle ultrasonic teeth cleaning and plaque polishing procedure" class="service-card-img" loading="lazy" decoding="async" />
         </figure>
         <a href="#cleaning" class="service-card-title-anchor" data-service="cleaning">
-          <h2 class="service-title">teeth cleaning</h2>
+          <h2 class="service-title">Ultra Sonic Scaling</h2>
         </a>
         <p class="service-card-desc">
-          Healthy habits start with smiles. Prevent unexpected cavities and keep teeth visibly stain-free <button type="button" class="read-more-anchor-btn" data-service="cleaning" aria-label="Read more about teeth cleaning and deep scaling">read more..</button>
+          Healthy habits start with smiles. Prevent unexpected cavities and keep teeth visibly stain-free <button type="button" class="read-more-anchor-btn" data-service="cleaning" aria-label="Read more about ultra sonic scaling and deep polishing">read more..</button>
         </p>
       </article>
 
-      <!-- CARD 4: DENTAL VENEER / LAMINATES -->
+      <!-- CARD 6: CROWN & BRIDGES -->
+      <article class="service-card-item" id="crown-bridge" data-service-key="crown-bridge">
+        <figure class="service-card-figure">
+          <img src="assets/service_crown_bridge.webp?v=2.0" alt="Precision porcelain and zirconia dental crown and bridge restoration" class="service-card-img" loading="lazy" decoding="async" />
+        </figure>
+        <a href="#crown-bridge" class="service-card-title-anchor" data-service="crown-bridge">
+          <h2 class="service-title">Crown &amp; Bridges</h2>
+        </a>
+        <p class="service-card-desc">
+          Protect weak teeth with custom caps and seamlessly bridge missing tooth gaps <button type="button" class="read-more-anchor-btn" data-service="crown-bridge" aria-label="Read more about crown and bridges">read more..</button>
+        </p>
+      </article>
+
+      <!-- CARD 7: DENTAL VEENERS -->
       <article class="service-card-item" id="veneers" data-service-key="veneers">
         <figure class="service-card-figure">
-          <img src="assets/service_veneers.webp?v=12.0" alt="Ultra-thin porcelain dental veneer and laminate precision placement" class="service-card-img" loading="lazy" decoding="async" />
+          <img src="assets/service_veneers.webp?v=12.0" alt="Ultra-thin porcelain dental veeners precision placement" class="service-card-img" loading="lazy" decoding="async" />
         </figure>
         <a href="#veneers" class="service-card-title-anchor" data-service="veneers">
-          <h2 class="service-title">dental veneers / laminates</h2>
+          <h2 class="service-title">Dental Veeners</h2>
         </a>
         <p class="service-card-desc">
-          Dental veneers and laminates are ultra-thin <button type="button" class="read-more-anchor-btn" data-service="veneers" aria-label="Read more about dental veneers and laminates">read more..</button>
+          Dental veeners are ultra-thin <button type="button" class="read-more-anchor-btn" data-service="veneers" aria-label="Read more about dental veeners">read more..</button>
         </p>
       </article>
 
-      <!-- CARD 5: DENTAL IMPLANT SURGERY -->
+      <!-- CARD 8: IMPLANTS -->
       <article class="service-card-item" id="implant-surgery" data-service-key="implant-surgery">
         <figure class="service-card-figure">
           <img src="assets/service_implant_surgery.webp?v=12.0" alt="Dental implant model showcasing titanium root screw, abutment, and ceramic crown" class="service-card-img" loading="lazy" decoding="async" />
         </figure>
         <a href="#implant-surgery" class="service-card-title-anchor" data-service="implant-surgery">
-          <h2 class="service-title">dental implant surgery</h2>
+          <h2 class="service-title">Implants</h2>
         </a>
         <p class="service-card-desc">
-          Dental implant surgery replaces missing tooth root with titanium anchor <button type="button" class="read-more-anchor-btn" data-service="implant-surgery" aria-label="Read more about dental implant surgery">read more..</button>
+          Dental implants replace missing tooth root with titanium anchor <button type="button" class="read-more-anchor-btn" data-service="implant-surgery" aria-label="Read more about implants">read more..</button>
         </p>
       </article>
 
-      <!-- CARD 6: TOOTH EXTRACTION -->
+      <!-- CARD 9: TOOTH EXTRACTION -->
       <article class="service-card-item" id="new-implant" data-service-key="new-implant">
         <figure class="service-card-figure">
           <img src="assets/service_tooth_extraction.webp?v=12.0" alt="Gentle and painless tooth extraction procedure" class="service-card-img" loading="lazy" decoding="async" />
         </figure>
         <a href="#new-implant" class="service-card-title-anchor" data-service="new-implant">
-          <h2 class="service-title">tooth extraction</h2>
+          <h2 class="service-title">Tooth Extraction</h2>
         </a>
         <p class="service-card-desc">
           Gentle and painless removal for badly decayed, fractured, or painful teeth <button type="button" class="read-more-anchor-btn" data-service="new-implant" aria-label="Read more about painless tooth extraction">read more..</button>
         </p>
       </article>
 
-      <!-- CARD 7: ORTHODONTIC DENTAL CARE -->
+      <!-- CARD 10: ORTHODONTIC DENTAL CARE -->
       <article class="service-card-item" id="orthodontic" data-service-key="orthodontic">
         <figure class="service-card-figure">
           <img src="assets/service_orthodontic.webp?v=1.0" alt="Orthodontic dental care, precision braces and smile alignment" class="service-card-img" loading="lazy" decoding="async" />
         </figure>
         <a href="#orthodontic" class="service-card-title-anchor" data-service="orthodontic">
-          <h2 class="service-title">orthodontic dental care</h2>
+          <h2 class="service-title">Orthodontic Dental Care</h2>
         </a>
         <p class="service-card-desc">
           Transform your bite and straighten misaligned teeth with precision braces and smile alignment <button type="button" class="read-more-anchor-btn" data-service="orthodontic" aria-label="Read more about orthodontic dental care">read more..</button>
+        </p>
+      </article>
+
+      <!-- CARD 11: DENTAL INTRAORAL CAMERA -->
+      <article class="service-card-item" id="intraoral-camera" data-service-key="intraoral-camera">
+        <figure class="service-card-figure">
+          <img src="assets/service_intraoral_camera.webp?v=1.0" alt="Doctor demonstrating tooth inspection on live HD screen with dental intraoral camera" class="service-card-img" loading="lazy" decoding="async" />
+        </figure>
+        <a href="#intraoral-camera" class="service-card-title-anchor" data-service="intraoral-camera">
+          <h2 class="service-title">Dental Intraoral Camera</h2>
+        </a>
+        <p class="service-card-desc">
+          See your teeth clearly on a live HD screen in real-time with zero discomfort <button type="button" class="read-more-anchor-btn" data-service="intraoral-camera" aria-label="Read more about dental intraoral camera">read more..</button>
         </p>
       </article>
 
@@ -275,15 +345,17 @@
   <!-- ===================================================================
        MODAL 1: CONSULTATION BOOKING MODAL
        =================================================================== -->
-  <div class="app-modal-backdrop" id="bookingModalBackdrop" aria-hidden="true" inert role="dialog" aria-modal="true" aria-labelledby="bookingModalTitle">
+  <div class="app-modal-backdrop" id="bookingModalBackdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="bookingModalTitle">
     <div class="app-modal-dialog">
-      <button class="modal-close-btn" id="closeBookingModal" aria-label="Close booking modal">&times;</button>
+      <button type="button" class="modal-close-btn" id="closeBookingModal" aria-label="Close booking modal" data-close-modal>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
       
       <div class="modal-header-block">
         <span class="modal-kicker-tag">✦ PRIORITY CLINICAL APPOINTMENT</span>
-        <div class="modal-brand-wrap">
-          <img src="assets/tooth_icon.webp" alt="Barde Dental Clinic" class="modal-brand-logo" width="32" height="32" decoding="async" />
-        </div>
         <h3 class="modal-title" id="bookingModalTitle">Book Dental Consultation</h3>
         <p class="modal-subtitle">Priority Scheduling with Dr. Vivek Barde &amp; Clinical Specialists</p>
       </div>
@@ -312,7 +384,7 @@
             <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
             </svg>
-            <input type="tel" id="clientPhone" placeholder="e.g. 99657 56783" required autocomplete="tel" />
+            <input type="tel" id="clientPhone" placeholder="e.g. 9876543210" required autocomplete="tel" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" minlength="10" title="Please enter a valid 10-digit mobile number" />
           </div>
         </div>
 
@@ -327,12 +399,16 @@
             </svg>
             <select id="serviceCategory">
               <option value="Root Canal Therapy">Root Canal Therapy</option>
-              <option value="Cement Filling & Restorations">Cement Filling &amp; Restorations</option>
-              <option value="Teeth Cleaning & Deep Polishing">Teeth Cleaning &amp; Deep Polishing</option>
-              <option value="Dental Veneers & Laminates" selected>Dental Veneers &amp; Laminates (Swiss System)</option>
-              <option value="Dental Implant Surgery">Dental Implant Surgery (3D Guided)</option>
+              <option value="Denture">Complete &amp; Partial Dentures</option>
+              <option value="Cosmatic Filling & Restorations">Cosmatic Filling &amp; Restorations</option>
+              <option value="Surgical Extraction">Surgical Tooth Extraction (Impacted Teeth)</option>
+              <option value="Ultra Sonic Scaling & Deep Polishing">Ultra Sonic Scaling &amp; Deep Polishing</option>
+              <option value="Crown & Bridges">Crown &amp; Bridges (Caps &amp; Replacements)</option>
+              <option value="Dental Veeners" selected>Dental Veeners (Swiss System)</option>
+              <option value="Implants">Implants (3D Guided)</option>
               <option value="Tooth Extraction">Tooth Extraction (Painless Removal)</option>
               <option value="Orthodontic Dental Care">Orthodontic Dental Care (Braces &amp; Aligners)</option>
+              <option value="Dental Intraoral Camera">Dental Intraoral Camera (Live HD Scan)</option>
             </select>
             <svg class="select-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="6 9 12 15 18 9"></polyline>
@@ -355,6 +431,67 @@
           </div>
         </div>
 
+        <!-- Preferred Consultation Time: Strictly 3 Elements (HR, MIN, AM & PM) for 9 AM – 9 PM -->
+        <div class="form-field-wrap">
+          <label for="selectHr">
+            <span class="field-label-text">Preferred Consultation Time</span>
+          </label>
+
+          <div class="pure-time-setter" id="digitalTimeConsole">
+            <!-- 1. HR Option (Spacious) -->
+            <div class="pure-time-col hr-col">
+              <span class="pure-col-title">HR</span>
+              <div class="pure-select-box">
+                <select id="selectHr" class="pure-select" aria-label="Select Hour">
+                  <option value="9">09</option>
+                  <option value="10" selected>10</option>
+                  <option value="11">11</option>
+                </select>
+                <svg class="pure-select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <span class="pure-colon">:</span>
+
+            <!-- 2. MIN Option (Spacious) -->
+            <div class="pure-time-col min-col">
+              <span class="pure-col-title">MIN</span>
+              <div class="pure-select-box">
+                <select id="selectMin" class="pure-select" aria-label="Select Minute">
+                  <option value="0">00</option>
+                  <option value="5">05</option>
+                  <option value="10">10</option>
+                  <option value="15">15</option>
+                  <option value="20">20</option>
+                  <option value="25">25</option>
+                  <option value="30" selected>30</option>
+                  <option value="35">35</option>
+                  <option value="40">40</option>
+                  <option value="45">45</option>
+                  <option value="50">50</option>
+                  <option value="55">55</option>
+                </select>
+                <svg class="pure-select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <!-- 3. AM & PM Option (Compact Vertical Style) -->
+            <div class="pure-time-col ampm-col">
+              <div class="pure-ampm-vertical" role="group" aria-label="Select AM or PM">
+                <button type="button" class="ampm-v-btn active" id="btnAm" data-ampm="AM">AM</button>
+                <button type="button" class="ampm-v-btn" id="btnPm" data-ampm="PM">PM</button>
+              </div>
+            </div>
+
+            <!-- Hidden native input for form sync -->
+            <input type="time" id="appointmentTime" name="appointmentTime" value="10:30" min="09:00" max="21:00" required class="native-time-input-hidden" />
+          </div>
+        </div>
+
         <button type="submit" class="modal-submit-btn" id="consultationSubmitBtn">
           <span>CONFIRM CONSULTATION REQUEST</span>
           <svg class="btn-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
@@ -364,19 +501,21 @@
         </button>
 
         <div class="form-security-note">
-          <svg class="wa-mini-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-          </svg>
-          <span>Instantly forwards to Dr. Vivek Barde via WhatsApp</span>
+          <span>Instantly forwards to Dr. Vivek Barde your appointment</span>
         </div>
       </form>
     </div>
   </div>
 
   <!-- 1B. CONSULTATION SUCCESS CONFIRMATION MODAL (ENHANCED POPUP) -->
-  <div class="app-modal-backdrop" id="consultationSuccessModal" aria-hidden="true" inert role="dialog" aria-modal="true" aria-labelledby="successTitle">
+  <div class="app-modal-backdrop" id="consultationSuccessModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="successTitle">
     <div class="app-modal-dialog success-modal-dialog">
-      <button class="modal-close-btn" id="closeSuccessModal" aria-label="Close confirmation">&times;</button>
+      <button type="button" class="modal-close-btn" id="closeSuccessModal" aria-label="Close confirmation" data-close-modal>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
       
       <div class="success-header-block">
         <div class="success-icon-pulse-wrap">
@@ -411,9 +550,13 @@
             <span class="ticket-label">Care Category</span>
             <strong class="ticket-value" id="ticketServiceVal">Root Canal Therapy</strong>
           </div>
-          <div class="ticket-detail-item ticket-full-width">
+          <div class="ticket-detail-item">
             <span class="ticket-label">Preferred Date</span>
             <strong class="ticket-value" id="ticketDateVal">Earliest Available Slot</strong>
+          </div>
+          <div class="ticket-detail-item">
+            <span class="ticket-label">Preferred Time</span>
+            <strong class="ticket-value" id="ticketTimeVal">10:30 AM</strong>
           </div>
         </div>
 
@@ -424,13 +567,13 @@
       </div>
 
       <div class="success-actions-block">
-        <a href="#" id="successWhatsAppActionBtn" target="_blank" rel="noopener noreferrer" class="success-wa-cta-btn">
+        <a href="https://api.whatsapp.com/send?phone=917083444404" id="successWhatsAppActionBtn" target="_blank" rel="noopener noreferrer" class="success-wa-cta-btn">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
           </svg>
           <span>Chat Directly on WhatsApp &rarr;</span>
         </a>
-        <button type="button" class="success-dismiss-btn" id="closeSuccessDoneBtn">
+        <button type="button" class="success-dismiss-btn" id="closeSuccessDoneBtn" data-close-modal>
           Done / Return to Website
         </button>
       </div>
@@ -440,9 +583,14 @@
   <!-- ===================================================================
        MODAL 2: RICH SERVICE DETAIL DIALOG ("Read More..")
        =================================================================== -->
-  <div class="app-modal-backdrop" id="detailModalBackdrop" aria-hidden="true" inert role="dialog" aria-modal="true" aria-labelledby="detailModalTitle">
+  <div class="app-modal-backdrop" id="detailModalBackdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="detailModalTitle">
     <div class="app-modal-dialog">
-      <button class="modal-close-btn" id="closeDetailModal" aria-label="Close procedure details">&times;</button>
+      <button type="button" class="modal-close-btn" id="closeDetailModal" aria-label="Close procedure details" data-close-modal>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
       
       <div class="modal-header-block">
         <h3 class="modal-title" id="detailModalTitle">Procedure Overview</h3>
@@ -472,7 +620,7 @@
     <div class="mobile-bottom-dock-inner">
       
       <!-- 1. Home -->
-      <a href="index.html#slide-1" class="mob-dock-item" id="mobDockHome" aria-label="Go to Home Screen">
+      <a href="index.html" class="mob-dock-item" id="mobDockHome" aria-label="Go to Home Screen">
         <div class="mob-dock-icon-wrap">
           <svg class="mob-dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 9.5L12 3l9 6.5V20a1.5 1.5 0 0 1-1.5 1.5H15v-6a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v6H4.5A1.5 1.5 0 0 1 3 20V9.5z"/>
@@ -492,7 +640,7 @@
       </a>
 
       <!-- 3. WhatsApp -->
-      <a href="https://api.whatsapp.com/send?phone=918999103775&amp;text=Hello%20Dr.%20Vivek%20Barde%20Clinic%2C%20I%20would%20like%20to%20inquire%20about%20an%20appointment." target="_blank" rel="noopener noreferrer" class="mob-dock-item mob-dock-wa" id="mobDockWhatsApp" aria-label="Chat directly on WhatsApp">
+      <a href="https://api.whatsapp.com/send?phone=917083444404&amp;text=Hello%20Dr.%20Vivek%20Barde%20Clinic%2C%20I%20would%20like%20to%20inquire%20about%20an%20appointment." target="_blank" rel="noopener noreferrer" class="mob-dock-item mob-dock-wa" id="mobDockWhatsApp" aria-label="Chat directly on WhatsApp">
         <div class="mob-dock-icon-wrap wa-icon-wrap">
           <svg class="mob-dock-icon" viewBox="0 0 24 24" fill="#25d366">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -502,7 +650,7 @@
       </a>
 
       <!-- 4. Call -->
-      <a href="tel:+918999103775" class="mob-dock-item" id="mobDockCall" aria-label="Direct Phone Consultation">
+      <a href="tel:+917083444404" class="mob-dock-item" id="mobDockCall" aria-label="Direct Phone Consultation">
         <div class="mob-dock-icon-wrap">
           <svg class="mob-dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
@@ -523,6 +671,6 @@
     </div>
   </div>
 
-  <script src="services.js?v=15.1" defer></script>
+  <script src="services.js?v=21.0" defer></script>
 </body>
 </html>

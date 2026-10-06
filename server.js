@@ -127,10 +127,11 @@ function serveFile(req, res, filePath, stats) {
   const contentType = MIME_TYPES[ext] || 'application/octet-stream';
   const isHtml = ext === '.html';
 
-  // Fast caching: Long-term cache for immutable assets, revalidate for HTML
-  const cacheControl = isHtml
-    ? 'no-cache, must-revalidate'
-    : 'public, max-age=604800, stale-while-revalidate=86400';
+  // Fast revalidation: Do not cache HTML, JS, or CSS so updates reflect immediately
+  const isCodeAsset = isHtml || ext === '.js' || ext === '.css';
+  const cacheControl = isCodeAsset
+    ? 'no-cache, no-store, must-revalidate'
+    : 'public, max-age=86400, stale-while-revalidate=3600';
 
   // ETag based on mtime and size for instant 304 cache validation
   const etag = `"${stats.size.toString(16)}-${stats.mtime.getTime().toString(16)}"`;

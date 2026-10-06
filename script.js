@@ -40,8 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const successPatientName = document.getElementById('successPatientName');
   const ticketNameVal = document.getElementById('ticketNameVal');
   const ticketPhoneVal = document.getElementById('ticketPhoneVal');
-  const ticketServiceVal = document.getElementById('ticketServiceVal');
   const ticketDateVal = document.getElementById('ticketDateVal');
+  const ticketTimeVal = document.getElementById('ticketTimeVal');
   const veneerModal = document.getElementById('veneerModalBackdrop');
   const closeVeneerModal = document.getElementById('closeVeneerModal');
   const serviceDrawer = document.getElementById('serviceDrawerBackdrop');
@@ -169,6 +169,36 @@ document.addEventListener('DOMContentLoaded', () => {
       if (linkSlide === slideNum) link.classList.add('active');
       else link.classList.remove('active');
     });
+
+    // Handle Mobile Web App view scrolling
+    if (window.innerWidth <= 768) {
+      const mobileSectionMap = {
+        1: 'mobileHero',
+        2: 'mobileDoctor',
+        3: 'mobileOffer',
+        4: 'mobileCare',
+        5: 'mobileValue',
+        6: 'mobileCare',
+        7: 'mobileWhichCare',
+        8: 'mobileSurgicalExcellence',
+        9: 'mobileReviews',
+        10: 'mobileContact',
+        11: 'mobileContact'
+      };
+      if (slideNum === 1) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        const secId = mobileSectionMap[slideNum] || 'mobileHero';
+        const target = document.getElementById(secId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+      try {
+        history.pushState(null, null, `#slide-${slideNum}`);
+      } catch (err) {}
+      return;
+    }
 
     if (isSlideMode) {
       sections.forEach(sec => {
@@ -417,6 +447,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function openModal(modal) {
     if (!modal) return;
     modal.removeAttribute('inert');
+    if ('inert' in modal) {
+      try { modal.inert = false; } catch (_) {}
+    }
     modal.setAttribute('aria-hidden', 'false');
     modal.classList.add('active');
   }
@@ -428,7 +461,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     modal.classList.remove('active');
     modal.setAttribute('aria-hidden', 'true');
-    modal.setAttribute('inert', '');
+    modal.removeAttribute('inert');
+    if ('inert' in modal) {
+      try { modal.inert = false; } catch (_) {}
+    }
   }
 
   function closeAllModals() {
@@ -467,9 +503,27 @@ document.addEventListener('DOMContentLoaded', () => {
     openModal(veneerModal);
   }
 
-  // Universal click handler for all appointment and booking CTA buttons across PC and Mobile
+  // Universal click handler for all modal controls, appointment, and booking CTA buttons across PC and Mobile
   document.addEventListener('click', (e) => {
-    // 1. Veneer Installation System key / badge clicks
+    // 0. Close modal buttons (works universally on PC & Mobile)
+    const closeBtn = e.target.closest('.modal-close-btn, [data-close-modal], #closeVeneerModal, #closeBookingModal, #closeServiceDrawer, #closeSuccessModal, #closeSuccessDoneBtn, #backServiceHeaderBtn, #backServiceDrawerBtn');
+    if (closeBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      closeAllModals();
+      return;
+    }
+
+    // 1. Veneer Book Assessment button explicitly
+    const veneerActionBtn = e.target.closest('#veneerBookNowBtn');
+    if (veneerActionBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      triggerBookingModal('Dental Veeners', '');
+      return;
+    }
+
+    // 2. Veneer Installation System key / badge clicks
     const veneerBtn = e.target.closest('.veneer-badge-hitbox, #veneerBadgeBtn, #heroToothPin, .hero-tooth-pin-hitbox, #mobileVeneerBadge, #mobileToothPin, .mobile-tooth-pin-wrap, [data-open-modal="veneer"]');
     if (veneerBtn) {
       e.preventDefault();
@@ -478,7 +532,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // 2. Booking CTA buttons
+    // 3. Booking CTA buttons
     const btn = e.target.closest('.open-booking-modal, [data-open-modal="booking"], #topbarGetStartedBtn, #mobileHeroCtaBtn, .card-book-action, .doctor-exact-cta-btn, .value-cta-btn, .reviews-cta-btn, .m916-btn-primary, .m916-value-btn, #bottomBookBtn');
     if (btn) {
       e.preventDefault();
@@ -532,8 +586,128 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function sanitizePhone(phone) {
     if (!phone) return '';
-    return String(phone).replace(/[^\d\s+\-()]/g, '').trim().slice(0, 20);
+    return String(phone).replace(/\D/g, '').slice(0, 10);
   }
+
+  // Live input filtering for phone: digits only, max 10 digits
+  const clientPhoneField = document.getElementById('clientPhone');
+  if (clientPhoneField) {
+    clientPhoneField.addEventListener('input', () => {
+      clientPhoneField.value = clientPhoneField.value.replace(/\D/g, '').slice(0, 10);
+      if (clientPhoneField.value.length === 10) {
+        clientPhoneField.setCustomValidity('');
+      }
+    });
+    clientPhoneField.addEventListener('blur', () => {
+      if (clientPhoneField.value.length === 10 || clientPhoneField.value.length === 0) {
+        clientPhoneField.setCustomValidity('');
+      }
+    });
+  }
+
+  // --- Pure 3-Element Digital Time Setter (9:00 AM - 9:00 PM) ---
+  function initSimpleTimeSetter() {
+    const selectHr = document.getElementById('selectHr');
+    const selectMin = document.getElementById('selectMin');
+    const btnAm = document.getElementById('btnAm');
+    const btnPm = document.getElementById('btnPm');
+    const appointmentTime = document.getElementById('appointmentTime');
+    if (!selectHr || !selectMin || !btnAm || !btnPm || !appointmentTime) return;
+
+    let currentPeriod = btnAm.classList.contains('active') ? 'AM' : 'PM';
+
+    // Strictly clinic operating hours:
+    // AM: 9, 10, 11 (09:00 AM - 11:55 AM)
+    // PM: 12, 1, 3, 4, 5, 6, 7, 8 (Strictly erased 2 PM and 9 PM)
+    const amHours = [9, 10, 11];
+    const pmHours = [12, 1, 3, 4, 5, 6, 7, 8];
+
+    function renderHourOptions(period, keepVal) {
+      const hours = period === 'AM' ? amHours : pmHours;
+      selectHr.innerHTML = '';
+      hours.forEach(h => {
+        const opt = document.createElement('option');
+        opt.value = h;
+        opt.textContent = String(h).padStart(2, '0');
+        selectHr.appendChild(opt);
+      });
+
+      const targetVal = Number(keepVal);
+      if (hours.includes(targetVal)) {
+        selectHr.value = targetVal;
+      } else {
+        selectHr.value = hours[0];
+      }
+    }
+
+    function enforceClinicLimits() {
+      const hr = parseInt(selectHr.value, 10);
+      if (currentPeriod === 'PM') {
+        // Strictly prevent 2:00 PM and 9:00 PM in PM mode
+        if (hr === 2) selectHr.value = '3';
+        if (hr === 9) selectHr.value = '8';
+        if (!pmHours.includes(hr)) selectHr.value = pmHours[0];
+      }
+    }
+
+    function syncHiddenInput() {
+      let hr = parseInt(selectHr.value, 10);
+      const min = parseInt(selectMin.value, 10);
+      if (isNaN(hr)) hr = 10;
+
+      let h24 = hr;
+      if (currentPeriod === 'AM') {
+        if (h24 === 12) h24 = 0;
+      } else {
+        if (h24 !== 12) h24 += 12;
+      }
+
+      const hh = String(h24).padStart(2, '0');
+      const mm = String(isNaN(min) ? 0 : min).padStart(2, '0');
+      appointmentTime.value = `${hh}:${mm}`;
+    }
+
+    function setPeriod(period) {
+      if (currentPeriod === period) return;
+      currentPeriod = period;
+      if (period === 'AM') {
+        btnAm.classList.add('active');
+        btnPm.classList.remove('active');
+      } else {
+        btnPm.classList.add('active');
+        btnAm.classList.remove('active');
+      }
+      const curHr = selectHr.value;
+      renderHourOptions(currentPeriod, curHr);
+      enforceClinicLimits();
+      syncHiddenInput();
+    }
+
+    btnAm.addEventListener('click', (e) => {
+      e.preventDefault();
+      setPeriod('AM');
+    });
+
+    btnPm.addEventListener('click', (e) => {
+      e.preventDefault();
+      setPeriod('PM');
+    });
+
+    selectHr.addEventListener('change', () => {
+      enforceClinicLimits();
+      syncHiddenInput();
+    });
+
+    selectMin.addEventListener('change', () => {
+      enforceClinicLimits();
+      syncHiddenInput();
+    });
+
+    renderHourOptions(currentPeriod, selectHr.value || 10);
+    enforceClinicLimits();
+    syncHiddenInput();
+  }
+  initSimpleTimeSetter();
 
   let lastSubmitTime = 0;
 
@@ -562,6 +736,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const name = sanitizeInput(rawName, 60) || 'Valued Patient';
       const phone = sanitizePhone(rawPhone);
+      if (!phone || phone.length !== 10) {
+        showToast('10-Digit Mobile Required', 'Please enter a valid 10-digit mobile number.');
+        if (phoneInput) {
+          phoneInput.focus();
+          phoneInput.setCustomValidity('Please enter exactly 10 digits');
+          phoneInput.reportValidity();
+        }
+        return;
+      }
+      if (phoneInput) phoneInput.setCustomValidity('');
+
       const service = sanitizeInput(rawService, 60) || 'General Dental Consultation';
 
       let formattedDate = 'Priority / Earliest Available';
@@ -581,6 +766,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
+      // Format 12-Hour Preferred Time (e.g. 10:30 AM)
+      let formattedTime = '10:30 AM';
+      const timeInput = document.getElementById('appointmentTime');
+      const timeVal = (timeInput && timeInput.value) || '';
+      if (timeVal) {
+        const parts = timeVal.split(':');
+        if (parts.length === 2) {
+          let h = parseInt(parts[0], 10);
+          const m = parseInt(parts[1], 10);
+          // Strictly clamp PM hours: 12, 1, 3, 4, 5, 6, 7, 8 (erased 2 PM & 9 PM)
+          if (h >= 12) {
+            if (h === 14) h = 15; // 2 PM clamped to 3 PM
+            if (h >= 21) h = 20;  // 9 PM clamped to 8 PM
+          }
+          const period = h >= 12 ? 'PM' : 'AM';
+          let h12 = h % 12;
+          if (h12 === 0) h12 = 12;
+          formattedTime = `${String(h12).padStart(2, '0')}:${String(m).padStart(2, '0')} ${period}`;
+        }
+      }
+
       // Format WhatsApp booking text
       const waText = 
 `*DENTAL CONSULTATION REQUEST*
@@ -590,10 +796,11 @@ document.addEventListener('DOMContentLoaded', () => {
 *Phone Number:* ${phone}
 *Care Category:* ${service}
 *Preferred Date:* ${formattedDate}
+*Preferred Time:* ${formattedTime}
 --------------------------------
 Hello Dr. Vivek Barde, I submitted this appointment request via your official website. Please confirm my consultation schedule.`;
 
-      const waUrl = `https://api.whatsapp.com/send?phone=918999103775&text=${encodeURIComponent(waText)}`;
+      const waUrl = `https://api.whatsapp.com/send?phone=917083444404&text=${encodeURIComponent(waText)}`;
 
       // Populate enhanced success popup ticket
       if (successPatientName) successPatientName.textContent = name;
@@ -601,7 +808,11 @@ Hello Dr. Vivek Barde, I submitted this appointment request via your official we
       if (ticketPhoneVal) ticketPhoneVal.textContent = phone;
       if (ticketServiceVal) ticketServiceVal.textContent = service;
       if (ticketDateVal) ticketDateVal.textContent = formattedDate;
-      if (successWhatsAppActionBtn) successWhatsAppActionBtn.href = waUrl;
+      if (ticketTimeVal) ticketTimeVal.textContent = formattedTime;
+      if (successWhatsAppActionBtn) {
+        successWhatsAppActionBtn.href = waUrl;
+        successWhatsAppActionBtn.setAttribute('href', waUrl);
+      }
 
       // Close consultation form modal & reveal enhanced confirmation popup
       closeModal(bookingModal);
@@ -613,28 +824,71 @@ Hello Dr. Vivek Barde, I submitted this appointment request via your official we
         `Opening WhatsApp directly with Dr. Vivek Barde...`
       );
 
-      // Launch WhatsApp in a new tab securely
+      // Launch WhatsApp reliably
+      let opened = null;
       try {
-        window.open(waUrl, '_blank', 'noopener,noreferrer');
+        opened = window.open(waUrl, '_blank');
       } catch (err) {
         console.log('[Notice] Direct window.open deferred by browser:', err);
+      }
+      // If browser blocked popup window or mobile browser deferred it, navigate reliably
+      if (!opened || opened.closed || typeof opened.closed === 'undefined') {
+        setTimeout(() => {
+          window.location.href = waUrl;
+        }, 800);
       }
 
       appointmentForm.reset();
     });
   }
 
-  // Veneer Specs Drawer
+  // Veneer Specs Drawer: uses openModal() so inert is properly removed and all buttons work
   function openVeneerSpecs() {
     closeAllModals();
-    if (veneerModal) veneerModal.classList.add('active');
+    openModal(veneerModal);
   }
 
+  const backServiceHeaderBtn = document.getElementById('backServiceHeaderBtn');
+  const backServiceDrawerBtn = document.getElementById('backServiceDrawerBtn');
+  const veneerBookNowBtn = document.getElementById('veneerBookNowBtn');
+
   if (veneerBadgeBtn) veneerBadgeBtn.addEventListener('click', openVeneerSpecs);
-  if (closeVeneerModal) closeVeneerModal.addEventListener('click', closeAllModals);
+  if (closeVeneerModal) {
+    closeVeneerModal.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeAllModals();
+    });
+  }
+  if (backServiceHeaderBtn) {
+    backServiceHeaderBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeAllModals();
+    });
+  }
+  if (backServiceDrawerBtn) {
+    backServiceDrawerBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeAllModals();
+    });
+  }
+
+  if (veneerBookNowBtn) {
+    veneerBookNowBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      triggerBookingModal('Dental Veeners', '');
+    });
+  }
+
   if (veneerModal) {
     veneerModal.addEventListener('click', (e) => {
-      if (e.target === veneerModal) closeAllModals();
+      if (e.target === veneerModal) {
+        e.preventDefault();
+        closeAllModals();
+      }
     });
   }
 
@@ -666,17 +920,66 @@ Hello Dr. Vivek Barde, I submitted this appointment request via your official we
   });
 
   // =================================================================
-  // E. SCREEN 3 (WHAT WE OFFER) CLEAN AESTHETIC INTERACTION
+  // E. SCREEN 3 (WHAT WE OFFER) CURSOR MOVEMENT & HOVER GLIDE ANIMATION
   // =================================================================
+  const mOfferList = document.getElementById('mOfferItemsList');
   const mOfferLinks = document.querySelectorAll('.m916-offer-link');
+
+  let activeHoveredLink = null;
+
+  function setHoveredOfferLink(targetLink) {
+    if (activeHoveredLink === targetLink) return;
+    if (activeHoveredLink) {
+      activeHoveredLink.classList.remove('is-hovered');
+    }
+    activeHoveredLink = targetLink;
+    if (activeHoveredLink) {
+      activeHoveredLink.classList.add('is-hovered');
+    }
+  }
+
+  // 1. Direct hover / pointer movement on each navigation button
   mOfferLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      link.style.transform = 'translateX(4px)';
-      setTimeout(() => {
-        link.style.transform = '';
-      }, 200);
+    link.addEventListener('mouseenter', () => setHoveredOfferLink(link));
+    link.addEventListener('pointerenter', () => setHoveredOfferLink(link));
+    link.addEventListener('mouseleave', () => {
+      if (activeHoveredLink === link) setHoveredOfferLink(null);
+    });
+    link.addEventListener('pointerleave', () => {
+      if (activeHoveredLink === link) setHoveredOfferLink(null);
     });
   });
+
+  // 2. Continuous cursor tracking as mouse moves across the navigation list
+  if (mOfferList) {
+    const handleOfferPointerMove = (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
+      if (typeof x !== 'number' || typeof y !== 'number') return;
+      const el = document.elementFromPoint(x, y);
+      const link = el ? el.closest('.m916-offer-link') : null;
+      setHoveredOfferLink(link);
+    };
+
+    mOfferList.addEventListener('mousemove', handleOfferPointerMove, { passive: true });
+    mOfferList.addEventListener('pointermove', handleOfferPointerMove, { passive: true });
+    mOfferList.addEventListener('mouseleave', () => setHoveredOfferLink(null));
+    mOfferList.addEventListener('pointerleave', () => setHoveredOfferLink(null));
+
+    // Touch support for swiping finger over the service items
+    mOfferList.addEventListener('touchmove', (e) => {
+      if (e.touches && e.touches[0]) {
+        const touch = e.touches[0];
+        const el = document.elementFromPoint(touch.clientX, touch.clientY);
+        const link = el ? el.closest('.m916-offer-link') : null;
+        setHoveredOfferLink(link);
+      }
+    }, { passive: true });
+
+    mOfferList.addEventListener('touchend', () => {
+      setTimeout(() => setHoveredOfferLink(null), 250);
+    });
+  }
 
   // =================================================================
   // F. ALL SCREENS SCROLL-ONLY ZOOM ANIMATION ("Bit zoom in, bit zoom out")
@@ -961,25 +1264,44 @@ Hello Dr. Vivek Barde, I submitted this appointment request via your official we
   const mobDockHome = document.getElementById('mobDockHome');
   if (mobDockHome) {
     mobDockHome.addEventListener('click', (e) => {
+      e.preventDefault();
       if (window.innerWidth <= 768) {
-        e.preventDefault();
         window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        goToSlide(1);
       }
     });
   }
 
+  // Footer legal links informative handlers
+  ['linkPrivacy', 'linkTerms', 'linkAccessibility'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        const titles = {
+          linkPrivacy: 'Privacy & Health Records Policy',
+          linkTerms: 'Clinical Terms & Appointment Guidelines',
+          linkAccessibility: 'Clinic Accessibility & Patient Support'
+        };
+        const messages = {
+          linkPrivacy: 'Patient confidentiality and dental health records are maintained strictly under Indian Healthcare Privacy regulations.',
+          linkTerms: 'Appointments can be rescheduled with 2-hour advance notice. Emergency dental walk-ins are given immediate priority.',
+          linkAccessibility: 'Our clinic operatory and waiting lounge feature ground-floor wheelchair access and patient assistance.'
+        };
+        showToast(titles[id] || 'Clinic Notice', messages[id] || 'Barde Dental Clinic is dedicated to compassionate patient care.');
+      });
+    }
+  });
+
   // PC Slide 10: Smooth, Instant & Secure WhatsApp Launcher with Drafted Message
   const pcWhatsAppBtn = document.getElementById('pcWhatsAppBtn');
   if (pcWhatsAppBtn) {
+    const defaultWaUrl = `https://api.whatsapp.com/send?phone=917083444404&text=${encodeURIComponent('Hello Dr. Vivek Barde Clinic, I would like to inquire about an appointment and dental treatments.')}`;
+    pcWhatsAppBtn.href = defaultWaUrl;
     pcWhatsAppBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      const message = encodeURIComponent('Hello Dr. Vivek Barde Clinic, I would like to inquire about an appointment and dental treatments.');
-      const waUrl = `https://api.whatsapp.com/send?phone=918999103775&text=${message}`;
-      const win = window.open(waUrl, '_blank', 'noopener,noreferrer');
-      if (win) {
-        win.focus();
-        e.preventDefault();
-      }
+      pcWhatsAppBtn.href = defaultWaUrl;
     });
   }
 
@@ -998,6 +1320,7 @@ Hello Dr. Vivek Barde, I submitted this appointment request via your official we
   }
 
   handleInitialHashNavigation();
+  window.addEventListener('hashchange', handleInitialHashNavigation);
 });
 
 

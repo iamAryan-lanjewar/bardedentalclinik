@@ -48,5 +48,21 @@
       <image:loc>https://builddear.com/assets/service_new_teeth_implant.webp</image:loc>
       <image:title>Aesthetic Composite Tooth Filling and Cavity Repair</image:title>
     </image:image>
+    <image:image>
+      <image:loc>https://builddear.com/assets/service_intraoral_camera.webp</image:loc>
+      <image:title>High Definition Dental Intraoral Camera Live Scan</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://builddear.com/assets/service_crown_bridge.webp</image:loc>
+      <image:title>Precision Porcelain Dental Crown and Bridge Restorations</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://builddear.com/assets/service_denture.webp</image:loc>
+      <image:title>Precision Custom Complete and Partial Dentures</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://builddear.com/assets/service_surgical_extraction.webp</image:loc>
+      <image:title>Gentle and Painless Surgical Tooth Extraction</image:title>
+    </image:image>
   </url>
 </urlset>

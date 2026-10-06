@@ -31,9 +31,21 @@ document.addEventListener('DOMContentLoaded', () => {
       ],
       description: 'A root canal sounds scary, but it actually ends the pain. Deep inside each tooth is the dental pulp. When severe decay or trauma causes infection, modern microscopic endodontics removes infected tissue, cleans and sterilizes canals, and seals the tooth safely so you keep your natural smile without extraction.'
     },
+    'denture': {
+      title: 'Complete & Partial Dentures',
+      subtitle: 'Comfortable, natural-looking replacement teeth for easy chewing and smiling',
+      image: 'assets/service_denture.webp?v=1.0',
+      specs: [
+        { label: 'Types Available:', value: 'Full complete dentures & flexible partial dentures' },
+        { label: 'Custom Fit:', value: 'Molded gently to match your natural gums and facial shape' },
+        { label: 'Daily Comfort:', value: 'Restores comfortable chewing, clear speech & natural face shape' },
+        { label: 'Easy Care:', value: 'Simple to remove and clean daily with warm water and soft brush' }
+      ],
+      description: 'Dentures are gentle, removable teeth designed to replace missing teeth when you have lost several or all of them. Made from lightweight, natural-looking materials, they rest comfortably on your gums and support your facial muscles so your cheeks do not look sunken. Whether you need a full set or just a partial set to fill empty gaps, our custom-crafted dentures let you enjoy your favorite foods and smile happily again.'
+    },
     'cavities': {
-      title: 'Cement Filling & Restorations',
-      subtitle: 'Biocompatible nano-hybrid tooth-colored restorations & cement fillings',
+      title: 'Cosmatic Filling & Restorations',
+      subtitle: 'Biocompatible nano-hybrid tooth-colored restorations & cosmatic fillings',
       image: 'assets/service_new_teeth_implant.webp?v=10.0',
       specs: [
         { label: 'Material:', value: 'Nano-hybrid composite resins matching enamel translucency' },
@@ -43,10 +55,22 @@ document.addEventListener('DOMContentLoaded', () => {
       ],
       description: 'A cavity starts silently when food and bacteria team up to slowly eat away at your enamel. Left untreated, acid erodes tooth layers until reaching nerves. We provide early laser diagnostics, gentle enamel remineralization, and imperceptible tooth-colored fillings that restore 100% natural tooth shape and strength.'
     },
+    'surgical-extraction': {
+      title: 'Surgical Tooth Extraction',
+      subtitle: 'Gentle, pain-free removal for impacted wisdom teeth and deep roots',
+      image: 'assets/service_surgical_extraction.webp?v=1.0',
+      specs: [
+        { label: 'When Needed:', value: 'Impacted wisdom teeth, broken roots beneath gumline' },
+        { label: 'Comfort Level:', value: '100% painless with gentle modern local numbing' },
+        { label: 'Procedure:', value: 'Careful microsurgical release protecting bone & gums' },
+        { label: 'Smooth Healing:', value: 'Quick recovery with clear, simple home care guidance' }
+      ],
+      description: 'Sometimes a tooth is trapped under the gums, growing sideways (like an impacted wisdom tooth), or broken too close to the gumline for a simple pull. A surgical extraction is a gentle, routine procedure where Dr. Barde carefully numbs the entire area so you stay relaxed and comfortable with zero pain. The tooth is gently freed and removed with minimal pressure, protecting your surrounding jawbone and ensuring smooth, fast healing.'
+    },
     'cleaning': {
-      title: 'Teeth Cleaning & Deep Polishing',
+      title: 'Ultra Sonic Scaling & Deep Polishing',
       subtitle: 'Healthy habits start with smiles',
-      image: 'assets/service_cleaning.webp?v=12.0',
+      image: 'assets/service_cleaning.webp?v=13.0',
       specs: [
         { label: 'Method:', value: 'Air-Flow ultrasonic micro-vibrations & gentle water jet' },
         { label: 'Benefits:', value: 'Eliminates stubborn plaque, calculus, tea/coffee stains' },
@@ -55,8 +79,20 @@ document.addEventListener('DOMContentLoaded', () => {
       ],
       description: 'Prevent unexpected cavities, and keep teeth visibly stain-free. Even with meticulous brushing, mineralized calculus builds up along the gum line. Our advanced dental hygiene suite uses gentle ultrasonic micro-frequencies to remove plaque and polish teeth to a high-gloss, mirror shine.'
     },
+    'crown-bridge': {
+      title: 'Crown & Bridges',
+      subtitle: 'Protect weak teeth and easily replace missing smiles',
+      image: 'assets/service_crown_bridge.webp?v=2.0',
+      specs: [
+        { label: 'What is a Crown?', value: 'A custom tooth-colored cap that covers and protects a weak tooth' },
+        { label: 'What is a Bridge?', value: 'Replacement teeth anchored securely to fill empty tooth gaps' },
+        { label: 'Materials:', value: 'High-strength natural ceramic & zirconia color-matched to teeth' },
+        { label: 'Durability:', value: 'Long-lasting natural bite strength for 10 to 15+ years' }
+      ],
+      description: 'A dental crown is like a custom-made protective helmet for a weak, cracked, or treated tooth—restoring its shape, strength, and chewing power. If you have one or more missing teeth, a dental bridge comfortably fills the empty gap by connecting to neighboring teeth. Both blend in naturally with your smile, feel like real teeth, and let you bite, talk, and smile with zero worry.'
+    },
     'veneers': {
-      title: 'Dental Veneers & Laminates',
+      title: 'Dental Veeners',
       subtitle: 'Ultra-thin Swiss porcelain cosmetic smile transformation',
       image: 'assets/service_veneers.webp?v=10.0',
       specs: [
@@ -65,10 +101,10 @@ document.addEventListener('DOMContentLoaded', () => {
         { label: 'Customization:', value: 'CAD/CAM digital shade matching (Vita Bleach BL1-BL4)' },
         { label: 'Warranty:', value: '10-Year Clinical Warranty & 15+ year durability' }
       ],
-      description: 'Dental veneers and laminates are ultra-thin custom ceramic shells bonded permanently to the front of teeth. They instantly correct discoloration, close gaps, fix chipped edges, and harmonize teeth alignment for a radiant, Hollywood-grade smile designed in harmony with your facial symmetry.'
+      description: 'Dental veeners are ultra-thin custom ceramic shells bonded permanently to the front of teeth. They instantly correct discoloration, close gaps, fix chipped edges, and harmonize teeth alignment for a radiant, Hollywood-grade smile designed in harmony with your facial symmetry.'
     },
     'implant-surgery': {
-      title: 'Dental Implant Surgery',
+      title: 'Implants',
       subtitle: 'Permanent replacement for missing teeth with artificial roots',
       image: 'assets/service_implant_surgery.webp?v=12.0',
       specs: [
@@ -77,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { label: 'Benefit:', value: 'Restores 100% natural chewing and keeps jawbone strong' },
         { label: 'Lifespan:', value: 'Permanent, long-lasting solution with proper oral care' }
       ],
-      description: 'Dental implant surgery is the most reliable way to replace missing teeth. A small titanium post acts like a natural tooth root in your jaw, holding a custom-made crown securely in place so you can eat, smile, and speak with complete confidence.'
+      description: 'Dental implants are the most reliable way to replace missing teeth. A small titanium post acts like a natural tooth root in your jaw, holding a custom-made crown securely in place so you can eat, smile, and speak with complete confidence.'
     },
     'new-implant': {
       title: 'Painless Tooth Extraction',
@@ -102,6 +138,18 @@ document.addEventListener('DOMContentLoaded', () => {
         { label: 'Age Suitability:', value: 'Custom smile design suitable for children, teens & adults' }
       ],
       description: 'Orthodontic dental care focuses on diagnosing, preventing, and correcting improperly positioned teeth and jaw alignment. Using advanced brackets and gentle shape-memory archwires, Dr. Vivek Barde gently aligns your teeth into their ideal dental arch—restoring optimal chewing function, improving long-term oral hygiene, and creating a balanced, confident smile that lasts a lifetime.'
+    },
+    'intraoral-camera': {
+      title: 'Dental Intraoral Camera',
+      subtitle: 'See your teeth clearly on a live screen in real-time',
+      image: 'assets/service_intraoral_camera.webp?v=1.0',
+      specs: [
+        { label: 'How It Works:', value: 'Tiny gentle pen-camera shows live color video of teeth' },
+        { label: 'Comfort Level:', value: '100% painless, safe, gentle and zero radiation' },
+        { label: 'What You See:', value: 'High-definition zoom view of teeth, fillings and gums' },
+        { label: 'Why It Helps:', value: 'See what the dentist sees so you easily understand your care' }
+      ],
+      description: 'An intraoral camera is a small, pen-sized wand with a gentle light that lets you see inside your mouth on a live high-definition screen. Instead of just hearing about a dental issue, you can see it with your own eyes in real-time. It helps spot early cavities, tiny cracks, and hidden plaque comfortably and with complete honesty, so you can make informed decisions about your smile with zero stress or pain.'
     }
   };
 
@@ -117,8 +165,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const successPatientName = document.getElementById('successPatientName');
   const ticketNameVal = document.getElementById('ticketNameVal');
   const ticketPhoneVal = document.getElementById('ticketPhoneVal');
-  const ticketServiceVal = document.getElementById('ticketServiceVal');
   const ticketDateVal = document.getElementById('ticketDateVal');
+  const ticketTimeVal = document.getElementById('ticketTimeVal');
 
   const detailModal = document.getElementById('detailModalBackdrop');
   const closeDetailModal = document.getElementById('closeDetailModal');
@@ -137,6 +185,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function openModal(modal) {
     if (!modal) return;
     modal.removeAttribute('inert');
+    if ('inert' in modal) {
+      try { modal.inert = false; } catch (_) {}
+    }
     modal.setAttribute('aria-hidden', 'false');
     modal.classList.add('active');
   }
@@ -148,7 +199,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     modal.classList.remove('active');
     modal.setAttribute('aria-hidden', 'true');
-    modal.setAttribute('inert', '');
+    modal.removeAttribute('inert');
+    if ('inert' in modal) {
+      try { modal.inert = false; } catch (_) {}
+    }
   }
 
   function closeAllModals() {
@@ -156,6 +210,16 @@ document.addEventListener('DOMContentLoaded', () => {
     closeModal(detailModal);
     closeModal(consultationSuccessModal);
   }
+
+  // Universal close button delegation
+  document.addEventListener('click', (e) => {
+    const closeBtn = e.target.closest('.modal-close-btn, [data-close-modal], #closeBookingModal, #closeSuccessModal, #closeSuccessDoneBtn, #closeDetailModal, #closeDetailBackBtn');
+    if (closeBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      closeAllModals();
+    }
+  });
 
   function showToast(title, message) {
     if (!appToast) return;
@@ -291,8 +355,128 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function sanitizePhone(phone) {
     if (!phone) return '';
-    return String(phone).replace(/[^\d\s+\-()]/g, '').trim().slice(0, 20);
+    return String(phone).replace(/\D/g, '').slice(0, 10);
   }
+
+  // Live input filtering for phone: digits only, max 10 digits
+  const clientPhoneField = document.getElementById('clientPhone');
+  if (clientPhoneField) {
+    clientPhoneField.addEventListener('input', () => {
+      clientPhoneField.value = clientPhoneField.value.replace(/\D/g, '').slice(0, 10);
+      if (clientPhoneField.value.length === 10) {
+        clientPhoneField.setCustomValidity('');
+      }
+    });
+    clientPhoneField.addEventListener('blur', () => {
+      if (clientPhoneField.value.length === 10 || clientPhoneField.value.length === 0) {
+        clientPhoneField.setCustomValidity('');
+      }
+    });
+  }
+
+  // --- Pure 3-Element Digital Time Setter (9:00 AM - 9:00 PM) ---
+  function initSimpleTimeSetter() {
+    const selectHr = document.getElementById('selectHr');
+    const selectMin = document.getElementById('selectMin');
+    const btnAm = document.getElementById('btnAm');
+    const btnPm = document.getElementById('btnPm');
+    const appointmentTime = document.getElementById('appointmentTime');
+    if (!selectHr || !selectMin || !btnAm || !btnPm || !appointmentTime) return;
+
+    let currentPeriod = btnAm.classList.contains('active') ? 'AM' : 'PM';
+
+    // Strictly clinic operating hours:
+    // AM: 9, 10, 11 (09:00 AM - 11:55 AM)
+    // PM: 12, 1, 3, 4, 5, 6, 7, 8 (Strictly erased 2 PM and 9 PM)
+    const amHours = [9, 10, 11];
+    const pmHours = [12, 1, 3, 4, 5, 6, 7, 8];
+
+    function renderHourOptions(period, keepVal) {
+      const hours = period === 'AM' ? amHours : pmHours;
+      selectHr.innerHTML = '';
+      hours.forEach(h => {
+        const opt = document.createElement('option');
+        opt.value = h;
+        opt.textContent = String(h).padStart(2, '0');
+        selectHr.appendChild(opt);
+      });
+
+      const targetVal = Number(keepVal);
+      if (hours.includes(targetVal)) {
+        selectHr.value = targetVal;
+      } else {
+        selectHr.value = hours[0];
+      }
+    }
+
+    function enforceClinicLimits() {
+      const hr = parseInt(selectHr.value, 10);
+      if (currentPeriod === 'PM') {
+        // Strictly prevent 2:00 PM and 9:00 PM in PM mode
+        if (hr === 2) selectHr.value = '3';
+        if (hr === 9) selectHr.value = '8';
+        if (!pmHours.includes(hr)) selectHr.value = pmHours[0];
+      }
+    }
+
+    function syncHiddenInput() {
+      let hr = parseInt(selectHr.value, 10);
+      const min = parseInt(selectMin.value, 10);
+      if (isNaN(hr)) hr = 10;
+
+      let h24 = hr;
+      if (currentPeriod === 'AM') {
+        if (h24 === 12) h24 = 0;
+      } else {
+        if (h24 !== 12) h24 += 12;
+      }
+
+      const hh = String(h24).padStart(2, '0');
+      const mm = String(isNaN(min) ? 0 : min).padStart(2, '0');
+      appointmentTime.value = `${hh}:${mm}`;
+    }
+
+    function setPeriod(period) {
+      if (currentPeriod === period) return;
+      currentPeriod = period;
+      if (period === 'AM') {
+        btnAm.classList.add('active');
+        btnPm.classList.remove('active');
+      } else {
+        btnPm.classList.add('active');
+        btnAm.classList.remove('active');
+      }
+      const curHr = selectHr.value;
+      renderHourOptions(currentPeriod, curHr);
+      enforceClinicLimits();
+      syncHiddenInput();
+    }
+
+    btnAm.addEventListener('click', (e) => {
+      e.preventDefault();
+      setPeriod('AM');
+    });
+
+    btnPm.addEventListener('click', (e) => {
+      e.preventDefault();
+      setPeriod('PM');
+    });
+
+    selectHr.addEventListener('change', () => {
+      enforceClinicLimits();
+      syncHiddenInput();
+    });
+
+    selectMin.addEventListener('change', () => {
+      enforceClinicLimits();
+      syncHiddenInput();
+    });
+
+    renderHourOptions(currentPeriod, selectHr.value || 10);
+    enforceClinicLimits();
+    syncHiddenInput();
+  }
+  initSimpleTimeSetter();
 
   let lastSubmitTime = 0;
 
@@ -320,6 +504,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const name = sanitizeInput(rawName, 60) || 'Valued Patient';
       const phone = sanitizePhone(rawPhone);
+      if (!phone || phone.length !== 10) {
+        showToast('10-Digit Mobile Required', 'Please enter a valid 10-digit mobile number.');
+        if (phoneInput) {
+          phoneInput.focus();
+          phoneInput.setCustomValidity('Please enter exactly 10 digits');
+          phoneInput.reportValidity();
+        }
+        return;
+      }
+      if (phoneInput) phoneInput.setCustomValidity('');
+
       const service = sanitizeInput(rawService, 60) || 'General Dental Consultation';
 
       let formattedDate = 'Priority / Earliest Available';
@@ -339,6 +534,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
+      // Format 12-Hour Preferred Time (e.g. 10:30 AM)
+      let formattedTime = '10:30 AM';
+      const timeInput = document.getElementById('appointmentTime');
+      const timeVal = (timeInput && timeInput.value) || '';
+      if (timeVal) {
+        const parts = timeVal.split(':');
+        if (parts.length === 2) {
+          let h = parseInt(parts[0], 10);
+          const m = parseInt(parts[1], 10);
+          // Strictly clamp PM hours: 12, 1, 3, 4, 5, 6, 7, 8 (erased 2 PM & 9 PM)
+          if (h >= 12) {
+            if (h === 14) h = 15; // 2 PM clamped to 3 PM
+            if (h >= 21) h = 20;  // 9 PM clamped to 8 PM
+          }
+          const period = h >= 12 ? 'PM' : 'AM';
+          let h12 = h % 12;
+          if (h12 === 0) h12 = 12;
+          formattedTime = `${String(h12).padStart(2, '0')}:${String(m).padStart(2, '0')} ${period}`;
+        }
+      }
+
       // Format WhatsApp text
       const waText = 
 `*DENTAL CONSULTATION REQUEST*
@@ -348,10 +564,11 @@ document.addEventListener('DOMContentLoaded', () => {
 *Phone Number:* ${phone}
 *Care Category:* ${service}
 *Preferred Date:* ${formattedDate}
+*Preferred Time:* ${formattedTime}
 --------------------------------
 Hello Dr. Vivek Barde, I submitted this appointment request via your official website. Please confirm my consultation schedule.`;
 
-      const waUrl = `https://api.whatsapp.com/send?phone=918999103775&text=${encodeURIComponent(waText)}`;
+      const waUrl = `https://api.whatsapp.com/send?phone=917083444404&text=${encodeURIComponent(waText)}`;
 
       // Populate enhanced success popup ticket
       if (successPatientName) successPatientName.textContent = name;
@@ -359,7 +576,11 @@ Hello Dr. Vivek Barde, I submitted this appointment request via your official we
       if (ticketPhoneVal) ticketPhoneVal.textContent = phone;
       if (ticketServiceVal) ticketServiceVal.textContent = service;
       if (ticketDateVal) ticketDateVal.textContent = formattedDate;
-      if (successWhatsAppActionBtn) successWhatsAppActionBtn.href = waUrl;
+      if (ticketTimeVal) ticketTimeVal.textContent = formattedTime;
+      if (successWhatsAppActionBtn) {
+        successWhatsAppActionBtn.href = waUrl;
+        successWhatsAppActionBtn.setAttribute('href', waUrl);
+      }
 
       // Close booking modal and open enhanced confirmation modal
       closeModal(bookingModal);
@@ -371,11 +592,17 @@ Hello Dr. Vivek Barde, I submitted this appointment request via your official we
         `Opening WhatsApp directly with Dr. Vivek Barde...`
       );
 
-      // Launch WhatsApp in a new tab securely
+      // Launch WhatsApp reliably
+      let opened = null;
       try {
-        window.open(waUrl, '_blank', 'noopener,noreferrer');
+        opened = window.open(waUrl, '_blank');
       } catch (err) {
         console.log('[Notice] Direct window.open deferred by browser:', err);
+      }
+      if (!opened || opened.closed || typeof opened.closed === 'undefined') {
+        setTimeout(() => {
+          window.location.href = waUrl;
+        }, 800);
       }
 
       appointmentForm.reset();
@@ -419,17 +646,31 @@ Hello Dr. Vivek Barde, I submitted this appointment request via your official we
           // ONLY highlight the button that was actually clicked
           anchorLinks.forEach(l => l.classList.remove('active-pill'));
           link.classList.add('active-pill');
+
+          // Smoothly center the tapped button within the horizontal scroll on mobile
+          try {
+            link.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+          } catch (_) {}
         }
       }
     });
   });
 
-  // Back button click handler: straight forward jump to fourth page directly
+  // Back button click handler: navigate back to 4th page on Home
   const backToHomeBtn = document.getElementById('backToHomeBtn');
   if (backToHomeBtn) {
     backToHomeBtn.addEventListener('click', (e) => {
       e.preventDefault();
       window.location.href = 'index.html#slide-4';
+    });
+  }
+
+  // Mobile bottom dock Home button handler: return to Home page
+  const mobDockHome = document.getElementById('mobDockHome');
+  if (mobDockHome) {
+    mobDockHome.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = 'index.html';
     });
   }
 });

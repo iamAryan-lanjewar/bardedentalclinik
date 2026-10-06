@@ -1078,7 +1078,7 @@ body.mode-slide .slide-section.slide-map.active {
 }
 
 .offer-content-side {
-  padding: 42px 48px;
+  padding: 34px 48px 36px 48px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1086,26 +1086,28 @@ body.mode-slide .slide-section.slide-map.active {
 
 .offer-main-title {
   color: #ffffff;
-  font-size: 39px;
+  font-size: 38px;
   font-weight: 800;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   letter-spacing: -0.02em;
+  line-height: 1.15;
 }
 
 .offer-services-list {
   list-style: none;
+  margin: 0 0 24px 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 9px;
-  margin-bottom: 24px;
+  gap: 3.5px;
 }
 
 .offer-item {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   color: #ffffff;
-  font-size: 21px;
+  font-size: 20px;
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition-smooth);
@@ -1116,8 +1118,14 @@ body.mode-slide .slide-section.slide-map.active {
 }
 
 .bullet-dot {
-  font-size: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  font-size: 20px;
   line-height: 1;
+  flex-shrink: 0;
+  color: #ffffff;
 }
 
 .offer-click-btn {
@@ -1129,7 +1137,7 @@ body.mode-slide .slide-section.slide-map.active {
   background: var(--color-coral);
   color: #ffffff;
   border: none;
-  padding: 10px 32px;
+  padding: 10px 34px;
   border-radius: var(--radius-pill);
   font-family: inherit;
   font-size: 16px;
@@ -1146,15 +1154,22 @@ body.mode-slide .slide-section.slide-map.active {
 }
 
 .offer-item-anchor {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   color: #ffffff;
-  font-size: 19.5px;
+  font-size: 19px;
   font-weight: 600;
+  line-height: 1.25;
   text-decoration: none;
   cursor: pointer;
   transition: var(--transition-smooth);
+  padding: 1px 0;
+}
+.offer-item-anchor .item-text {
+  letter-spacing: 0.01em;
+  display: inline-block;
+  vertical-align: middle;
 }
 .offer-item-anchor:hover {
   transform: translateX(6px);
@@ -2238,25 +2253,41 @@ a.address-map-link:focus {
   position: absolute;
   top: 16px;
   right: 18px;
-  width: 34px;
-  height: 34px;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
   border-radius: 50%;
   background: #f1f5f9;
-  border: none;
-  font-size: 22px;
-  line-height: 1;
+  border: 1px solid rgba(0, 0, 0, 0.05);
   color: #64748b;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: var(--transition-smooth);
-  z-index: 10;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 100 !important;
+  pointer-events: auto !important;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  padding: 0;
+}
+.modal-close-btn svg {
+  pointer-events: none;
+  transition: transform 0.22s ease;
 }
 .modal-close-btn:hover {
-  background: var(--color-coral-soft);
-  color: var(--color-coral-dark);
+  background: #fee2e2;
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.2);
+  transform: scale(1.06);
+}
+.modal-close-btn:hover svg {
   transform: rotate(90deg);
+}
+.modal-close-btn:active {
+  transform: scale(0.92);
+  background: #fecaca;
 }
 
 .modal-header-block {
@@ -2274,7 +2305,7 @@ a.address-map-link:focus {
   background: #fef0f1;
   padding: 4px 12px;
   border-radius: 999px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   border: 1px solid rgba(250, 177, 178, 0.4);
 }
 
@@ -2392,6 +2423,278 @@ a.address-map-link:focus {
   color: var(--color-coral-dark);
 }
 
+/* ===================================================================
+   CLEAN 3-OPTION TIME SETTER (HR, MIN, AM & PM)
+   (Clinic consultation hours: strictly 9:00 AM – 9:00 PM only)
+   =================================================================== */
+.digital-time-field-wrap {
+  margin-top: 2px;
+}
+
+.time-field-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.clinic-time-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #0369a1;
+  background: #e0f2fe;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  letter-spacing: 0.02em;
+}
+
+.time-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  display: inline-block;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulseGreenGlow 2s infinite;
+}
+
+@keyframes pulseGreenGlow {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* ===================================================================
+   PURE 3-ELEMENT DIGITAL TIME SETTER (Aesthetic Digital Console)
+   Spacious HR & MIN + Space-Saving Compact Vertical AM/PM
+   =================================================================== */
+.pure-time-setter {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border: 1.5px solid #bae6fd;
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin-top: 4px;
+  transition: all 0.22s ease;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.08);
+}
+
+.pure-time-setter:focus-within {
+  border-color: #0284c7;
+  box-shadow: 0 0 0 3.5px rgba(2, 132, 199, 0.18), 0 6px 18px rgba(2, 132, 199, 0.12);
+}
+
+.pure-time-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Spacious HR and MIN Columns consume the majority of space */
+.pure-time-col.hr-col,
+.pure-time-col.min-col {
+  flex: 1 1 0;
+  min-width: 0;
+  align-items: stretch;
+}
+
+/* Compact AM/PM Column takes minimal space, aligned with boxes */
+.pure-time-col.ampm-col {
+  flex: 0 0 54px;
+  width: 54px;
+  align-items: stretch;
+  align-self: flex-end;
+}
+
+.pure-col-title {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #0284c7;
+  text-transform: uppercase;
+  text-align: center;
+  user-select: none;
+}
+
+/* Spacious aesthetic digital boxes for HR and MIN */
+.pure-select-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 52px;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+}
+
+.pure-select-box:hover {
+  border-color: #0284c7;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.12);
+}
+
+.pure-select-box:focus-within {
+  border-color: #0284c7;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2);
+}
+
+.pure-select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f2c42;
+  text-align: center;
+  padding: 0 26px 0 10px;
+  cursor: pointer;
+  font-family: inherit;
+  font-variant-numeric: tabular-nums;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.pure-select-arrow {
+  position: absolute;
+  right: 10px;
+  width: 16px;
+  height: 16px;
+  color: #0284c7;
+  pointer-events: none;
+  transition: transform 0.2s ease;
+}
+
+.pure-colon {
+  font-size: 26px;
+  font-weight: 900;
+  color: #0284c7;
+  align-self: flex-end;
+  margin-bottom: 12px;
+  user-select: none;
+  line-height: 1;
+  flex: 0 0 auto;
+}
+
+/* Different, space-saving vertical capsule style for AM/PM */
+.pure-ampm-vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  gap: 3px;
+  height: 52px;
+  width: 100%;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 3px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+  box-sizing: border-box;
+}
+
+.ampm-v-btn {
+  flex: 1 1 0;
+  width: 100%;
+  border: none;
+  border-radius: 7px;
+  background: transparent;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+}
+
+.ampm-v-btn:hover {
+  color: #0284c7;
+  background: rgba(2, 132, 199, 0.08);
+}
+
+.ampm-v-btn.active {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.4);
+}
+
+.native-time-input-hidden {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 1px;
+  height: 1px;
+}
+
+@media (max-width: 480px) {
+  .pure-time-setter {
+    gap: 8px;
+    padding: 10px 10px;
+    border-radius: 12px;
+  }
+  .pure-select-box {
+    height: 48px;
+    border-radius: 10px;
+  }
+  .pure-select-box:active {
+    transform: scale(0.97);
+  }
+  .pure-select {
+    font-size: 21px;
+    padding: 0 22px 0 8px;
+  }
+  .pure-select-arrow {
+    right: 7px;
+    width: 14px;
+    height: 14px;
+  }
+  .pure-colon {
+    font-size: 22px;
+    align-self: flex-end;
+    margin-bottom: 11px;
+    margin-top: 0;
+  }
+  .pure-time-col.ampm-col {
+    flex: 0 0 50px;
+    width: 50px;
+  }
+  .pure-ampm-vertical {
+    height: 48px;
+    padding: 2.5px;
+    gap: 2.5px;
+    border-radius: 10px;
+  }
+  .ampm-v-btn {
+    font-size: 11px;
+    font-weight: 800;
+    border-radius: 6px;
+  }
+  .ampm-v-btn:active {
+    transform: scale(0.94);
+  }
+}
+
 .modal-submit-btn {
   width: 100%;
   height: 48px;
@@ -2448,6 +2751,92 @@ a.address-map-link:focus {
 .wa-mini-icon {
   color: #25d366;
   flex-shrink: 0;
+}
+
+/* Modal Back Buttons & Actions Row */
+.modal-top-bar-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.modal-back-btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f1f5f9;
+  color: #074e5e;
+  border: 1px solid rgba(7, 78, 94, 0.2);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-back-btn-pill:hover {
+  background: #e2e8f0;
+  color: #042f38;
+  border-color: #074e5e;
+  transform: translateX(-2px);
+}
+
+.modal-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.modal-actions-row .modal-submit-btn {
+  margin-top: 0 !important;
+  flex: 1.2;
+}
+
+.modal-back-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 18px;
+  background: #f1f5f9;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.modal-back-action-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+  border-color: #94a3b8;
+  transform: translateY(-1px);
+}
+
+.modal-back-action-btn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 520px) {
+  .modal-actions-row {
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+  .modal-actions-row .modal-back-action-btn,
+  .modal-actions-row .modal-submit-btn {
+    width: 100%;
+  }
 }
 
 /* ===================================================================
@@ -2663,12 +3052,51 @@ a.address-map-link:focus {
 
 @media (max-width: 600px) {
   .app-modal-dialog {
-    padding: 24px 18px;
+    padding: 22px 16px;
     border-radius: 20px;
     max-width: calc(100% - 24px);
   }
-  .modal-title {
-    font-size: 20px;
+  .modal-close-btn {
+    top: 12px;
+    right: 12px;
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    min-height: 42px;
+  }
+  .modal-close-btn::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+  }
+  .modal-header-block {
+    margin-bottom: 14px;
+    padding: 0 16px;
+  }
+  .modal-kicker-tag {
+    font-size: 10px;
+    padding: 3px 10px;
+    margin-bottom: 6px;
+    max-width: calc(100% - 36px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .modal-title,
+  #bookingModalTitle,
+  #modalTitle {
+    font-size: clamp(16px, 4.8vw, 19.5px);
+    white-space: nowrap;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    margin-bottom: 4px;
+  }
+  .modal-subtitle {
+    font-size: 12.5px;
+    line-height: 1.35;
   }
   .ticket-details-grid {
     grid-template-columns: 1fr;
@@ -4318,7 +4746,7 @@ a.address-map-link:focus {
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 1.5px;
     flex: 1;
     justify-content: space-evenly;
   }
@@ -4334,27 +4762,44 @@ a.address-map-link:focus {
     text-decoration: none;
     font-size: 14.5px;
     font-weight: 600;
-    padding: 3px 0;
-    transition: transform 0.2s ease, color 0.2s ease;
+    padding: 3px 12px 3px 6px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform 0.26s cubic-bezier(0.16, 1, 0.3, 1),
+                color 0.2s ease,
+                background-color 0.2s ease;
     -webkit-tap-highlight-color: transparent;
   }
   #mobileOffer .m916-offer-link:hover,
-  #mobileOffer .m916-offer-link:active {
-    transform: translateX(4px);
-    color: #04252d;
+  #mobileOffer .m916-offer-link:focus,
+  #mobileOffer .m916-offer-link:active,
+  #mobileOffer .m916-offer-link.is-hovered,
+  #mobileOffer .m916-offer-li:hover .m916-offer-link {
+    transform: translateX(8px);
+    color: #022026;
+    background-color: rgba(7, 73, 88, 0.08);
   }
   #mobileOffer .m916-offer-link .m-dot {
     color: #074958;
     font-size: 20px;
     line-height: 1;
     flex-shrink: 0;
+    transition: transform 0.26s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+  }
+  #mobileOffer .m916-offer-link:hover .m-dot,
+  #mobileOffer .m916-offer-link:focus .m-dot,
+  #mobileOffer .m916-offer-link:active .m-dot,
+  #mobileOffer .m916-offer-link.is-hovered .m-dot,
+  #mobileOffer .m916-offer-li:hover .m-dot {
+    transform: scale(1.3);
+    color: #022026;
   }
   #mobileOffer .m916-offer-link .m-text {
     letter-spacing: 0.01em;
     line-height: 1.25;
   }
   #mobileOffer .m916-offer-btn-wrap {
-    margin-top: 8px;
+    margin-top: 14px;
     margin-bottom: 2px;
     padding-top: 0;
     padding-bottom: 0;
