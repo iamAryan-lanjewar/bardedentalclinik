@@ -54,7 +54,7 @@
     "@context": "https://schema.org",
     "@type": "Dentist",
     "name": "Dr. Vivek Barde Dental Clinic",
-    "image": "https://builddear.com/assets/doctor_photo_target.webp",
+    "image": "https://builddear.com/assets/doctor_gold_emblem.webp",
     "logo": "https://builddear.com/assets/tooth_icon.webp",
     "telephone": ["+917083444404", "+917038444404"],
     "email": "dr.vivekbarde@gmail.com",
@@ -179,6 +179,34 @@
   }
   </script>
   
+  <!-- Structured Data: BreadcrumbList for Search Result Hierarchy -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://builddear.com/"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: WebSite Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Dr. Vivek Barde Dental Clinic",
+    "url": "https://builddear.com/",
+    "inLanguage": "en-IN",
+    "description": "Premier dental clinic in Tumsar, Bhandara providing advanced, painless root canal treatments, braces, dental implants, veneers, and teeth cleaning."
+  }
+  </script>
+  
   <!-- Favicon -->
   <link rel="icon" type="image/webp" href="assets/tooth_icon.webp" />
   <link rel="apple-touch-icon" href="assets/tooth_icon.webp" />
@@ -187,17 +215,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <!-- Fast Google Maps Preconnect & DNS Pre-resolution -->
+  <link rel="preconnect" href="https://maps.googleapis.com">
+  <link rel="preconnect" href="https://maps.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://www.google.com">
   <link rel="preconnect" href="https://maps.google.com">
-  <link rel="preconnect" href="https://maps.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://maps.googleapis.com">
+  <link rel="dns-prefetch" href="https://maps.gstatic.com">
   <link rel="dns-prefetch" href="https://www.google.com">
   <link rel="dns-prefetch" href="https://maps.google.com">
-  <link rel="dns-prefetch" href="https://maps.gstatic.com">
   <link rel="preload" as="image" href="assets/hero_right_perfect.webp" type="image/webp" fetchpriority="high">
   <link rel="preload" as="image" href="assets/doctor_gold_emblem.webp?v=8.2" type="image/webp">
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@400;500;600;700;800;900&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  </noscript>
   
-  <link rel="stylesheet" href="style.css?v=16.0" />
+  <link rel="stylesheet" href="style.css?v=18.0" />
 </head>
 <body class="mode-continuous">
 
@@ -913,7 +947,15 @@
         <!-- Left Side: Interactive Live Google Map (No Static Image Mockup) -->
         <div class="map-visual-side">
           <div class="map-card-wrapper" id="mapCardWrap">
-            <iframe id="liveGoogleMap" class="live-map-iframe active" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7430.582408838173!2d79.73250009357908!3d21.3784356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a2b19a3e2e18fa1%3A0x418fbf15f54da5af!2sDr%20Vivek%20Barde%20Dental%20Clinic!5e0!3m2!1sen!2sus!4v1791171424251!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="eager" fetchpriority="high" referrerpolicy="strict-origin-when-cross-origin" title="Google Map of Dr. Vivek Barde Dental Clinic in Tumsar"></iframe>
+            <div class="map-fast-skeleton" id="desktopMapSkeleton">
+              <div class="skeleton-pin-pulse">
+                <div class="pin-marker-dot"></div>
+                <div class="pin-marker-ring"></div>
+              </div>
+              <div class="skeleton-clinic-name">Dr. Vivek Barde Dental Clinic</div>
+              <div class="skeleton-clinic-sub">Bhandara Road, Tumsar • Loading Live Map...</div>
+            </div>
+            <iframe id="liveGoogleMap" class="live-map-iframe" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7430.582408838173!2d79.73250009357908!3d21.3784356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a2b19a3e2e18fa1%3A0x418fbf15f54da5af!2sDr%20Vivek%20Barde%20Dental%20Clinic!5e0!3m2!1sen!2sus!4v1791171424251!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Google Map of Dr. Vivek Barde Dental Clinic in Tumsar"></iframe>
             <a href="https://www.google.com/maps/place/Dr+Vivek+Barde+Dental+Clinic/@21.3784356,79.7325001,17z/data=!4m6!3m5!1s0x3a2b19a3e2e18fa1:0x418fbf15f54da5af!8m2!3d21.3784356!4d79.7325001!16s%2Fg%2F11y143d2k2" target="_blank" rel="noopener noreferrer" class="map-directions-badge" title="Open in Map">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
               <span>Open in Map</span>
@@ -1068,7 +1110,7 @@
         <h1 class="sr-only">Dr. Vivek Barde Dental Clinic — Best Dentist in Tumsar, Bhandara</h1>
         
         <!-- Base Master Artwork: 575 x 1024 Pixel-Matched Composite -->
-        <img src="assets/mobile_hero_target.webp" alt="Barde Dental Clinic — Your Best Smile Starts Here" class="mobile-hero-artwork" fetchpriority="high" decoding="async" />
+        <img src="assets/mobile_hero_target.webp?v=2.1" alt="Barde Dental Clinic — Your Best Smile Starts Here" class="mobile-hero-artwork" fetchpriority="high" decoding="async" />
 
         <!-- A. Top Brand Interactive Hotspot -->
         <a href="#mobileHero" class="mobile-hotspot mobile-brand-hotspot" title="Barde Dental Clinic — Home"></a>
@@ -1472,11 +1514,15 @@
             </p>
             <div class="m916-pills-wrap">
               <div class="m916-pills-title">Key Treatments:</div>
-              <div class="m916-story-pills-grid">
-                <span class="m916-pink-pill">Day-Capping Crowns</span>
-                <span class="m916-pink-pill">Dental Crowns</span>
-                <span class="m916-pink-pill">Bridges &amp; Dentures</span>
-                <span class="m916-pink-pill">Root Canal Therapy</span>
+              <div class="m916-story-pills-grid m916-restorative-pills-grid">
+                <div class="m916-pills-row">
+                  <span class="m916-pink-pill">Day-Capping Crowns</span>
+                  <span class="m916-pink-pill">Dental Crowns</span>
+                </div>
+                <div class="m916-pills-row">
+                  <span class="m916-pink-pill">Bridges &amp; Dentures</span>
+                  <span class="m916-pink-pill">Root Canal Therapy</span>
+                </div>
               </div>
             </div>
           </div>
@@ -1611,16 +1657,24 @@
           <h2 class="m916-contact-title">Visit Our Clinic</h2>
         </div>
 
-        <!-- Ideal Size Google Map (No Image, Simple & Clean Live Embed) -->
-        <div class="m916-map-container">
+        <!-- Ideal Size Google Map (Fast Progressive Live Embed) -->
+        <div class="m916-map-container" id="m916MapWrap">
+          <div class="map-fast-skeleton" id="mobileMapSkeleton">
+            <div class="skeleton-pin-pulse">
+              <div class="pin-marker-dot"></div>
+              <div class="pin-marker-ring"></div>
+            </div>
+            <div class="skeleton-clinic-name">Dr. Vivek Barde Dental Clinic</div>
+            <div class="skeleton-clinic-sub">Bhandara Road, Tumsar • Loading Map...</div>
+          </div>
           <iframe 
             class="m916-map-iframe" 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7430.582408838173!2d79.73250009357908!3d21.3784356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a2b19a3e2e18fa1%3A0x418fbf15f54da5af!2sDr%20Vivek%20Barde%20Dental%20Clinic!5e0!3m2!1sen!2sus!4v1791171424251!5m2!1sen!2sus" 
+            data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7430.582408838173!2d79.73250009357908!3d21.3784356!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a2b19a3e2e18fa1%3A0x418fbf15f54da5af!2sDr%20Vivek%20Barde%20Dental%20Clinic!5e0!3m2!1sen!2sus!4v1791171424251!5m2!1sen!2sus" 
             width="600" 
             height="450" 
             style="border:0;" 
             allowfullscreen="" 
-            loading="eager" 
+            loading="lazy" 
             referrerpolicy="strict-origin-when-cross-origin" 
             title="Dr. Vivek Barde Dental Clinic Map Location in Tumsar">
           </iframe>
@@ -1856,6 +1910,7 @@
               <option value="Cosmatic Filling">Cosmatic Filling</option>
               <option value="Tooth Extraction (Painless Removal)">Tooth Extraction (Painless Removal)</option>
               <option value="Dental Intraoral Camera">Dental Intraoral Camera (Live HD Scan)</option>
+              <option value="Others">Others</option>
             </select>
             <svg class="select-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="6 9 12 15 18 9"></polyline>

@@ -2,16 +2,24 @@
 // BARDE DENTAL CLINIC — CLIENT APPLICATION SCRIPT
 // 16:9 Canvas Stage Engine + Slide Presentation & Modern UX Controls
 // ===================================================================
-// Auto-purge any stale service workers or legacy caches from past deployments
+
+// Global Error Guard: Gracefully prevent third-party / external frame issues from surfacing
+window.addEventListener('error', (e) => {
+  if (e && e.filename && (e.filename.includes('chrome-extension') || e.filename.includes('maps.google') || e.filename.includes('google.com') || e.filename.includes('googleapis'))) {
+    e.preventDefault();
+  }
+});
+window.addEventListener('unhandledrejection', (e) => {
+  if (e && e.reason && (String(e.reason).includes('AbortError') || String(e.reason).includes('cancelled') || String(e.reason).includes('ResizeObserver'))) {
+    e.preventDefault();
+  }
+});
+
+// Auto-cleanup any stale service workers from past deployments
 try {
   if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
     navigator.serviceWorker.getRegistrations().then(registrations => {
       for (const reg of registrations) reg.unregister();
-    }).catch(() => {});
-  }
-  if (typeof window !== 'undefined' && 'caches' in window) {
-    caches.keys().then(names => {
-      for (const name of names) caches.delete(name);
     }).catch(() => {});
   }
 } catch (_) {}
@@ -1332,22 +1340,24 @@ Hello Dr. Vivek Barde, I submitted this appointment request via your official we
     // Check if it's a topbar link or dock item already handled
     if (anchor.classList.contains('nav-link') || anchor.id === 'mobDockHome') return;
 
-    const targetEl = document.querySelector(href);
-    if (targetEl) {
-      e.preventDefault();
-      const topbar = document.getElementById('appTopbar');
-      const topbarHeight = (topbar && window.innerWidth > 768) ? topbar.offsetHeight : 0;
-      const targetTop = targetEl.getBoundingClientRect().top + window.pageYOffset - topbarHeight;
+    try {
+      const targetEl = document.querySelector(href);
+      if (targetEl) {
+        e.preventDefault();
+        const topbar = document.getElementById('appTopbar');
+        const topbarHeight = (topbar && window.innerWidth > 768) ? topbar.offsetHeight : 0;
+        const targetTop = targetEl.getBoundingClientRect().top + window.pageYOffset - topbarHeight;
 
-      window.scrollTo({
-        top: Math.max(0, targetTop),
-        behavior: 'smooth'
-      });
+        window.scrollTo({
+          top: Math.max(0, targetTop),
+          behavior: 'smooth'
+        });
 
-      try {
-        history.pushState(null, null, href);
-      } catch (err) {}
-    }
+        try {
+          history.pushState(null, null, href);
+        } catch (_) {}
+      }
+    } catch (_) {}
   });
 
   // Smooth scroll to top for mobile bottom dock "Home" button
@@ -1408,6 +1418,77 @@ Hello Dr. Vivek Barde, I submitted this appointment request via your official we
       }
     });
   }
+
+  // Fast Progressive Google Maps Engine (Device-specific, lazy + idle pre-warmed, zero render-blocking)
+  function initFastMapLoader() {
+    const desktopIframe = document.getElementById('liveGoogleMap');
+    const mobileIframe = document.querySelector('.m916-map-iframe');
+    
+    function loadIframe(iframe) {
+      if (!iframe) return;
+      const dataSrc = iframe.getAttribute('data-src');
+      if (dataSrc && (!iframe.src || iframe.src === 'about:blank' || !iframe.src.includes('google.com/maps'))) {
+        iframe.src = dataSrc;
+        const onMapLoad = () => {
+          iframe.classList.add('map-loaded');
+          const skeleton = iframe.parentElement ? iframe.parentElement.querySelector('.map-fast-skeleton') : null;
+          if (skeleton) skeleton.classList.add('fade-out');
+        };
+        iframe.addEventListener('load', onMapLoad, { once: true });
+        setTimeout(onMapLoad, 4000);
+      }
+    }
+
+    function triggerActiveMap() {
+      const isMobile = window.innerWidth <= 768;
+      // Strictly load ONLY the map for the active device layout, saving 50% data & CPU
+      if (isMobile) {
+        loadIframe(mobileIframe);
+      } else {
+        loadIframe(desktopIframe);
+      }
+    }
+
+    // 1. Preload when approaching map via IntersectionObserver (600px lookahead)
+    try {
+      const observeTarget = window.innerWidth <= 768 
+        ? document.getElementById('mobileContact') 
+        : document.getElementById('slide-10');
+
+      if (observeTarget && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          if (entries.some(e => e.isIntersecting)) {
+            triggerActiveMap();
+            observer.disconnect();
+          }
+        }, { rootMargin: '600px 0px' });
+        observer.observe(observeTarget);
+      }
+    } catch (_) {}
+
+    // 2. Idle Pre-warm: Start loading map during browser idle time so it is ready on arrival
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => {
+        setTimeout(triggerActiveMap, 1000);
+      }, { timeout: 2500 });
+    } else {
+      setTimeout(triggerActiveMap, 1200);
+    }
+
+    // 3. User interaction triggers (nav links, clicks, touches)
+    document.querySelectorAll('a[href*="slide-10"], a[href*="mobileContact"], a[href*="slide-4"], a[href*="slide-3"], .nav-link, .dock-nav-item').forEach(el => {
+      el.addEventListener('pointerenter', triggerActiveMap, { once: true, passive: true });
+      el.addEventListener('touchstart', triggerActiveMap, { once: true, passive: true });
+      el.addEventListener('click', triggerActiveMap, { once: true, passive: true });
+    });
+
+    // Also trigger if window resized between mobile/desktop
+    window.addEventListener('resize', () => {
+      triggerActiveMap();
+    }, { passive: true });
+  }
+
+  initFastMapLoader();
 
   handleInitialHashNavigation();
   window.addEventListener('hashchange', handleInitialHashNavigation);

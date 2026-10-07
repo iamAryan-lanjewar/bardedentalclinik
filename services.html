@@ -95,6 +95,95 @@
   }
   </script>
 
+  <!-- Structured Data: MedicalProcedure & ItemList for Rich Search Results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Clinical Dental Procedures at Dr. Vivek Barde Clinic",
+    "description": "Full clinical catalog of advanced dental treatments in Tumsar, Bhandara",
+    "itemListElement": [
+      {
+        "@type": "MedicalProcedure",
+        "position": 1,
+        "name": "Root Canal Therapy",
+        "description": "Painless microscopic endodontic tooth-saving care using nickel-titanium rotary files and apex locators.",
+        "url": "https://builddear.com/services.html#root-canal"
+      },
+      {
+        "@type": "MedicalProcedure",
+        "position": 2,
+        "name": "Complete & Partial Dentures",
+        "description": "Comfortable, natural-looking replacement teeth custom molded to restore natural chewing and clear speech.",
+        "url": "https://builddear.com/services.html#denture"
+      },
+      {
+        "@type": "MedicalProcedure",
+        "position": 3,
+        "name": "Cosmetic Tooth Filling",
+        "description": "Biocompatible nano-hybrid composite resin restorations matching natural tooth enamel translucency.",
+        "url": "https://builddear.com/services.html#cavities"
+      },
+      {
+        "@type": "MedicalProcedure",
+        "position": 4,
+        "name": "Surgical Tooth Extraction",
+        "description": "Gentle, pain-free removal for impacted wisdom teeth and broken roots with computer-aided numbing.",
+        "url": "https://builddear.com/services.html#surgical-extraction"
+      },
+      {
+        "@type": "MedicalProcedure",
+        "position": 5,
+        "name": "Ultra Sonic Scaling",
+        "description": "Air-flow ultrasonic scaling removing stubborn plaque, calculus, and tea/coffee stains to protect gums.",
+        "url": "https://builddear.com/services.html#cleaning"
+      },
+      {
+        "@type": "MedicalProcedure",
+        "position": 6,
+        "name": "Crown & Bridges",
+        "description": "High-strength natural ceramic and zirconia crowns and bridges restoring 100% natural chewing strength.",
+        "url": "https://builddear.com/services.html#crown-bridge"
+      },
+      {
+        "@type": "MedicalProcedure",
+        "position": 7,
+        "name": "Dental Veneers",
+        "description": "Ultra-thin Swiss porcelain cosmetic veneers for flawless smile reconstruction.",
+        "url": "https://builddear.com/services.html#veneers"
+      },
+      {
+        "@type": "MedicalProcedure",
+        "position": 8,
+        "name": "Dental Implants",
+        "description": "3D CBCT guided titanium fixtures with immediate load protocols restoring permanent chewing power.",
+        "url": "https://builddear.com/services.html#implant-surgery"
+      },
+      {
+        "@type": "MedicalProcedure",
+        "position": 9,
+        "name": "Painless Tooth Extraction",
+        "description": "Atraumatic tooth removal using advanced local anesthesia to relieve pain quickly.",
+        "url": "https://builddear.com/services.html#new-implant"
+      },
+      {
+        "@type": "MedicalProcedure",
+        "position": 10,
+        "name": "Orthodontic Dental Care & Braces",
+        "description": "Modern braces and clear aligners to correct bite alignment and straighten teeth for teens and adults.",
+        "url": "https://builddear.com/services.html#orthodontic"
+      },
+      {
+        "@type": "MedicalProcedure",
+        "position": 11,
+        "name": "Dental Intraoral Camera",
+        "description": "High-definition pen-sized camera providing live visual diagnosis with zero pain or radiation.",
+        "url": "https://builddear.com/services.html#intraoral-camera"
+      }
+    ]
+  }
+  </script>
+
   <!-- Favicon -->
   <link rel="icon" type="image/webp" href="assets/tooth_icon.webp" />
   <link rel="apple-touch-icon" href="assets/tooth_icon.webp" />
@@ -105,9 +194,13 @@
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
   <link rel="preload" as="image" href="assets/service_root_canal.webp?v=12.0" type="image/webp" fetchpriority="high">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  </noscript>
 
-  <link rel="stylesheet" href="services.css?v=25.0" />
+  <link rel="stylesheet" href="services.css?v=26.0" />
 </head>
 <body>
 
@@ -409,6 +502,7 @@
               <option value="Tooth Extraction">Tooth Extraction (Painless Removal)</option>
               <option value="Orthodontic Dental Care">Orthodontic Dental Care (Braces &amp; Aligners)</option>
               <option value="Dental Intraoral Camera">Dental Intraoral Camera (Live HD Scan)</option>
+              <option value="Others">Others</option>
             </select>
             <svg class="select-chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="6 9 12 15 18 9"></polyline>

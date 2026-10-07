@@ -2,16 +2,24 @@
 // BARDE DENTAL CLINIC — SERVICES PAGE LOGIC
 // Anchor Scroll, Card Highlighting, Rich Detail Modals, & Booking Form
 // ===================================================================
-// Auto-purge any stale service workers or legacy caches from past deployments
+
+// Global Error Guard: Gracefully prevent third-party issues from throwing unwanted errors
+window.addEventListener('error', (e) => {
+  if (e && e.filename && (e.filename.includes('chrome-extension') || e.filename.includes('maps.google') || e.filename.includes('google.com') || e.filename.includes('googleapis'))) {
+    e.preventDefault();
+  }
+});
+window.addEventListener('unhandledrejection', (e) => {
+  if (e && e.reason && (String(e.reason).includes('AbortError') || String(e.reason).includes('cancelled') || String(e.reason).includes('ResizeObserver'))) {
+    e.preventDefault();
+  }
+});
+
+// Auto-cleanup any stale service workers from past deployments
 try {
   if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
     navigator.serviceWorker.getRegistrations().then(registrations => {
       for (const reg of registrations) reg.unregister();
-    }).catch(() => {});
-  }
-  if (typeof window !== 'undefined' && 'caches' in window) {
-    caches.keys().then(names => {
-      for (const name of names) caches.delete(name);
     }).catch(() => {});
   }
 } catch (_) {}

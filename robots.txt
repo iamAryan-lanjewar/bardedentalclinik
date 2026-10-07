@@ -1,5 +1,22 @@
 User-agent: *
 Allow: /
-Disallow: /assets/private/
+Allow: /assets/
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.webp$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.svg$
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /assets/
+Allow: /
+
+User-agent: Googlebot-Mobile
+Allow: /
 
 Sitemap: https://builddear.com/sitemap.xml
+Host: https://builddear.com

@@ -1946,9 +1946,79 @@ body.mode-slide .slide-section.slide-map.active {
   width: 100%;
   height: 100%;
   border: none;
-  display: none;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 2;
 }
-.live-map-iframe.active { display: block; }
+.live-map-iframe.map-loaded {
+  opacity: 1;
+}
+
+/* Fast Progressive Map Skeleton Loader */
+.map-fast-skeleton {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 40%, #09596b 0%, #053b47 70%, #032730 100%);
+  color: #ffffff;
+  z-index: 1;
+  border-radius: inherit;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.map-fast-skeleton.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.skeleton-pin-pulse {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.pin-marker-dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #fab1b2;
+  box-shadow: 0 0 16px rgba(250, 177, 178, 0.9);
+  position: relative;
+  z-index: 2;
+}
+.pin-marker-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(250, 177, 178, 0.65);
+  animation: pinPulseRing 1.8s infinite ease-out;
+}
+@keyframes pinPulseRing {
+  0% { transform: scale(0.5); opacity: 0.9; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+.skeleton-clinic-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  margin-bottom: 4px;
+  text-align: center;
+}
+.skeleton-clinic-sub {
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  text-align: center;
+}
 
 .map-directions-badge {
   position: absolute;
@@ -5277,6 +5347,56 @@ a.address-map-link:focus {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   }
 
+  /* SCREEN 7 - 3RD POINT (RESTORATIVE CARE) 2 IN ONE ROW KEY TREATMENTS ALIGNMENT */
+  .m916-restorative-pills-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+  .m916-restorative-pills-grid .m916-pills-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+  .m916-restorative-pills-grid .m916-pink-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #074e5e;
+    background: #ffffff;
+    border: 1.2px solid rgba(7, 78, 94, 0.2);
+    border-radius: 16px;
+    padding: 6px 10.5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    white-space: nowrap;
+    text-align: center;
+    flex-shrink: 0;
+    letter-spacing: -0.01em;
+  }
+  @media (max-width: 380px) {
+    .m916-restorative-pills-grid .m916-pills-row {
+      gap: 6px;
+    }
+    .m916-restorative-pills-grid .m916-pink-pill {
+      font-size: 10.2px;
+      padding: 5px 8px;
+    }
+  }
+  @media (max-width: 340px) {
+    .m916-restorative-pills-grid .m916-pills-row {
+      gap: 4px;
+    }
+    .m916-restorative-pills-grid .m916-pink-pill {
+      font-size: 9.5px;
+      padding: 4.5px 6.5px;
+    }
+  }
+
   /* SCREEN 8: SURGICAL EXCELLENCE ON MOBILE (MATCHING PC SLIDE 8) */
   #mobileSurgicalExcellence {
     background-color: #2b1219 !important;
@@ -5577,6 +5697,13 @@ a.address-map-link:focus {
     height: 100%;
     border: 0;
     display: block;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    position: relative;
+    z-index: 2;
+  }
+  .m916-map-iframe.map-loaded {
+    opacity: 1;
   }
   .m916-open-maps-btn {
     position: absolute;
