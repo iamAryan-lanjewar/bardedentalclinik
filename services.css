@@ -1295,22 +1295,24 @@ body {
   }
   .modal-header-block {
     margin-bottom: 14px;
-    padding: 0 16px;
+    padding: 0 46px 0 4px;
   }
   .modal-kicker-tag {
     font-size: 10px;
     padding: 3px 10px;
     margin-bottom: 6px;
-    max-width: calc(100% - 36px);
+    max-width: calc(100% - 46px);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
   .modal-title,
   #bookingModalTitle,
-  #modalTitle {
-    font-size: clamp(16px, 4.8vw, 19.5px);
-    white-space: nowrap;
+  #modalTitle,
+  #detailModalTitle {
+    font-size: clamp(16px, 4.6vw, 19px);
+    white-space: normal;
+    word-break: break-word;
     letter-spacing: -0.02em;
     line-height: 1.25;
     margin-bottom: 4px;

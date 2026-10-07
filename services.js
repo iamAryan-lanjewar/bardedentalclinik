@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
       description: 'Dentures are gentle, removable teeth designed to replace missing teeth when you have lost several or all of them. Made from lightweight, natural-looking materials, they rest comfortably on your gums and support your facial muscles so your cheeks do not look sunken. Whether you need a full set or just a partial set to fill empty gaps, our custom-crafted dentures let you enjoy your favorite foods and smile happily again.'
     },
     'cavities': {
-      title: 'Cosmatic Filling & Restorations',
+      title: 'Cosmatic Filling',
       subtitle: 'Biocompatible nano-hybrid tooth-colored restorations & cosmatic fillings',
       image: 'assets/service_new_teeth_implant.webp?v=10.0',
       specs: [
@@ -68,8 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
       description: 'Sometimes a tooth is trapped under the gums, growing sideways (like an impacted wisdom tooth), or broken too close to the gumline for a simple pull. A surgical extraction is a gentle, routine procedure where Dr. Barde carefully numbs the entire area so you stay relaxed and comfortable with zero pain. The tooth is gently freed and removed with minimal pressure, protecting your surrounding jawbone and ensuring smooth, fast healing.'
     },
     'cleaning': {
-      title: 'Ultra Sonic Scaling & Deep Polishing',
-      subtitle: 'Healthy habits start with smiles',
+      title: 'Ultra Sonic Scaling',
+      subtitle: 'Healthy habits start with clean smiles',
       image: 'assets/service_cleaning.webp?v=13.0',
       specs: [
         { label: 'Method:', value: 'Air-Flow ultrasonic micro-vibrations & gentle water jet' },

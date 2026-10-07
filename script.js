@@ -920,65 +920,155 @@ Hello Dr. Vivek Barde, I submitted this appointment request via your official we
   });
 
   // =================================================================
-  // E. SCREEN 3 (WHAT WE OFFER) CURSOR MOVEMENT & HOVER GLIDE ANIMATION
+  // E. SCREEN 3 (WHAT WE OFFER): CURSOR MOVEMENT KEY GLIDE & ACTIVE PILL TOOLTIP
+  // (Pill capsule highlight exactly like PC navigation button — tracks with cursor before click AND stays active upon click)
   // =================================================================
+  const mOfferBody = document.getElementById('mOfferBody');
   const mOfferList = document.getElementById('mOfferItemsList');
-  const mOfferLinks = document.querySelectorAll('.m916-offer-link');
+  const mOfferLinks = Array.from(document.querySelectorAll('#mobileOffer .m916-offer-link'));
+  const mOfferLis = Array.from(document.querySelectorAll('#mobileOffer .m916-offer-li'));
+  const mOfferClickBtn = document.getElementById('mOfferClickBtn');
 
-  let activeHoveredLink = null;
+  let activeOfferKey = null;
 
-  function setHoveredOfferLink(targetLink) {
-    if (activeHoveredLink === targetLink) return;
-    if (activeHoveredLink) {
-      activeHoveredLink.classList.remove('is-hovered');
+  function setOfferActiveKey(targetLink) {
+    if (!targetLink) return;
+
+    if (activeOfferKey === targetLink) return;
+
+    if (activeOfferKey) {
+      activeOfferKey.classList.remove('is-hovered', 'is-active-key');
+      const prevLi = activeOfferKey.closest('.m916-offer-li');
+      if (prevLi) prevLi.classList.remove('is-active-row');
     }
-    activeHoveredLink = targetLink;
-    if (activeHoveredLink) {
-      activeHoveredLink.classList.add('is-hovered');
+
+    activeOfferKey = targetLink;
+    activeOfferKey.classList.add('is-hovered', 'is-active-key');
+
+    const parentLi = activeOfferKey.closest('.m916-offer-li');
+    if (parentLi) parentLi.classList.add('is-active-row');
+
+    if (mOfferClickBtn) {
+      const url = activeOfferKey.getAttribute('href');
+      if (url) mOfferClickBtn.setAttribute('href', url);
     }
   }
 
-  // 1. Direct hover / pointer movement on each navigation button
+  // Smooth nearest-item vertical locator (guarantees continuous tracking with zero dead zones)
+  function findClosestOfferLink(clientY) {
+    if (!mOfferLinks.length) return null;
+    let closest = null;
+    let minDiff = Infinity;
+
+    for (let i = 0; i < mOfferLinks.length; i++) {
+      const rect = mOfferLinks[i].getBoundingClientRect();
+      const centerY = rect.top + rect.height / 2;
+      const diff = Math.abs(clientY - centerY);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closest = mOfferLinks[i];
+      }
+    }
+    return closest;
+  }
+
+  // 1. Direct hover / enter on individual links and li elements for instant response
   mOfferLinks.forEach(link => {
-    link.addEventListener('mouseenter', () => setHoveredOfferLink(link));
-    link.addEventListener('pointerenter', () => setHoveredOfferLink(link));
-    link.addEventListener('mouseleave', () => {
-      if (activeHoveredLink === link) setHoveredOfferLink(null);
-    });
-    link.addEventListener('pointerleave', () => {
-      if (activeHoveredLink === link) setHoveredOfferLink(null);
+    link.addEventListener('mouseenter', () => setOfferActiveKey(link));
+    link.addEventListener('pointerenter', () => setOfferActiveKey(link));
+    link.addEventListener('mouseover', () => setOfferActiveKey(link));
+
+    // On click: activate and keep active
+    link.addEventListener('click', () => {
+      setOfferActiveKey(link);
     });
   });
 
-  // 2. Continuous cursor tracking as mouse moves across the navigation list
-  if (mOfferList) {
-    const handleOfferPointerMove = (e) => {
-      const x = e.clientX;
-      const y = e.clientY;
-      if (typeof x !== 'number' || typeof y !== 'number') return;
-      const el = document.elementFromPoint(x, y);
-      const link = el ? el.closest('.m916-offer-link') : null;
-      setHoveredOfferLink(link);
-    };
+  mOfferLis.forEach(li => {
+    const link = li.querySelector('.m916-offer-link');
+    if (!link) return;
 
-    mOfferList.addEventListener('mousemove', handleOfferPointerMove, { passive: true });
-    mOfferList.addEventListener('pointermove', handleOfferPointerMove, { passive: true });
-    mOfferList.addEventListener('mouseleave', () => setHoveredOfferLink(null));
-    mOfferList.addEventListener('pointerleave', () => setHoveredOfferLink(null));
+    li.addEventListener('mouseenter', () => setOfferActiveKey(link));
+    li.addEventListener('pointerenter', () => setOfferActiveKey(link));
+    li.addEventListener('mouseover', () => setOfferActiveKey(link));
 
-    // Touch support for swiping finger over the service items
-    mOfferList.addEventListener('touchmove', (e) => {
-      if (e.touches && e.touches[0]) {
-        const touch = e.touches[0];
-        const el = document.elementFromPoint(touch.clientX, touch.clientY);
-        const link = el ? el.closest('.m916-offer-link') : null;
-        setHoveredOfferLink(link);
+    li.addEventListener('click', () => {
+      setOfferActiveKey(link);
+    });
+  });
+
+  // 2. Continuous cursor tracking as mouse/pointer glides across buttons
+  const handleOfferPointerGlide = (e) => {
+    if (!e) return;
+    const clientY = typeof e.clientY === 'number' ? e.clientY : (e.touches && e.touches[0] ? e.touches[0].clientY : null);
+    if (clientY === null) return;
+
+    // Check direct target first
+    if (e.target && e.target.closest) {
+      const directLink = e.target.closest('.m916-offer-link');
+      if (directLink) {
+        setOfferActiveKey(directLink);
+        return;
       }
+      const directLi = e.target.closest('.m916-offer-li');
+      if (directLi) {
+        const l = directLi.querySelector('.m916-offer-link');
+        if (l) {
+          setOfferActiveKey(l);
+          return;
+        }
+      }
+    }
+
+    // Proximity check within vertical list bounds
+    if (mOfferList) {
+      const listRect = mOfferList.getBoundingClientRect();
+      if (clientY >= listRect.top - 20 && clientY <= listRect.bottom + 20) {
+        const closest = findClosestOfferLink(clientY);
+        if (closest) setOfferActiveKey(closest);
+      }
+    }
+  };
+
+  if (mOfferBody) {
+    mOfferBody.addEventListener('mousemove', handleOfferPointerGlide, { passive: true });
+    mOfferBody.addEventListener('pointermove', handleOfferPointerGlide, { passive: true });
+  }
+
+  if (mOfferList) {
+    mOfferList.addEventListener('mousemove', handleOfferPointerGlide, { passive: true });
+    mOfferList.addEventListener('pointermove', handleOfferPointerGlide, { passive: true });
+
+    // Touch dragging support
+    mOfferList.addEventListener('touchstart', handleOfferPointerGlide, { passive: true });
+    mOfferList.addEventListener('touchmove', handleOfferPointerGlide, { passive: true });
+  }
+
+  // Also support PC Slide 3 offer services list cursor glide
+  const pcOfferList = document.querySelector('.offer-services-list');
+  if (pcOfferList) {
+    const pcOfferLinks = Array.from(pcOfferList.querySelectorAll('.offer-item-anchor'));
+    let activePcOfferKey = null;
+
+    function setPcOfferActiveKey(target) {
+      if (activePcOfferKey === target) return;
+      if (activePcOfferKey) activePcOfferKey.classList.remove('is-hovered');
+      activePcOfferKey = target;
+      if (activePcOfferKey) activePcOfferKey.classList.add('is-hovered');
+    }
+
+    pcOfferLinks.forEach(link => {
+      link.addEventListener('mouseenter', () => setPcOfferActiveKey(link));
+      link.addEventListener('pointerenter', () => setPcOfferActiveKey(link));
+    });
+
+    pcOfferList.addEventListener('mousemove', (e) => {
+      const el = document.elementFromPoint(e.clientX, e.clientY);
+      const link = el ? el.closest('.offer-item-anchor') : null;
+      if (link) setPcOfferActiveKey(link);
     }, { passive: true });
 
-    mOfferList.addEventListener('touchend', () => {
-      setTimeout(() => setHoveredOfferLink(null), 250);
-    });
+    pcOfferList.addEventListener('mouseleave', () => setPcOfferActiveKey(null));
   }
 
   // =================================================================
