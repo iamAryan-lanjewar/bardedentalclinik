@@ -4256,6 +4256,7 @@ a.address-map-link:focus {
     user-select: none;
     -webkit-user-select: none;
     margin: 0 auto;
+    container-type: inline-size;
   }
   .mobile-hero-artwork {
     width: 100%;
@@ -4265,6 +4266,7 @@ a.address-map-link:focus {
     pointer-events: none;
   }
 
+
   /* Overlaid Interactive Hotspots */
   .mobile-hotspot {
     position: absolute;
@@ -4273,9 +4275,9 @@ a.address-map-link:focus {
   }
   .mobile-brand-hotspot {
     left: 4.5%;
-    top: 2.8%;
+    top: 1.8%;
     width: 45%;
-    height: 7%;
+    height: 8%;
     z-index: 5;
   }
   .mobile-brighter-hotspot {
