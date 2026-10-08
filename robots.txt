@@ -15,8 +15,8 @@ User-agent: Googlebot-Image
 Allow: /assets/
 Allow: /
 
-User-agent: Googlebot-Mobile
+User-agent: Bingbot
 Allow: /
 
 Sitemap: https://builddear.com/sitemap.xml
-Host: https://builddear.com
+Host: builddear.com
