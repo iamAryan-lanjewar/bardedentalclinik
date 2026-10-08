@@ -122,16 +122,26 @@ const server = http.createServer((req, res) => {
   });
 });
 
+// High-speed in-memory buffer and gzip cache
+const fileCache = new Map();
+
 function serveFile(req, res, filePath, stats) {
   const ext = path.extname(filePath).toLowerCase();
   const contentType = MIME_TYPES[ext] || 'application/octet-stream';
   const isHtml = ext === '.html';
 
-  // Fast revalidation: Do not cache HTML, JS, or CSS so updates reflect immediately
-  const isCodeAsset = isHtml || ext === '.js' || ext === '.css';
-  const cacheControl = isCodeAsset
-    ? 'no-cache, no-store, must-revalidate'
-    : 'public, max-age=86400, stale-while-revalidate=3600';
+  // High-performance cache policies:
+  // - HTML: 'no-cache, must-revalidate' (allows instantaneous 304 revalidation)
+  // - JS / CSS: 7-day browser cache with stale-while-revalidate
+  // - Media / Fonts / Icons: 30-day immutable cache
+  let cacheControl;
+  if (isHtml) {
+    cacheControl = 'no-cache, must-revalidate';
+  } else if (ext === '.js' || ext === '.css') {
+    cacheControl = 'public, max-age=604800, stale-while-revalidate=86400';
+  } else {
+    cacheControl = 'public, max-age=2592000, immutable';
+  }
 
   // ETag based on mtime and size for instant 304 cache validation
   const etag = `"${stats.size.toString(16)}-${stats.mtime.getTime().toString(16)}"`;
@@ -159,33 +169,36 @@ function serveFile(req, res, filePath, stats) {
     return res.end();
   }
 
-  const fileStream = fs.createReadStream(filePath);
-  fileStream.on('error', () => {
-    if (!res.headersSent) {
-      res.writeHead(500, { 'Content-Type': 'text/plain; charset=utf-8' });
-    }
-    res.end();
-  });
-
-  // Fast gzip/deflate compression for text, CSS, JS, SVG, and TTF
   const acceptEncoding = req.headers['accept-encoding'] || '';
   const canCompress = COMPRESSIBLE.has(contentType);
+  const wantsGzip = canCompress && /\bgzip\b/.test(acceptEncoding);
 
-  if (canCompress && /\bgzip\b/.test(acceptEncoding)) {
+  // Serve from in-memory cache for ultra-low latency (< 1ms)
+  let cached = fileCache.get(filePath);
+  if (!cached || cached.mtimeMs !== stats.mtimeMs) {
+    try {
+      const buffer = fs.readFileSync(filePath);
+      const gzipBuffer = canCompress ? zlib.gzipSync(buffer, { level: 6 }) : null;
+      cached = { mtimeMs: stats.mtimeMs, buffer, gzipBuffer };
+      fileCache.set(filePath, cached);
+    } catch {
+      // Fallback if read fails
+      res.writeHead(500, { 'Content-Type': 'text/plain; charset=utf-8' });
+      return res.end();
+    }
+  }
+
+  if (wantsGzip && cached.gzipBuffer) {
     headers['Content-Encoding'] = 'gzip';
     headers['Vary'] = 'Accept-Encoding';
+    headers['Content-Length'] = cached.gzipBuffer.length;
     res.writeHead(200, headers);
-    fileStream.pipe(zlib.createGzip({ level: 6 })).pipe(res);
-  } else if (canCompress && /\bdeflate\b/.test(acceptEncoding)) {
-    headers['Content-Encoding'] = 'deflate';
-    headers['Vary'] = 'Accept-Encoding';
-    res.writeHead(200, headers);
-    fileStream.pipe(zlib.createDeflate()).pipe(res);
-  } else {
-    headers['Content-Length'] = stats.size;
-    res.writeHead(200, headers);
-    fileStream.pipe(res);
+    return res.end(cached.gzipBuffer);
   }
+
+  headers['Content-Length'] = cached.buffer.length;
+  res.writeHead(200, headers);
+  res.end(cached.buffer);
 }
 
 server.listen(PORT, () => {

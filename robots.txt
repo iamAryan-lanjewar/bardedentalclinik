@@ -18,5 +18,5 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
-Sitemap: https://builddear.com/sitemap.xml
-Host: builddear.com
+Sitemap: https://drbardeclinic.com/sitemap.xml
+Host: drbardeclinic.com

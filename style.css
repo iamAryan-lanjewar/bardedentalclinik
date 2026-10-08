@@ -4539,6 +4539,8 @@ a.address-map-link:focus {
     letter-spacing: 0.05em;
     color: #ffffff;
     text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
   }
   .m916-brand-icon {
     width: 20px;

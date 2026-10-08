@@ -250,9 +250,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Topbar Brand Logo click handler (Redirect to Home)
   const topbarBrand = document.querySelector('.topbar-brand');
   if (topbarBrand) {
-    topbarBrand.addEventListener('click', (e) => {
-      e.preventDefault();
-      goToSlide(1);
+    topbarBrand.addEventListener('click', () => {
+      window.location.href = 'index.html';
     });
   }
 
