@@ -1405,6 +1405,13 @@ Hello Dr. Vivek Barde, I submitted this appointment request via your official we
     });
   }
 
+  // Ensure Google Map iframes are visible and unblocked across all browsers
+  document.querySelectorAll('#liveGoogleMap, .m916-map-iframe').forEach(iframe => {
+    iframe.style.opacity = '1';
+    iframe.style.visibility = 'visible';
+    iframe.style.display = 'block';
+  });
+
   handleInitialHashNavigation();
   window.addEventListener('hashchange', handleInitialHashNavigation);
 });
